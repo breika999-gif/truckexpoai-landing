@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px max(24px, calc((100vw - var(--max)) / 2));
+    padding: 4px max(24px, calc((100vw - var(--max)) / 2));
     background: rgba(7, 10, 14, 0.78);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(145, 181, 204, 0.12);
@@ -132,6 +132,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transform: scale(2);
   }
 
   .nav-links {
@@ -1011,7 +1012,7 @@
     }
 
     .site-nav {
-      padding: 6px 16px;
+      padding: 3px 16px;
       gap: 12px;
     }
 
@@ -1223,6 +1224,10 @@
   .lang-switcher {
     position: relative;
     display: inline-flex;
+  }
+
+  .lang-toggle {
+    display: inline-flex;
     align-items: center;
     gap: 5px;
     min-height: 30px;
@@ -1238,7 +1243,7 @@
     transition: background 160ms, border-color 160ms, color 160ms;
   }
 
-  .lang-switcher:hover {
+  .lang-toggle:hover {
     background: rgba(255,255,255,0.09);
     border-color: var(--line-strong);
     color: var(--text);
@@ -1258,7 +1263,6 @@
     min-width: 130px;
   }
 
-  .lang-switcher .lang-dropdown { display: none; }
   .lang-switcher.open .lang-dropdown { display: block; }
 
   .lang-option {
@@ -1295,16 +1299,18 @@
     <li><a href="#ai" data-t="nav_ai">AI</a></li>
     <li><a href="#pricing" data-t="nav_pricing">Pricing</a></li>
     <li>
-      <button class="lang-switcher" id="langBtn" aria-label="Switch language">
-        <span class="lang-active" id="langFlag">🇬🇧</span>
-        <span class="lang-label" id="langLabel">EN</span>
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language" aria-expanded="false">
+          <span class="lang-active" id="langFlag">🇬🇧</span>
+          <span class="lang-label" id="langLabel">EN</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="lang-dropdown" id="langDropdown">
-          <button class="lang-option active" data-lang="en">🇬🇧 English</button>
-          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
-          <button class="lang-option" data-lang="bg">🇧🇬 Български</button>
+          <button class="lang-option active" type="button" data-lang="en">🇬🇧 English</button>
+          <button class="lang-option" type="button" data-lang="es">🇪🇸 Español</button>
+          <button class="lang-option" type="button" data-lang="bg">🇧🇬 Български</button>
         </div>
-      </button>
+      </div>
     </li>
     <li><a href="#download" class="nav-action" data-t="nav_cta">Get Android</a></li>
   </ul>
@@ -1871,19 +1877,25 @@
   document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
 
   // Dropdown toggle
+  const langSwitcher = document.getElementById('langSwitcher');
   const langBtn = document.getElementById('langBtn');
   langBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    langBtn.classList.toggle('open');
+    const isOpen = langSwitcher.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', String(isOpen));
   });
 
-  document.addEventListener('click', () => langBtn.classList.remove('open'));
+  document.addEventListener('click', () => {
+    langSwitcher.classList.remove('open');
+    langBtn.setAttribute('aria-expanded', 'false');
+  });
 
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', (e) => {
       e.stopPropagation();
       applyLang(opt.dataset.lang);
-      langBtn.classList.remove('open');
+      langSwitcher.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
     });
   });
 
