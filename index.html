@@ -454,6 +454,64 @@
     background: rgba(9, 15, 22, 0.74);
   }
 
+  /* Powered-by tech strip */
+  .powered-strip {
+    border-bottom: 1px solid var(--line);
+    background: rgba(9, 15, 22, 0.55);
+    padding: 18px 0;
+  }
+
+  .powered-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .powered-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  .powered-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--line);
+    flex-shrink: 0;
+  }
+
+  .tech-logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+
+  .tech-logo:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.14);
+  }
+
+  .tech-logo svg { flex-shrink: 0; display: block; }
+
+  .tech-logo span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
   .proof-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1383,6 +1441,67 @@
       </div>
     </div>
   </section>
+
+  <!-- Powered-by technology strip -->
+  <div class="powered-strip">
+    <div class="container powered-inner">
+      <span class="powered-label">Powered by</span>
+      <div class="powered-sep"></div>
+
+      <!-- OpenAI -->
+      <div class="tech-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.28 9.78a5.83 5.83 0 0 0-.5-4.78 5.9 5.9 0 0 0-6.35-2.83A5.87 5.87 0 0 0 11 .5a5.9 5.9 0 0 0-5.62 4.08 5.87 5.87 0 0 0-3.92 2.85 5.9 5.9 0 0 0 .73 6.93 5.83 5.83 0 0 0 .5 4.78 5.9 5.9 0 0 0 6.35 2.83A5.87 5.87 0 0 0 13 23.5a5.9 5.9 0 0 0 5.63-4.09 5.87 5.87 0 0 0 3.91-2.85 5.9 5.9 0 0 0-.26-6.78zM13 21.94a4.37 4.37 0 0 1-2.8-1.02l.14-.08 4.65-2.68a.77.77 0 0 0 .39-.67v-6.54l1.97 1.13a.07.07 0 0 1 .04.06v5.42A4.38 4.38 0 0 1 13 21.94zm-9.38-4.01a4.36 4.36 0 0 1-.52-2.94l.14.08 4.65 2.69a.77.77 0 0 0 .77 0l5.67-3.27v2.26a.07.07 0 0 1-.03.06L9.6 19.5a4.38 4.38 0 0 1-5.98-1.57zm-1.22-9.57a4.35 4.35 0 0 1 2.27-1.91v5.51a.77.77 0 0 0 .39.67l5.67 3.27-1.97 1.14a.07.07 0 0 1-.07 0L4.3 14.7a4.38 4.38 0 0 1-1.9-6.34zm16.17 3.76-5.67-3.28 1.97-1.14a.07.07 0 0 1 .07 0l4.39 2.54a4.38 4.38 0 0 1-.68 7.9v-5.52a.77.77 0 0 0-.08-.5zm1.96-2.96-.14-.09-4.64-2.7a.77.77 0 0 0-.77 0L9.31 9.64V7.38a.07.07 0 0 1 .03-.06l4.39-2.53a4.38 4.38 0 0 1 6.5 4.54v.28l-.7-.05zm-12.31 4.04-1.97-1.14a.07.07 0 0 1-.04-.06V6.58a4.38 4.38 0 0 1 7.18-3.36l-.14.08-4.64 2.68a.77.77 0 0 0-.39.67v6.54zm1.07-2.3 2.52-1.46 2.53 1.46v2.9l-2.53 1.46-2.52-1.46V11z" fill="white" fill-opacity="0.85"/>
+        </svg>
+        <span>OpenAI GPT-4o</span>
+      </div>
+
+      <!-- Google -->
+      <div class="tech-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <span>Google</span>
+      </div>
+
+      <!-- Mapbox -->
+      <div class="tech-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="12" fill="#4264FB"/>
+          <circle cx="12" cy="12" r="4.5" fill="white"/>
+          <path d="M12 3.5 L14 8 L19 8 L15 11 L16.5 16.5 L12 13.5 L7.5 16.5 L9 11 L5 8 L10 8 Z" fill="white" opacity="0.3"/>
+        </svg>
+        <span>Mapbox</span>
+      </div>
+
+      <!-- TomTom -->
+      <div class="tech-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="11" fill="#DF1B12"/>
+          <text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text>
+        </svg>
+        <span>TomTom</span>
+      </div>
+
+      <!-- Gemini -->
+      <div class="tech-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" fill="url(#gem-grad)"/>
+          <defs>
+            <linearGradient id="gem-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4285F4"/>
+              <stop offset="100%" stop-color="#9C27B0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Gemini 2.0</span>
+      </div>
+
+    </div>
+  </div>
 
   <section class="section film-section" id="film" aria-label="TruckExpoAI launch film">
     <div class="container film-grid">
