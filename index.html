@@ -90,6 +90,11 @@
     margin: 0 auto;
   }
 
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
   .site-nav {
     position: fixed;
     inset: 0 0 auto 0;
@@ -455,6 +460,8 @@
 
   /* Powered-by tech strip */
   .powered-strip {
+    order: 90;
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     background: rgba(9, 15, 22, 0.55);
     padding: 18px 0;
@@ -618,6 +625,7 @@
   }
 
   .feature-card,
+  .extras-card,
   .price-card,
   .ai-panel,
   .workflow-step {
@@ -674,6 +682,54 @@
     font-weight: 900;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+
+  .extras-section {
+    padding-top: 38px;
+  }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .extras-card {
+    padding: 20px;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    min-height: 100%;
+  }
+
+  .extras-card h3 {
+    font-size: 21px;
+  }
+
+  .extras-list {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .extras-list li {
+    display: flex;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .extras-list li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(0, 212, 198, 0.10);
   }
 
   .workflow {
@@ -1044,6 +1100,7 @@
     }
 
     .feature-grid,
+    .extras-grid,
     .pricing-grid,
     .workflow-grid,
     .proof-grid {
@@ -1190,6 +1247,7 @@
     }
 
     .feature-grid,
+    .extras-grid,
     .pricing-grid,
     .workflow-grid,
     .proof-grid {
@@ -1242,6 +1300,7 @@
 
     .workflow-step,
     .price-card,
+    .extras-card,
     .ai-panel {
       padding: 20px;
     }
@@ -1567,6 +1626,84 @@
     </div>
   </section>
 
+  <section class="section extras-section" id="extras">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-tx="extras_eyebrow">Feature map</span>
+        <h2 class="reveal" data-tx="extras_h">All the extras, grouped like a driver uses them.</h2>
+        <p class="lead reveal" data-tx="extras_lead">TruckExpoAI has a lot inside, so the site keeps it readable: route decisions, AI, tacho, POIs, safety, and fleet tools each get their own lane.</p>
+      </div>
+
+      <div class="extras-grid">
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras1_tag">Navigation</span>
+          <h3 data-tx="extras1_h">Truck route control</h3>
+          <ul class="extras-list">
+            <li data-tx="extras1_1">Truck-safe route calculation and alternatives</li>
+            <li data-tx="extras1_2">Route preview with ETA, distance, and traffic state</li>
+            <li data-tx="extras1_3">Multi-stop dispatcher flow with waypoint ordering</li>
+            <li data-tx="extras1_4">Live turn guidance with route progress on the map</li>
+          </ul>
+        </article>
+
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras2_tag">AI cockpit</span>
+          <h3 data-tx="extras2_h">Two assistants, one map</h3>
+          <ul class="extras-list">
+            <li data-tx="extras2_1">GPT map actions for routes, waypoints, and searches</li>
+            <li data-tx="extras2_2">Gemini driver assistant for app control and answers</li>
+            <li data-tx="extras2_3">Voice intents that can turn a question into a map action</li>
+            <li data-tx="extras2_4">Route-aware answers using actual distance and drive time</li>
+          </ul>
+        </article>
+
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras3_tag">Tacho</span>
+          <h3 data-tx="extras3_h">EU driving-time logic</h3>
+          <ul class="extras-list">
+            <li data-tx="extras3_1">HOS view for remaining drive time</li>
+            <li data-tx="extras3_2">Rest warnings before a route becomes risky</li>
+            <li data-tx="extras3_3">Tachograph assistant answers in driver language</li>
+            <li data-tx="extras3_4">Planned Bluetooth tachograph handoff</li>
+          </ul>
+        </article>
+
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras4_tag">Stops</span>
+          <h3 data-tx="extras4_h">Parking, fuel, and business POIs</h3>
+          <ul class="extras-list">
+            <li data-tx="extras4_1">Truck parking markers along the route</li>
+            <li data-tx="extras4_2">Fuel markers with distance labels</li>
+            <li data-tx="extras4_3">TransParking handoff for selected stops</li>
+            <li data-tx="extras4_4">Business search results that can become destinations</li>
+          </ul>
+        </article>
+
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras5_tag">Safety</span>
+          <h3 data-tx="extras5_h">Road events and restrictions</h3>
+          <ul class="extras-list">
+            <li data-tx="extras5_1">Truck restriction signs for weight, height, and bans</li>
+            <li data-tx="extras5_2">Speed camera and speed-limit warnings</li>
+            <li data-tx="extras5_3">Tunnel and traffic alerts during navigation</li>
+            <li data-tx="extras5_4">Upcoming parking and fuel timeline</li>
+          </ul>
+        </article>
+
+        <article class="extras-card reveal">
+          <span class="tagline" data-tx="extras6_tag">Fleet ready</span>
+          <h3 data-tx="extras6_h">Built to grow beyond one driver</h3>
+          <ul class="extras-list">
+            <li data-tx="extras6_1">Company POIs and saved driver places</li>
+            <li data-tx="extras6_2">Route explanations for dispatch decisions</li>
+            <li data-tx="extras6_3">Backend APIs for AI, POIs, tacho, and routing</li>
+            <li data-tx="extras6_4">Android APK testing before store distribution</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section workflow">
     <div class="container">
       <div class="section-head">
@@ -1738,8 +1875,9 @@
     <div>&copy; 2026 TruckExpoAI. AI navigation for professional drivers.</div>
     <div class="footer-links">
       <a href="mailto:ceo@truckexpoai.com">ceo@truckexpoai.com</a>
-      <a href="#product">Product</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#product" data-tx="nav_product">Product</a>
+      <a href="#extras" data-tx="footer_extras">Extras</a>
+      <a href="#pricing" data-tx="nav_pricing">Pricing</a>
     </div>
   </div>
 </footer>
@@ -1782,6 +1920,40 @@
       ai2_p: 'Used for tachograph questions, app control, TransParking intents, and general trucking help while keeping context deterministic.',
       ri_eyebrow: 'Route intelligence', ri_h: 'The answer is based on the actual route, not a guess.',
       ri_p: 'The app sends the assistant real route distance, route duration, destination name, and remaining drive time. That makes "Can I reach X?" a deterministic driver decision.',
+      extras_eyebrow: 'Feature map',
+      extras_h: 'All the extras, grouped like a driver uses them.',
+      extras_lead: 'TruckExpoAI has a lot inside, so the site keeps it readable: route decisions, AI, tacho, POIs, safety, and fleet tools each get their own lane.',
+      extras1_tag: 'Navigation', extras1_h: 'Truck route control',
+      extras1_1: 'Truck-safe route calculation and alternatives',
+      extras1_2: 'Route preview with ETA, distance, and traffic state',
+      extras1_3: 'Multi-stop dispatcher flow with waypoint ordering',
+      extras1_4: 'Live turn guidance with route progress on the map',
+      extras2_tag: 'AI cockpit', extras2_h: 'Two assistants, one map',
+      extras2_1: 'GPT map actions for routes, waypoints, and searches',
+      extras2_2: 'Gemini driver assistant for app control and answers',
+      extras2_3: 'Voice intents that can turn a question into a map action',
+      extras2_4: 'Route-aware answers using actual distance and drive time',
+      extras3_tag: 'Tacho', extras3_h: 'EU driving-time logic',
+      extras3_1: 'HOS view for remaining drive time',
+      extras3_2: 'Rest warnings before a route becomes risky',
+      extras3_3: 'Tachograph assistant answers in driver language',
+      extras3_4: 'Planned Bluetooth tachograph handoff',
+      extras4_tag: 'Stops', extras4_h: 'Parking, fuel, and business POIs',
+      extras4_1: 'Truck parking markers along the route',
+      extras4_2: 'Fuel markers with distance labels',
+      extras4_3: 'TransParking handoff for selected stops',
+      extras4_4: 'Business search results that can become destinations',
+      extras5_tag: 'Safety', extras5_h: 'Road events and restrictions',
+      extras5_1: 'Truck restriction signs for weight, height, and bans',
+      extras5_2: 'Speed camera and speed-limit warnings',
+      extras5_3: 'Tunnel and traffic alerts during navigation',
+      extras5_4: 'Upcoming parking and fuel timeline',
+      extras6_tag: 'Fleet ready', extras6_h: 'Built to grow beyond one driver',
+      extras6_1: 'Company POIs and saved driver places',
+      extras6_2: 'Route explanations for dispatch decisions',
+      extras6_3: 'Backend APIs for AI, POIs, tacho, and routing',
+      extras6_4: 'Android APK testing before store distribution',
+      footer_extras: 'Extras',
       pr_eyebrow: 'Pricing', pr_h: 'Start simple. Scale for serious fleets.',
       free_tag: 'Free', free_h: 'Driver preview', free_p: 'For trying the Android navigation experience.', free_btn: 'Request preview',
       pro_tag: 'Pro', pro_h: 'Working driver', pro_p: 'For drivers who want the AI cockpit every day.', pro_btn: 'Get Pro',
@@ -1826,6 +1998,40 @@
       ai2_p: 'Para preguntas sobre el tacógrafo, control de la app, intenciones TransParking y ayuda general de transporte manteniendo el contexto determinista.',
       ri_eyebrow: 'Inteligencia de ruta', ri_h: 'La respuesta se basa en la ruta real, no en una estimación.',
       ri_p: 'La app envía al asistente la distancia real de ruta, duración, nombre del destino y tiempo de conducción restante. Esto convierte "¿Puedo llegar a X?" en una decisión determinista.',
+      extras_eyebrow: 'Mapa de funciones',
+      extras_h: 'Todas las extras, agrupadas como las usa un conductor.',
+      extras_lead: 'TruckExpoAI tiene mucho dentro, por eso el sitio lo ordena por trabajo real: ruta, IA, tacógrafo, PDIs, seguridad y herramientas de flota.',
+      extras1_tag: 'Navegación', extras1_h: 'Control de ruta para camión',
+      extras1_1: 'Cálculo de ruta segura para camiones y alternativas',
+      extras1_2: 'Vista previa con ETA, distancia y tráfico',
+      extras1_3: 'Flujo multi-parada con orden de waypoints',
+      extras1_4: 'Guía en vivo con progreso de ruta en el mapa',
+      extras2_tag: 'Cabina IA', extras2_h: 'Dos asistentes, un mapa',
+      extras2_1: 'Acciones GPT para rutas, waypoints y búsquedas',
+      extras2_2: 'Asistente Gemini para control de app y respuestas',
+      extras2_3: 'Intenciones de voz que convierten preguntas en acciones',
+      extras2_4: 'Respuestas con distancia y tiempo real de ruta',
+      extras3_tag: 'Tacógrafo', extras3_h: 'Lógica de tiempo de conducción UE',
+      extras3_1: 'Vista HOS para tiempo de conducción restante',
+      extras3_2: 'Avisos de descanso antes de que una ruta sea arriesgada',
+      extras3_3: 'Asistente de tacógrafo en lenguaje de conductor',
+      extras3_4: 'Traspaso planificado a tacógrafo Bluetooth',
+      extras4_tag: 'Paradas', extras4_h: 'Parking, combustible y negocios',
+      extras4_1: 'Marcadores de parking para camiones en la ruta',
+      extras4_2: 'Marcadores de combustible con distancias',
+      extras4_3: 'Traspaso a TransParking para paradas seleccionadas',
+      extras4_4: 'Búsqueda de negocios que puede crear destinos',
+      extras5_tag: 'Seguridad', extras5_h: 'Eventos de carretera y restricciones',
+      extras5_1: 'Señales de restricción por peso, altura y prohibiciones',
+      extras5_2: 'Avisos de radares y límites de velocidad',
+      extras5_3: 'Alertas de túnel y tráfico durante navegación',
+      extras5_4: 'Timeline de parking y combustible próximos',
+      extras6_tag: 'Listo para flota', extras6_h: 'Preparado para crecer más allá de un conductor',
+      extras6_1: 'PDIs de empresa y lugares guardados del conductor',
+      extras6_2: 'Explicaciones de ruta para decisiones de despacho',
+      extras6_3: 'APIs backend para IA, PDIs, tacógrafo y rutas',
+      extras6_4: 'Pruebas APK Android antes de distribución en tiendas',
+      footer_extras: 'Extras',
       pr_eyebrow: 'Precios', pr_h: 'Empieza sencillo. Escala para flotas serias.',
       free_tag: 'Gratis', free_h: 'Vista previa para conductores', free_p: 'Para probar la experiencia de navegación Android.', free_btn: 'Solicitar vista previa',
       pro_tag: 'Pro', pro_h: 'Conductor profesional', pro_p: 'Para conductores que quieren la cabina IA cada día.', pro_btn: 'Obtener Pro',
@@ -1870,6 +2076,40 @@
       ai2_p: 'За въпроси относно тахографа, управление на приложението, намерения за TransParking и обща помощ за транспорта при детерминистичен контекст.',
       ri_eyebrow: 'Интелигентност на маршрута', ri_h: 'Отговорът се базира на реалния маршрут, не на предположение.',
       ri_p: 'Приложението изпраща на асистента реалното разстояние на маршрута, продължителност, име на дестинацията и оставащо време за шофиране. Това прави "Мога ли да стигна до X?" детерминистично решение.',
+      extras_eyebrow: 'Карта на екстрите',
+      extras_h: 'Всички екстри, групирани както ги ползва шофьорът.',
+      extras_lead: 'TruckExpoAI има много вътре, затова сайтът ги подрежда по работа: маршрут, ИИ, тахограф, ТОИ, безопасност и флот.',
+      extras1_tag: 'Навигация', extras1_h: 'Контрол на маршрута за камион',
+      extras1_1: 'Камионен маршрут с алтернативи',
+      extras1_2: 'Преглед с ETA, дистанция и трафик',
+      extras1_3: 'Multi-stop диспечер с подреждане на точки',
+      extras1_4: 'Live насоки с прогрес на маршрута върху картата',
+      extras2_tag: 'ИИ кабина', extras2_h: 'Два асистента, една карта',
+      extras2_1: 'GPT действия за маршрути, точки и търсене',
+      extras2_2: 'Gemini асистент за контрол на app-а и отговори',
+      extras2_3: 'Гласови намерения, които стават действия на картата',
+      extras2_4: 'Отговори с реална дистанция и време по маршрута',
+      extras3_tag: 'Тахограф', extras3_h: 'Логика за време на шофиране в ЕС',
+      extras3_1: 'HOS изглед за оставащо време за каране',
+      extras3_2: 'Предупреждения за пауза преди рисков маршрут',
+      extras3_3: 'Тахограф асистент на езика на шофьора',
+      extras3_4: 'Планирана Bluetooth връзка с тахограф',
+      extras4_tag: 'Спирки', extras4_h: 'Паркинг, гориво и бизнес ТОИ',
+      extras4_1: 'Камионни паркинги по маршрута',
+      extras4_2: 'Гориво с етикети за дистанция',
+      extras4_3: 'TransParking отваряне за избрани спирки',
+      extras4_4: 'Бизнес резултати, които стават дестинации',
+      extras5_tag: 'Безопасност', extras5_h: 'Пътни събития и ограничения',
+      extras5_1: 'Знаци за тегло, височина и забрани',
+      extras5_2: 'Камери и ограничения на скоростта',
+      extras5_3: 'Тунели и трафик предупреждения при навигация',
+      extras5_4: 'Timeline за близки паркинги и гориво',
+      extras6_tag: 'Готов за флот', extras6_h: 'Готов да расте отвъд един шофьор',
+      extras6_1: 'Фирмени ТОИ и запазени места на шофьора',
+      extras6_2: 'Обяснения на маршрута за диспечерски решения',
+      extras6_3: 'Backend API за ИИ, ТОИ, тахограф и маршрути',
+      extras6_4: 'Android APK тестове преди магазините',
+      footer_extras: 'Екстри',
       pr_eyebrow: 'Цени', pr_h: 'Започни просто. Мащабирай за сериозни флотове.',
       free_tag: 'Безплатно', free_h: 'Преглед за шофьори', free_p: 'За изпробване на Android навигационното изживяване.', free_btn: 'Заяви преглед',
       pro_tag: 'Про', pro_h: 'Работещ шофьор', pro_p: 'За шофьори, които искат ИИ кабината всеки ден.', pro_btn: 'Вземи Про',
@@ -1963,6 +2203,11 @@
     document.documentElement.lang = lang;
     currentLang = lang;
     localStorage.setItem('truckexpo_lang', lang);
+
+    document.querySelectorAll('[data-tx]').forEach(el => {
+      const key = el.dataset.tx;
+      if (key && t[key]) el.textContent = t[key];
+    });
 
     selMap.forEach(([sel, key, mode]) => {
       const el = document.querySelector(sel);
