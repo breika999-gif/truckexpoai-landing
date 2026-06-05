@@ -1440,18 +1440,15 @@
         <h1 class="reveal">TruckExpoAI</h1>
         <p class="lead reveal">Truck-safe navigation with AI that understands routes, tachograph limits, parking, fuel, companies, and the real questions drivers ask from the cab.</p>
         <div class="button-row reveal">
-          <a class="btn btn-primary" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Android%20APK">
+          <a class="btn btn-primary" href="assets/truckexpoai_v1.apk" download>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 3v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M5 19h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            Request Android APK
+            Download Beta APK
           </a>
-          <a class="btn btn-secondary" href="#product">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="m8 5 11 7-11 7z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-            </svg>
-            See the product
+          <a class="btn btn-secondary" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Android%20APK">
+            Request Access
           </a>
         </div>
         <div class="hero-badges reveal">
@@ -1764,21 +1761,38 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container route-lab">
-      <div class="route-copy">
-        <span class="eyebrow reveal">Route intelligence</span>
-        <h2 class="reveal">The answer is based on the actual route, not a guess.</h2>
-        <p class="reveal">The app sends the assistant real route distance, route duration, destination name, and remaining drive time. That makes "Can I reach X?" a deterministic driver decision.</p>
-        <ul class="route-list reveal">
-          <li><span class="check">&#10003;</span><span>Distance and ETA from the active route</span></li>
-          <li><span class="check">&#10003;</span><span>Remaining driving minutes from the tacho state</span></li>
-          <li><span class="check">&#10003;</span><span>Parking and business cards linked back to map markers</span></li>
-          <li><span class="check">&#10003;</span><span>TransParking opens inside the app when the selected stop has an ID</span></li>
-        </ul>
+  <section class="section" id="tech">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Technical Excellence</span>
+        <h2 class="reveal">Built for stability and precision.</h2>
+        <p class="lead reveal">We don't just use APIs; we build our own logic engines to ensure professional-grade reliability on the road.</p>
       </div>
-      <div class="route-visual reveal">
-        <img src="assets/route-options.png" alt="TruckExpoAI route alternatives and destination preview" loading="lazy">
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="feature-body">
+            <span class="tagline">Mobile Stack</span>
+            <h3>React Native & Mapbox</h3>
+            <p>High-performance vector rendering with native acceleration for smooth map movement even in complex 3D environments.</p>
+          </div>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-body">
+            <span class="tagline">Custom Engine</span>
+            <h3>Physic-Aware Routing</h3>
+            <p>Our routing engine accounts for vehicle weight and terrain elevation (slopes) to provide realistic ETAs that account for truck physics.</p>
+          </div>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-body">
+            <span class="tagline">Infrastructure</span>
+            <h3>Google Cloud Backend</h3>
+            <p>A robust Flask-based microservice architecture hosted on Google Cloud, ensuring low-latency communication with AI models.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
