@@ -1771,8 +1771,7 @@
   </section>
 
   <section class="section ai-section" id="ai" style="position:relative;overflow:hidden;">
-    <div id="vanta-globe" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0.55;"></div>
-    <div class="container" style="position:relative;z-index:1;">
+    <div class="container">
       <div class="section-head">
         <span class="eyebrow reveal">Dual AI architecture</span>
         <h2 class="reveal">Two assistants. One map.</h2>
@@ -2401,139 +2400,162 @@
 
 </script>
 
-<!-- Three.js + Vanta NET (hero) -->
+<!-- Three.js — 3D Earth with GPS satellite in hero -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-<script>
-  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (window.VANTA && window.THREE && !noMotion) {
-    VANTA.NET({
-      el: '#vanta-bg',
-      THREE: window.THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      color: 0x00d4c6,
-      backgroundColor: 0x070a0e,
-      points: 9.0,
-      maxDistance: 22.0,
-      spacing: 18.0,
-      showDots: true
-    });
-  }
-</script>
-
-<!-- 3D Rotating Earth (AI section) -->
 <script>
 (function () {
   const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (noMotion || !window.THREE) return;
 
-  const container = document.getElementById('vanta-globe');
+  const container = document.getElementById('vanta-bg');
   if (!container) return;
 
-  let renderer, scene, camera, earth, atmo, clouds, animId;
+  const W = () => container.offsetWidth;
+  const H = () => container.offsetHeight;
 
-  function initEarth() {
-    const W = container.offsetWidth;
-    const H = container.offsetHeight;
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+  renderer.setSize(W(), H());
+  container.appendChild(renderer.domElement);
+  Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
 
-    // Renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, W() / H(), 0.1, 100);
+  camera.position.set(0.6, 0.2, 3.8);
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
-    camera.position.z = 2.6;
+  // Lighting
+  const sun = new THREE.DirectionalLight(0xfff5e0, 1.6);
+  sun.position.set(6, 3, 5);
+  scene.add(sun);
+  scene.add(new THREE.AmbientLight(0x0d1a2a, 2.0));
+  const rimLight = new THREE.DirectionalLight(0x00d4c6, 0.3);
+  rimLight.position.set(-4, 0, -3);
+  scene.add(rimLight);
 
-    // Lights
-    const sun = new THREE.DirectionalLight(0xffffff, 1.4);
-    sun.position.set(5, 3, 5);
-    scene.add(sun);
-    scene.add(new THREE.AmbientLight(0x1a2a3a, 1.2));
+  const loader = new THREE.TextureLoader();
 
-    const loader = new THREE.TextureLoader();
-    const EARTH_TEX = 'https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg';
-    const CLOUD_TEX = 'https://threejs.org/examples/textures/planets/earth_clouds_1024.png';
+  // Earth
+  const earth = new THREE.Mesh(
+    new THREE.SphereGeometry(0.72, 64, 64),
+    new THREE.MeshPhongMaterial({
+      map: loader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg'),
+      specular: new THREE.Color(0x1a3a55),
+      shininess: 22
+    })
+  );
+  earth.rotation.x = 0.41;
+  earth.position.set(0.5, -0.1, 0);
+  scene.add(earth);
 
-    // Earth sphere
-    const geo = new THREE.SphereGeometry(1, 64, 64);
-    const mat = new THREE.MeshPhongMaterial({
-      map: loader.load(EARTH_TEX),
-      specular: new THREE.Color(0x1a4466),
-      shininess: 18
-    });
-    earth = new THREE.Mesh(geo, mat);
-    scene.add(earth);
+  // Clouds
+  const clouds = new THREE.Mesh(
+    new THREE.SphereGeometry(0.732, 64, 64),
+    new THREE.MeshPhongMaterial({
+      map: loader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png'),
+      transparent: true, opacity: 0.26, depthWrite: false
+    })
+  );
+  clouds.rotation.x = 0.41;
+  clouds.position.copy(earth.position);
+  scene.add(clouds);
 
-    // Cloud layer
-    const cloudMat = new THREE.MeshPhongMaterial({
-      map: loader.load(CLOUD_TEX),
-      transparent: true,
-      opacity: 0.28,
-      depthWrite: false
-    });
-    clouds = new THREE.Mesh(new THREE.SphereGeometry(1.012, 64, 64), cloudMat);
-    scene.add(clouds);
+  // Atmosphere
+  const atmo = new THREE.Mesh(
+    new THREE.SphereGeometry(0.80, 64, 64),
+    new THREE.MeshPhongMaterial({
+      color: 0x1166ff, emissive: new THREE.Color(0x001133),
+      transparent: true, opacity: 0.14, side: THREE.BackSide
+    })
+  );
+  atmo.position.copy(earth.position);
+  scene.add(atmo);
 
-    // Atmosphere glow
-    const atmoMat = new THREE.MeshPhongMaterial({
-      color: 0x0066ff,
-      emissive: new THREE.Color(0x001133),
-      transparent: true,
-      opacity: 0.18,
-      side: THREE.BackSide
-    });
-    atmo = new THREE.Mesh(new THREE.SphereGeometry(1.08, 64, 64), atmoMat);
-    scene.add(atmo);
+  // --- GPS Satellite ---
+  const satGroup = new THREE.Group();
 
-    // Tilt like real Earth
-    earth.rotation.x = 0.41;
-    clouds.rotation.x = 0.41;
+  // Body
+  const body = new THREE.Mesh(
+    new THREE.BoxGeometry(0.045, 0.045, 0.09),
+    new THREE.MeshPhongMaterial({ color: 0xccddee, shininess: 80 })
+  );
+  satGroup.add(body);
 
-    // Mouse interaction
-    let mx = 0, my = 0;
-    container.addEventListener('mousemove', e => {
-      const r = container.getBoundingClientRect();
-      mx = ((e.clientX - r.left) / r.width - 0.5) * 0.6;
-      my = ((e.clientY - r.top) / r.height - 0.5) * 0.4;
-    }, { passive: true });
+  // Solar panels (left + right)
+  const panelMat = new THREE.MeshPhongMaterial({ color: 0x1a6aaa, emissive: new THREE.Color(0x0a2a44), shininess: 60 });
+  [-1, 1].forEach(side => {
+    const panel = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.001, 0.034), panelMat);
+    panel.position.x = side * 0.076;
+    satGroup.add(panel);
+  });
 
-    // Resize
-    window.addEventListener('resize', () => {
-      const W2 = container.offsetWidth, H2 = container.offsetHeight;
-      camera.aspect = W2 / H2;
-      camera.updateProjectionMatrix();
-      renderer.setSize(W2, H2);
-    });
+  // Dish (small cone pointing toward Earth)
+  const dish = new THREE.Mesh(
+    new THREE.ConeGeometry(0.012, 0.022, 8),
+    new THREE.MeshPhongMaterial({ color: 0xdddddd })
+  );
+  dish.rotation.x = Math.PI;
+  dish.position.y = -0.04;
+  satGroup.add(dish);
 
-    function animate() {
-      animId = requestAnimationFrame(animate);
-      earth.rotation.y += 0.0012;
-      clouds.rotation.y += 0.0014;
-      earth.rotation.x += (0.41 + my - earth.rotation.x) * 0.04;
-      earth.rotation.y += (mx - 0) * 0.01;
-      renderer.render(scene, camera);
-    }
-    animate();
+  scene.add(satGroup);
+
+  // Faint orbit ring
+  const orbitPoints = [];
+  const ORBIT_R = 1.18;
+  const ORBIT_TILT = 0.52;
+  for (let i = 0; i <= 128; i++) {
+    const a = (i / 128) * Math.PI * 2;
+    orbitPoints.push(new THREE.Vector3(
+      Math.cos(a) * ORBIT_R,
+      Math.sin(a) * ORBIT_R * Math.sin(ORBIT_TILT),
+      Math.sin(a) * ORBIT_R * Math.cos(ORBIT_TILT)
+    ));
   }
+  const orbitLine = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(orbitPoints),
+    new THREE.LineBasicMaterial({ color: 0x00d4c6, transparent: true, opacity: 0.18 })
+  );
+  orbitLine.position.copy(earth.position);
+  scene.add(orbitLine);
 
-  // Lazy-init on scroll into view
-  let earthInit = false;
-  const obs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !earthInit) {
-      earthInit = true;
-      initEarth();
-      obs.disconnect();
-    }
-  }, { threshold: 0.1 });
-  obs.observe(container);
+  // Mouse parallax
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 0.5;
+    my = (e.clientY / window.innerHeight - 0.5) * 0.3;
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = W() / H();
+    camera.updateProjectionMatrix();
+    renderer.setSize(W(), H());
+  });
+
+  let t = 0;
+  (function animate() {
+    requestAnimationFrame(animate);
+    t += 0.006;
+
+    earth.rotation.y += 0.0008;
+    clouds.rotation.y += 0.001;
+    earth.rotation.x += (0.41 + my - earth.rotation.x) * 0.03;
+    clouds.rotation.x = earth.rotation.x;
+
+    // Satellite orbit
+    const sx = earth.position.x + Math.cos(t) * ORBIT_R;
+    const sy = earth.position.y + Math.sin(t) * ORBIT_R * Math.sin(ORBIT_TILT);
+    const sz = earth.position.z + Math.sin(t) * ORBIT_R * Math.cos(ORBIT_TILT);
+    satGroup.position.set(sx, sy, sz);
+    satGroup.rotation.y = -t;
+    satGroup.rotation.z = 0.3;
+
+    camera.position.x += (0.6 + mx * 0.3 - camera.position.x) * 0.03;
+    camera.position.y += (-0.1 + my * 0.2 - camera.position.y) * 0.03;
+    camera.lookAt(earth.position);
+
+    renderer.render(scene, camera);
+  })();
 })();
 </script>
 </body>
