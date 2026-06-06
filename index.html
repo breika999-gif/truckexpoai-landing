@@ -283,6 +283,13 @@
     background: rgba(255,255,255,0.09);
   }
 
+  #vanta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .hero {
     min-height: 84svh;
     display: grid;
@@ -290,6 +297,11 @@
     padding: 106px 0 34px;
     position: relative;
     overflow: hidden;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
   }
 
   .hero-grid {
@@ -1434,6 +1446,7 @@
 
 <main id="top">
   <section class="hero">
+    <div id="vanta-bg" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow reveal">Built for European trucking</span>
@@ -2307,6 +2320,61 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // --- Animated counters on proof strip ---
+  const proofValues = document.querySelectorAll('.proof-value');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const text = el.textContent.trim();
+      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+      if (isNaN(num)) return;
+      const suffix = text.replace(/[0-9.]/g, '');
+      const duration = 1400;
+      const start = performance.now();
+      const isFloat = text.includes('.');
+      const animate = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = num * eased;
+        el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  proofValues.forEach(el => counterObserver.observe(el));
+
+</script>
+
+<!-- Three.js + Vanta NET 3D hero background -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+<script>
+  if (window.VANTA && window.THREE) {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!mq.matches) {
+      VANTA.NET({
+        el: '#vanta-bg',
+        THREE: window.THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x00d4c6,
+        backgroundColor: 0x070a0e,
+        points: 9.0,
+        maxDistance: 22.0,
+        spacing: 18.0,
+        showDots: true
+      });
+    }
+  }
 </script>
 </body>
 </html>
