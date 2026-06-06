@@ -2401,15 +2401,13 @@
 
 </script>
 
-<!-- Three.js + Vanta effects -->
+<!-- Three.js + Vanta NET (hero) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
 <script>
   const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (window.VANTA && window.THREE && !noMotion) {
-    // Hero — teal network
     VANTA.NET({
       el: '#vanta-bg',
       THREE: window.THREE,
@@ -2418,8 +2416,6 @@
       gyroControls: false,
       minHeight: 200,
       minWidth: 200,
-      scale: 1.0,
-      scaleMobile: 1.0,
       color: 0x00d4c6,
       backgroundColor: 0x070a0e,
       points: 9.0,
@@ -2427,36 +2423,118 @@
       spacing: 18.0,
       showDots: true
     });
-
-    // AI section — amber globe, lazy-init when scrolled into view
-    const globeTarget = document.getElementById('vanta-globe');
-    if (globeTarget) {
-      let globeInit = false;
-      const globeObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && !globeInit) {
-          globeInit = true;
-          VANTA.GLOBE({
-            el: '#vanta-globe',
-            THREE: window.THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200,
-            minWidth: 200,
-            scale: 1.0,
-            scaleMobile: 0.75,
-            color: 0xf7b84b,
-            color2: 0xff6b6b,
-            backgroundColor: 0x070a0e,
-            size: 1.4,
-            points: 9
-          });
-          globeObserver.disconnect();
-        }
-      }, { threshold: 0.1 });
-      globeObserver.observe(globeTarget);
-    }
   }
+</script>
+
+<!-- 3D Rotating Earth (AI section) -->
+<script>
+(function () {
+  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (noMotion || !window.THREE) return;
+
+  const container = document.getElementById('vanta-globe');
+  if (!container) return;
+
+  let renderer, scene, camera, earth, atmo, clouds, animId;
+
+  function initEarth() {
+    const W = container.offsetWidth;
+    const H = container.offsetHeight;
+
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
+    camera.position.z = 2.6;
+
+    // Lights
+    const sun = new THREE.DirectionalLight(0xffffff, 1.4);
+    sun.position.set(5, 3, 5);
+    scene.add(sun);
+    scene.add(new THREE.AmbientLight(0x1a2a3a, 1.2));
+
+    const loader = new THREE.TextureLoader();
+    const EARTH_TEX = 'https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg';
+    const CLOUD_TEX = 'https://threejs.org/examples/textures/planets/earth_clouds_1024.png';
+
+    // Earth sphere
+    const geo = new THREE.SphereGeometry(1, 64, 64);
+    const mat = new THREE.MeshPhongMaterial({
+      map: loader.load(EARTH_TEX),
+      specular: new THREE.Color(0x1a4466),
+      shininess: 18
+    });
+    earth = new THREE.Mesh(geo, mat);
+    scene.add(earth);
+
+    // Cloud layer
+    const cloudMat = new THREE.MeshPhongMaterial({
+      map: loader.load(CLOUD_TEX),
+      transparent: true,
+      opacity: 0.28,
+      depthWrite: false
+    });
+    clouds = new THREE.Mesh(new THREE.SphereGeometry(1.012, 64, 64), cloudMat);
+    scene.add(clouds);
+
+    // Atmosphere glow
+    const atmoMat = new THREE.MeshPhongMaterial({
+      color: 0x0066ff,
+      emissive: new THREE.Color(0x001133),
+      transparent: true,
+      opacity: 0.18,
+      side: THREE.BackSide
+    });
+    atmo = new THREE.Mesh(new THREE.SphereGeometry(1.08, 64, 64), atmoMat);
+    scene.add(atmo);
+
+    // Tilt like real Earth
+    earth.rotation.x = 0.41;
+    clouds.rotation.x = 0.41;
+
+    // Mouse interaction
+    let mx = 0, my = 0;
+    container.addEventListener('mousemove', e => {
+      const r = container.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width - 0.5) * 0.6;
+      my = ((e.clientY - r.top) / r.height - 0.5) * 0.4;
+    }, { passive: true });
+
+    // Resize
+    window.addEventListener('resize', () => {
+      const W2 = container.offsetWidth, H2 = container.offsetHeight;
+      camera.aspect = W2 / H2;
+      camera.updateProjectionMatrix();
+      renderer.setSize(W2, H2);
+    });
+
+    function animate() {
+      animId = requestAnimationFrame(animate);
+      earth.rotation.y += 0.0012;
+      clouds.rotation.y += 0.0014;
+      earth.rotation.x += (0.41 + my - earth.rotation.x) * 0.04;
+      earth.rotation.y += (mx - 0) * 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  // Lazy-init on scroll into view
+  let earthInit = false;
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !earthInit) {
+      earthInit = true;
+      initEarth();
+      obs.disconnect();
+    }
+  }, { threshold: 0.1 });
+  obs.observe(container);
+})();
 </script>
 </body>
 </html>
