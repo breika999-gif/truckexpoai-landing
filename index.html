@@ -352,6 +352,34 @@
   .chip-dot.amber { background: var(--amber); box-shadow: 0 0 0 4px rgba(247,184,75,0.14); }
   .chip-dot.teal { background: var(--teal); box-shadow: 0 0 0 4px rgba(0,212,198,0.14); }
 
+  /* Tacho ticket pulse glow */
+  @keyframes tacho-pulse {
+    0%, 100% { box-shadow: 0 18px 54px rgba(0,0,0,0.32), 0 0 0 0 rgba(247,184,75,0); }
+    50%       { box-shadow: 0 18px 54px rgba(0,0,0,0.32), 0 0 28px 6px rgba(247,184,75,0.22); }
+  }
+  .hos-ticket {
+    animation: tacho-pulse 3s ease-in-out infinite;
+  }
+  .hos-ticket .ticket-value {
+    color: var(--amber);
+  }
+
+  /* Phone parallax — controlled via JS */
+  .hero-stage {
+    will-change: transform;
+    transition: transform 0.08s linear;
+  }
+
+  /* Feature cards — directional reveal */
+  .feature-card.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .feature-card.reveal.from-left  { transform: translateX(-50px) translateY(0); }
+  .feature-card.reveal.from-right { transform: translateX(50px) translateY(0); }
+  .feature-card.reveal.in { opacity: 1; transform: translate(0,0) !important; }
+
+  /* Extras cards stagger */
+  .extras-card.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .extras-card.reveal.in { opacity: 1; transform: translateY(0); }
+
   .hero-stage {
     position: relative;
     min-height: 590px;
@@ -1600,7 +1628,7 @@
       </div>
 
       <div class="feature-grid">
-        <article class="feature-card reveal">
+        <article class="feature-card reveal from-left">
           <div class="feature-shot">
             <img src="assets/navigation-live.png" alt="Live navigation with route and parking marker" loading="lazy">
           </div>
@@ -1611,7 +1639,7 @@
           </div>
         </article>
 
-        <article class="feature-card reveal">
+        <article class="feature-card reveal from-right">
           <div class="feature-shot">
             <img src="assets/parking-intel.png" alt="Truck parking and fuel markers on navigation map" loading="lazy">
           </div>
@@ -1622,7 +1650,7 @@
           </div>
         </article>
 
-        <article class="feature-card reveal">
+        <article class="feature-card reveal from-left">
           <div class="feature-shot wide">
             <img src="assets/route-options.png" alt="Route alternatives screen in TruckExpoAI" loading="lazy">
           </div>
@@ -2320,6 +2348,29 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // --- Hero phone parallax ---
+  const heroStage = document.querySelector('.hero-stage');
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (heroStage && !mq.matches) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroStage.style.transform = `translateY(${y * 0.12}px)`;
+    }, { passive: true });
+  }
+
+  // --- Staggered extras cards ---
+  const extrasCards = document.querySelectorAll('.extras-card.reveal');
+  const extrasObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const idx = Array.from(extrasCards).indexOf(el);
+      setTimeout(() => el.classList.add('in'), idx * 80);
+      extrasObserver.unobserve(el);
+    });
+  }, { threshold: 0.1 });
+  extrasCards.forEach(el => extrasObserver.observe(el));
 
   // --- Animated counters on proof strip ---
   const proofValues = document.querySelectorAll('.proof-value');
