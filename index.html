@@ -2471,32 +2471,90 @@
   atmo.position.copy(earth.position);
   scene.add(atmo);
 
-  // --- GPS Satellite ---
+  // --- GPS Satellite (realistic) ---
   const satGroup = new THREE.Group();
 
-  // Body
-  const body = new THREE.Mesh(
-    new THREE.BoxGeometry(0.045, 0.045, 0.09),
-    new THREE.MeshPhongMaterial({ color: 0xccddee, shininess: 80 })
-  );
+  // Main body — hexagonal prism (like real GPS Block III)
+  const bodyMat = new THREE.MeshPhongMaterial({ color: 0xb8c8d8, shininess: 90, specular: new THREE.Color(0x445566) });
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.072, 6), bodyMat);
+  body.rotation.x = Math.PI / 2;
   satGroup.add(body);
 
-  // Solar panels (left + right)
-  const panelMat = new THREE.MeshPhongMaterial({ color: 0x1a6aaa, emissive: new THREE.Color(0x0a2a44), shininess: 60 });
-  [-1, 1].forEach(side => {
-    const panel = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.001, 0.034), panelMat);
-    panel.position.x = side * 0.076;
-    satGroup.add(panel);
+  // Body end caps
+  const capMat = new THREE.MeshPhongMaterial({ color: 0x889aa8, shininess: 60 });
+  [-1, 1].forEach(s => {
+    const cap = new THREE.Mesh(new THREE.CircleGeometry(0.028, 6), capMat);
+    cap.position.z = s * 0.037;
+    cap.rotation.y = s * Math.PI;
+    satGroup.add(cap);
   });
 
-  // Dish (small cone pointing toward Earth)
-  const dish = new THREE.Mesh(
-    new THREE.ConeGeometry(0.012, 0.022, 8),
-    new THREE.MeshPhongMaterial({ color: 0xdddddd })
-  );
-  dish.rotation.x = Math.PI;
-  dish.position.y = -0.04;
+  // Gold foil thermal blanket strip around body
+  const foilMat = new THREE.MeshPhongMaterial({ color: 0xd4a017, emissive: new THREE.Color(0x3a2000), shininess: 120 });
+  const foil = new THREE.Mesh(new THREE.CylinderGeometry(0.0285, 0.0285, 0.03, 6, 1, true), foilMat);
+  foil.rotation.x = Math.PI / 2;
+  satGroup.add(foil);
+
+  // Solar panels — two large wings with cell grid lines
+  const panelMat = new THREE.MeshPhongMaterial({ color: 0x1a4d8a, emissive: new THREE.Color(0x060e1a), shininess: 80 });
+  const armMat  = new THREE.MeshPhongMaterial({ color: 0x778899, shininess: 40 });
+
+  [-1, 1].forEach(side => {
+    // Arm connecting body to panel
+    const arm = new THREE.Mesh(new THREE.BoxGeometry(0.044, 0.006, 0.006), armMat);
+    arm.position.x = side * 0.048;
+    satGroup.add(arm);
+
+    // Panel frame (slightly lighter border)
+    const frame = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.002, 0.052), panelMat);
+    frame.position.x = side * 0.115;
+    satGroup.add(frame);
+
+    // Grid lines on panel (3 vertical, 2 horizontal)
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.55 });
+    for (let col = -1; col <= 1; col++) {
+      const pts = [
+        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003, -0.022),
+        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003,  0.022)
+      ];
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+    }
+    for (let row = -1; row <= 1; row++) {
+      const pts = [
+        new THREE.Vector3(side * 0.07,  0.003, row * 0.018),
+        new THREE.Vector3(side * 0.16,  0.003, row * 0.018)
+      ];
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+    }
+  });
+
+  // Dish antenna — paraboloid (inverted cone + small feed horn)
+  const dishMat = new THREE.MeshPhongMaterial({ color: 0xdde8ee, shininess: 110, specular: new THREE.Color(0x88aacc) });
+  const dish = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.014, 16, 1, true), dishMat);
+  dish.rotation.x = Math.PI / 2;
+  dish.position.set(0, -0.034, 0);
   satGroup.add(dish);
+
+  // Feed horn (small cylinder at dish center)
+  const horn = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.006, 0.012, 8), dishMat);
+  horn.position.set(0, -0.048, 0);
+  satGroup.add(horn);
+
+  // Navigation antenna array — 3 tiny rods on top
+  const rodMat = new THREE.MeshPhongMaterial({ color: 0xaabbcc });
+  [-0.012, 0, 0.012].forEach(offset => {
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.002, 0.002, 0.022, 5), rodMat);
+    rod.position.set(offset, 0.045, 0);
+    satGroup.add(rod);
+  });
+
+  // Faint signal beam from dish toward Earth
+  const beamPts = [new THREE.Vector3(0, -0.05, 0), new THREE.Vector3(0, -0.28, 0)];
+  const beam = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(beamPts),
+    new THREE.LineBasicMaterial({ color: 0x00d4c6, transparent: true, opacity: 0.35 })
+  );
+  satGroup.add(beam);
 
   scene.add(satGroup);
 
