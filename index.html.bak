@@ -41,18 +41,37 @@
   body {
     margin: 0;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
+    background:
+      linear-gradient(180deg, rgba(0, 212, 198, 0.08) 0%, rgba(7, 10, 14, 0) 22%),
+      linear-gradient(180deg, var(--bg) 0%, #091119 46%, #06090d 100%);
     color: var(--text);
     line-height: 1.55;
     overflow-x: hidden;
   }
 
   body::before {
-    display: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+    z-index: -2;
   }
 
   body::after {
-    display: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    background:
+      linear-gradient(120deg, transparent 0 41%, rgba(0, 212, 198, 0.16) 41.2%, transparent 41.9%),
+      linear-gradient(140deg, transparent 0 58%, rgba(247, 184, 75, 0.10) 58.2%, transparent 58.8%);
     z-index: -1;
   }
 
@@ -264,13 +283,6 @@
     background: rgba(255,255,255,0.09);
   }
 
-  #vanta-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-
   .hero {
     min-height: 84svh;
     display: grid;
@@ -278,11 +290,6 @@
     padding: 106px 0 34px;
     position: relative;
     overflow: hidden;
-  }
-
-  .hero .container {
-    position: relative;
-    z-index: 1;
   }
 
   .hero-grid {
@@ -332,99 +339,6 @@
 
   .chip-dot.amber { background: var(--amber); box-shadow: 0 0 0 4px rgba(247,184,75,0.14); }
   .chip-dot.teal { background: var(--teal); box-shadow: 0 0 0 4px rgba(0,212,198,0.14); }
-
-  /* Demo clips grid */
-  .clips-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-  }
-
-  .clip-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .clip-phone {
-    width: 100%;
-    border-radius: 28px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)), #081017;
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,212,198,0.08);
-    padding: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .clip-phone::before {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 14px;
-    border-radius: 0 0 10px 10px;
-    background: #06090d;
-    z-index: 2;
-  }
-
-  .clip-phone video {
-    width: 100%;
-    border-radius: 20px;
-    aspect-ratio: 9 / 18.5;
-    object-fit: cover;
-    display: block;
-  }
-
-  .clip-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    text-align: center;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 900px) {
-    .clips-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  }
-
-  @media (max-width: 520px) {
-    .clips-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .clip-phone { border-radius: 20px; padding: 7px; }
-  }
-
-  /* Tacho ticket pulse glow */
-  @keyframes tacho-pulse {
-    0%, 100% { box-shadow: 0 18px 54px rgba(0,0,0,0.32), 0 0 0 0 rgba(247,184,75,0); }
-    50%       { box-shadow: 0 18px 54px rgba(0,0,0,0.32), 0 0 28px 6px rgba(247,184,75,0.22); }
-  }
-  .hos-ticket {
-    animation: tacho-pulse 3s ease-in-out infinite;
-  }
-  .hos-ticket .ticket-value {
-    color: var(--amber);
-  }
-
-  /* Phone parallax — controlled via JS */
-  .hero-stage {
-    will-change: transform;
-    transition: transform 0.08s linear;
-  }
-
-  /* Feature cards — directional reveal */
-  .feature-card.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .feature-card.reveal.from-left  { transform: translateX(-50px) translateY(0); }
-  .feature-card.reveal.from-right { transform: translateX(50px) translateY(0); }
-  .feature-card.reveal.in { opacity: 1; transform: translate(0,0) !important; }
-
-  /* Extras cards stagger */
-  .extras-card.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .extras-card.reveal.in { opacity: 1; transform: translateY(0); }
 
   .hero-stage {
     position: relative;
@@ -1520,7 +1434,6 @@
 
 <main id="top">
   <section class="hero">
-    <div id="vanta-bg" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow reveal">Built for European trucking</span>
@@ -1674,7 +1587,7 @@
       </div>
 
       <div class="feature-grid">
-        <article class="feature-card reveal from-left">
+        <article class="feature-card reveal">
           <div class="feature-shot">
             <img src="assets/navigation-live.png" alt="Live navigation with route and parking marker" loading="lazy">
           </div>
@@ -1685,7 +1598,7 @@
           </div>
         </article>
 
-        <article class="feature-card reveal from-right">
+        <article class="feature-card reveal">
           <div class="feature-shot">
             <img src="assets/parking-intel.png" alt="Truck parking and fuel markers on navigation map" loading="lazy">
           </div>
@@ -1696,7 +1609,7 @@
           </div>
         </article>
 
-        <article class="feature-card reveal from-left">
+        <article class="feature-card reveal">
           <div class="feature-shot wide">
             <img src="assets/route-options.png" alt="Route alternatives screen in TruckExpoAI" loading="lazy">
           </div>
@@ -1706,43 +1619,6 @@
             <p>Preview routes, choose the right plan, and let AI answer whether the remaining drive time is enough.</p>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 phone demo clips section -->
-  <section class="section clips-section" id="demos">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow reveal">See it in action</span>
-        <h2 class="reveal">Real app. Real road.</h2>
-        <p class="lead reveal">Four live clips from the app — navigation, AI, tachograph, and parking on a real route.</p>
-      </div>
-      <div class="clips-grid">
-        <div class="clip-card reveal">
-          <div class="clip-phone">
-            <video src="assets/clips/01-feature-menu.mp4" poster="assets/clips/01-feature-menu.jpg" autoplay muted loop playsinline preload="metadata"></video>
-          </div>
-          <p class="clip-label">Feature menu</p>
-        </div>
-        <div class="clip-card reveal">
-          <div class="clip-phone">
-            <video src="assets/clips/02-demo-gps-start.mp4" poster="assets/clips/02-demo-gps-start.jpg" autoplay muted loop playsinline preload="metadata"></video>
-          </div>
-          <p class="clip-label">Demo GPS start</p>
-        </div>
-        <div class="clip-card reveal">
-          <div class="clip-phone">
-            <video src="assets/clips/03-live-navigation-hud.mp4" poster="assets/clips/03-live-navigation-hud.jpg" autoplay muted loop playsinline preload="metadata"></video>
-          </div>
-          <p class="clip-label">Live HUD &amp; tacho</p>
-        </div>
-        <div class="clip-card reveal">
-          <div class="clip-phone">
-            <video src="assets/clips/04-route-poi-timeline.mp4" poster="assets/clips/04-route-poi-timeline.jpg" autoplay muted loop playsinline preload="metadata"></video>
-          </div>
-          <p class="clip-label">Route &amp; POI timeline</p>
-        </div>
       </div>
     </div>
   </section>
@@ -1853,7 +1729,7 @@
     </div>
   </section>
 
-  <section class="section ai-section" id="ai" style="position:relative;overflow:hidden;">
+  <section class="section ai-section" id="ai">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow reveal">Dual AI architecture</span>
@@ -2431,290 +2307,6 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-
-  // --- Hero phone parallax ---
-  const heroStage = document.querySelector('.hero-stage');
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (heroStage && !mq.matches) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroStage.style.transform = `translateY(${y * 0.12}px)`;
-    }, { passive: true });
-  }
-
-  // --- Staggered extras cards ---
-  const extrasCards = document.querySelectorAll('.extras-card.reveal');
-  const extrasObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const idx = Array.from(extrasCards).indexOf(el);
-      setTimeout(() => el.classList.add('in'), idx * 80);
-      extrasObserver.unobserve(el);
-    });
-  }, { threshold: 0.1 });
-  extrasCards.forEach(el => extrasObserver.observe(el));
-
-  // --- Animated counters on proof strip ---
-  const proofValues = document.querySelectorAll('.proof-value');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const text = el.textContent.trim();
-      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
-      if (isNaN(num)) return;
-      const suffix = text.replace(/[0-9.]/g, '');
-      const duration = 1400;
-      const start = performance.now();
-      const isFloat = text.includes('.');
-      const animate = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = num * eased;
-        el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
-        if (progress < 1) requestAnimationFrame(animate);
-      };
-      requestAnimationFrame(animate);
-      counterObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  proofValues.forEach(el => counterObserver.observe(el));
-
-</script>
-
-<!-- Three.js — 3D Earth with GPS satellite in hero -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script>
-(function () {
-  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (noMotion || !window.THREE) return;
-
-  const container = document.getElementById('vanta-bg');
-  if (!container) return;
-
-  const W = () => container.offsetWidth;
-  const H = () => container.offsetHeight;
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x070a0e, 1);
-  renderer.setSize(W(), H());
-  container.appendChild(renderer.domElement);
-  Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
-
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x070a0e);
-
-  const camera = new THREE.PerspectiveCamera(42, W() / H(), 0.1, 100);
-  camera.position.set(0.6, 0.2, 3.8);
-
-  // Lighting — sun only, no rim light
-  const sun = new THREE.DirectionalLight(0xfff5e0, 1.6);
-  sun.position.set(6, 3, 5);
-  scene.add(sun);
-  scene.add(new THREE.AmbientLight(0x0d1a2a, 2.0));
-
-  // --- Stars ---
-  const starCount = 1800;
-  const starPositions = new Float32Array(starCount * 3);
-  for (let i = 0; i < starCount; i++) {
-    const r = 28 + Math.random() * 12;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
-    starPositions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
-    starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-    starPositions[i * 3 + 2] = r * Math.cos(phi);
-  }
-  const starGeo = new THREE.BufferGeometry();
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-  const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
-    color: 0xffffff, size: 0.055, sizeAttenuation: true, transparent: true, opacity: 0.82
-  }));
-  scene.add(stars);
-
-  const loader = new THREE.TextureLoader();
-
-  // Earth
-  const earth = new THREE.Mesh(
-    new THREE.SphereGeometry(0.72, 64, 64),
-    new THREE.MeshPhongMaterial({
-      map: loader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg'),
-      specular: new THREE.Color(0x1a3a55),
-      shininess: 22
-    })
-  );
-  earth.rotation.x = 0.41;
-  earth.position.set(0.5, -0.1, 0);
-  scene.add(earth);
-
-  // Clouds
-  const clouds = new THREE.Mesh(
-    new THREE.SphereGeometry(0.732, 64, 64),
-    new THREE.MeshPhongMaterial({
-      map: loader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png'),
-      transparent: true, opacity: 0.26, depthWrite: false
-    })
-  );
-  clouds.rotation.x = 0.41;
-  clouds.position.copy(earth.position);
-  scene.add(clouds);
-
-  // Atmosphere
-  const atmo = new THREE.Mesh(
-    new THREE.SphereGeometry(0.80, 64, 64),
-    new THREE.MeshPhongMaterial({
-      color: 0x1166ff, emissive: new THREE.Color(0x001133),
-      transparent: true, opacity: 0.14, side: THREE.BackSide
-    })
-  );
-  atmo.position.copy(earth.position);
-  scene.add(atmo);
-
-  // --- GPS Satellite (realistic) ---
-  const satGroup = new THREE.Group();
-
-  // Main body — hexagonal prism (like real GPS Block III)
-  const bodyMat = new THREE.MeshPhongMaterial({ color: 0xb8c8d8, shininess: 90, specular: new THREE.Color(0x445566) });
-  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.072, 6), bodyMat);
-  body.rotation.x = Math.PI / 2;
-  satGroup.add(body);
-
-  // Body end caps
-  const capMat = new THREE.MeshPhongMaterial({ color: 0x889aa8, shininess: 60 });
-  [-1, 1].forEach(s => {
-    const cap = new THREE.Mesh(new THREE.CircleGeometry(0.028, 6), capMat);
-    cap.position.z = s * 0.037;
-    cap.rotation.y = s * Math.PI;
-    satGroup.add(cap);
-  });
-
-  // Gold foil thermal blanket strip around body
-  const foilMat = new THREE.MeshPhongMaterial({ color: 0xd4a017, emissive: new THREE.Color(0x3a2000), shininess: 120 });
-  const foil = new THREE.Mesh(new THREE.CylinderGeometry(0.0285, 0.0285, 0.03, 6, 1, true), foilMat);
-  foil.rotation.x = Math.PI / 2;
-  satGroup.add(foil);
-
-  // Solar panels — two large wings with cell grid lines
-  const panelMat = new THREE.MeshPhongMaterial({ color: 0x1a4d8a, emissive: new THREE.Color(0x060e1a), shininess: 80 });
-  const armMat  = new THREE.MeshPhongMaterial({ color: 0x778899, shininess: 40 });
-
-  [-1, 1].forEach(side => {
-    // Arm connecting body to panel
-    const arm = new THREE.Mesh(new THREE.BoxGeometry(0.044, 0.006, 0.006), armMat);
-    arm.position.x = side * 0.048;
-    satGroup.add(arm);
-
-    // Panel frame (slightly lighter border)
-    const frame = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.002, 0.052), panelMat);
-    frame.position.x = side * 0.115;
-    satGroup.add(frame);
-
-    // Grid lines on panel (3 vertical, 2 horizontal)
-    const lineMat = new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.55 });
-    for (let col = -1; col <= 1; col++) {
-      const pts = [
-        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003, -0.022),
-        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003,  0.022)
-      ];
-      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
-    }
-    for (let row = -1; row <= 1; row++) {
-      const pts = [
-        new THREE.Vector3(side * 0.07,  0.003, row * 0.018),
-        new THREE.Vector3(side * 0.16,  0.003, row * 0.018)
-      ];
-      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
-    }
-  });
-
-  // Dish antenna — paraboloid (inverted cone + small feed horn)
-  const dishMat = new THREE.MeshPhongMaterial({ color: 0xdde8ee, shininess: 110, specular: new THREE.Color(0x88aacc) });
-  const dish = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.014, 16, 1, true), dishMat);
-  dish.rotation.x = Math.PI / 2;
-  dish.position.set(0, -0.034, 0);
-  satGroup.add(dish);
-
-  // Feed horn (small cylinder at dish center)
-  const horn = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.006, 0.012, 8), dishMat);
-  horn.position.set(0, -0.048, 0);
-  satGroup.add(horn);
-
-  // Navigation antenna array — 3 tiny rods on top
-  const rodMat = new THREE.MeshPhongMaterial({ color: 0xaabbcc });
-  [-0.012, 0, 0.012].forEach(offset => {
-    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.002, 0.002, 0.022, 5), rodMat);
-    rod.position.set(offset, 0.045, 0);
-    satGroup.add(rod);
-  });
-
-  // Faint signal beam from dish toward Earth
-  const beamPts = [new THREE.Vector3(0, -0.05, 0), new THREE.Vector3(0, -0.28, 0)];
-  const beam = new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints(beamPts),
-    new THREE.LineBasicMaterial({ color: 0x00d4c6, transparent: true, opacity: 0.35 })
-  );
-  satGroup.add(beam);
-
-  scene.add(satGroup);
-
-  // Faint orbit ring
-  const orbitPoints = [];
-  const ORBIT_R = 1.18;
-  const ORBIT_TILT = 0.52;
-  for (let i = 0; i <= 128; i++) {
-    const a = (i / 128) * Math.PI * 2;
-    orbitPoints.push(new THREE.Vector3(
-      Math.cos(a) * ORBIT_R,
-      Math.sin(a) * ORBIT_R * Math.sin(ORBIT_TILT),
-      Math.sin(a) * ORBIT_R * Math.cos(ORBIT_TILT)
-    ));
-  }
-  const orbitLine = new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints(orbitPoints),
-    new THREE.LineBasicMaterial({ color: 0x00d4c6, transparent: true, opacity: 0.18 })
-  );
-  orbitLine.position.copy(earth.position);
-  scene.add(orbitLine);
-
-  // Mouse parallax
-  let mx = 0, my = 0;
-  window.addEventListener('mousemove', e => {
-    mx = (e.clientX / window.innerWidth - 0.5) * 0.5;
-    my = (e.clientY / window.innerHeight - 0.5) * 0.3;
-  }, { passive: true });
-
-  window.addEventListener('resize', () => {
-    camera.aspect = W() / H();
-    camera.updateProjectionMatrix();
-    renderer.setSize(W(), H());
-  });
-
-  let t = 0;
-  (function animate() {
-    requestAnimationFrame(animate);
-    t += 0.006;
-
-    earth.rotation.y += 0.0008;
-    clouds.rotation.y += 0.001;
-    earth.rotation.x += (0.41 + my - earth.rotation.x) * 0.03;
-    clouds.rotation.x = earth.rotation.x;
-
-    // Satellite orbit
-    const sx = earth.position.x + Math.cos(t) * ORBIT_R;
-    const sy = earth.position.y + Math.sin(t) * ORBIT_R * Math.sin(ORBIT_TILT);
-    const sz = earth.position.z + Math.sin(t) * ORBIT_R * Math.cos(ORBIT_TILT);
-    satGroup.position.set(sx, sy, sz);
-    satGroup.rotation.y = -t;
-    satGroup.rotation.z = 0.3;
-
-    camera.position.x += (0.6 + mx * 0.3 - camera.position.x) * 0.03;
-    camera.position.y += (-0.1 + my * 0.2 - camera.position.y) * 0.03;
-    camera.lookAt(earth.position);
-
-    renderer.render(scene, camera);
-  })();
-})();
 </script>
 </body>
 </html>
