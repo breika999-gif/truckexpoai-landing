@@ -1770,8 +1770,9 @@
     </div>
   </section>
 
-  <section class="section ai-section" id="ai">
-    <div class="container">
+  <section class="section ai-section" id="ai" style="position:relative;overflow:hidden;">
+    <div id="vanta-globe" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0.55;"></div>
+    <div class="container" style="position:relative;z-index:1;">
       <div class="section-head">
         <span class="eyebrow reveal">Dual AI architecture</span>
         <h2 class="reveal">Two assistants. One map.</h2>
@@ -2400,30 +2401,60 @@
 
 </script>
 
-<!-- Three.js + Vanta NET 3D hero background -->
+<!-- Three.js + Vanta effects -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
 <script>
-  if (window.VANTA && window.THREE) {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!mq.matches) {
-      VANTA.NET({
-        el: '#vanta-bg',
-        THREE: window.THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200,
-        minWidth: 200,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: 0x00d4c6,
-        backgroundColor: 0x070a0e,
-        points: 9.0,
-        maxDistance: 22.0,
-        spacing: 18.0,
-        showDots: true
-      });
+  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (window.VANTA && window.THREE && !noMotion) {
+    // Hero — teal network
+    VANTA.NET({
+      el: '#vanta-bg',
+      THREE: window.THREE,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x00d4c6,
+      backgroundColor: 0x070a0e,
+      points: 9.0,
+      maxDistance: 22.0,
+      spacing: 18.0,
+      showDots: true
+    });
+
+    // AI section — amber globe, lazy-init when scrolled into view
+    const globeTarget = document.getElementById('vanta-globe');
+    if (globeTarget) {
+      let globeInit = false;
+      const globeObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !globeInit) {
+          globeInit = true;
+          VANTA.GLOBE({
+            el: '#vanta-globe',
+            THREE: window.THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200,
+            minWidth: 200,
+            scale: 1.0,
+            scaleMobile: 0.75,
+            color: 0xf7b84b,
+            color2: 0xff6b6b,
+            backgroundColor: 0x070a0e,
+            size: 1.4,
+            points: 9
+          });
+          globeObserver.disconnect();
+        }
+      }, { threshold: 0.1 });
+      globeObserver.observe(globeTarget);
     }
   }
 </script>
