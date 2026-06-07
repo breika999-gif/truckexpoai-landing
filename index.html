@@ -308,6 +308,37 @@
     margin-top: 4px;
   }
 
+  .hero-media-stack {
+    display: grid;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .hero-showcase {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 520px);
+    justify-self: center;
+    padding: 10px;
+    border: 1px solid rgba(145, 181, 204, 0.20);
+    border-radius: 28px;
+    background:
+      linear-gradient(145deg, rgba(0, 212, 198, 0.13), rgba(124, 58, 237, 0.12)),
+      #071017;
+    box-shadow: 0 26px 76px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(0, 212, 198, 0.08);
+    overflow: hidden;
+  }
+
+  .hero-showcase video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #03070a;
+  }
+
   .chip {
     display: inline-flex;
     align-items: center;
@@ -1169,6 +1200,10 @@
       min-height: 430px;
     }
 
+    .hero-showcase {
+      width: min(100%, 640px);
+    }
+
     .phone-frame {
       width: min(300px, 78vw);
     }
@@ -1287,6 +1322,19 @@
       overflow: hidden;
     }
 
+    .hero-media-stack {
+      gap: 12px;
+    }
+
+    .hero-showcase {
+      padding: 7px;
+      border-radius: 22px;
+    }
+
+    .hero-showcase video {
+      border-radius: 16px;
+    }
+
     .phone-frame {
       width: min(188px, 54vw);
       padding: 8px;
@@ -1316,7 +1364,9 @@
     }
 
     .hos-ticket {
-      display: none;
+      right: 0;
+      bottom: 8px;
+      width: min(164px, 44vw);
     }
 
     .ticket-top {
@@ -1545,19 +1595,24 @@
         </div>
       </div>
 
-      <div class="hero-stage reveal" aria-label="TruckExpoAI mobile navigation preview">
-        <div class="route-ticket">
-          <div class="ticket-top"><span>Route check</span><span class="pill">Safe</span></div>
-          <div class="ticket-value">412<span>km left</span></div>
-          <p class="ticket-copy">Live route, POI timeline, parking and fuel markers.</p>
+      <div class="hero-media-stack reveal" aria-label="TruckExpoAI mobile navigation preview">
+        <div class="hero-stage">
+          <div class="route-ticket">
+            <div class="ticket-top"><span>Route check</span><span class="pill">Safe</span></div>
+            <div class="ticket-value">412<span>km left</span></div>
+            <p class="ticket-copy">Live route, POI timeline, parking and fuel markers.</p>
+          </div>
+          <div class="phone-frame">
+            <img src="assets/navigation-live.png" alt="TruckExpoAI navigation screen with route and truck parking marker" fetchpriority="high">
+          </div>
+          <div class="hos-ticket">
+            <div class="ticket-top"><span>Tacho</span><span class="pill amber">Plan</span></div>
+            <div class="ticket-value">3h 28<span>drive</span></div>
+            <p class="ticket-copy">Ask if you can reach the destination before rest.</p>
+          </div>
         </div>
-        <div class="phone-frame">
-          <img src="assets/navigation-live.png" alt="TruckExpoAI navigation screen with route and truck parking marker" fetchpriority="high">
-        </div>
-        <div class="hos-ticket">
-          <div class="ticket-top"><span>Tacho</span><span class="pill amber">Plan</span></div>
-          <div class="ticket-value">3h 28<span>drive</span></div>
-          <p class="ticket-copy">Ask if you can reach the destination before rest.</p>
+        <div class="hero-showcase" aria-label="TruckExpoAI feature showcase video">
+          <video src="assets/clips/00_truckexpoai_showcase_reel_final.mp4" poster="assets/navigation-live.png" autoplay muted loop playsinline preload="metadata"></video>
         </div>
       </div>
     </div>
