@@ -2059,6 +2059,110 @@
   .hub-popup-close:hover { color: var(--text); }
   .hub-popup video { width: 100%; border-radius: 26px; display: block; border: 1px solid rgba(255,255,255,0.13); }
 
+  /* ── Landing Chat Widget ── */
+  .lchat-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 300;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #00d4c6 0%, #0099ff 100%);
+    border: none; cursor: pointer; display: grid; place-items: center;
+    box-shadow: 0 8px 24px rgba(0,212,198,0.45), 0 2px 8px rgba(0,0,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .lchat-btn:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(0,212,198,0.6), 0 4px 12px rgba(0,0,0,0.4); }
+  .lchat-btn svg { width: 26px; height: 26px; }
+  .lchat-badge {
+    position: absolute; top: -2px; right: -2px; width: 18px; height: 18px;
+    background: #ff4444; border-radius: 50%; border: 2px solid #06090d;
+    font-size: 10px; font-weight: 700; color: #fff;
+    display: grid; place-items: center; line-height: 1;
+  }
+  .lchat-panel {
+    position: fixed; bottom: 94px; right: 28px; z-index: 300;
+    width: min(390px, calc(100vw - 32px));
+    background: rgba(6, 10, 16, 0.92);
+    border: 1px solid rgba(0,212,198,0.28);
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.65), 0 0 40px rgba(0,212,198,0.08);
+    backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transform: translateY(12px) scale(0.97); opacity: 0; pointer-events: none;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+  }
+  .lchat-panel.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
+  .lchat-head {
+    display: flex; align-items: center; gap: 10px; padding: 14px 16px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(0,212,198,0.06);
+    flex-shrink: 0;
+  }
+  .lchat-head-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg,#00d4c6,#0099ff);
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .lchat-head-info { flex: 1; }
+  .lchat-head-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .lchat-head-status { font-size: 11px; color: var(--teal); }
+  .lchat-close-btn {
+    background: none; border: none; color: var(--muted); font-size: 18px;
+    cursor: pointer; padding: 4px; line-height: 1; transition: color 0.15s;
+  }
+  .lchat-close-btn:hover { color: #fff; }
+  .lchat-messages {
+    flex: 1; overflow-y: auto; padding: 14px 14px 6px;
+    display: flex; flex-direction: column; gap: 10px;
+    min-height: 200px; max-height: 340px;
+    scrollbar-width: thin; scrollbar-color: rgba(0,212,198,0.2) transparent;
+  }
+  .lchat-msg {
+    max-width: 84%; padding: 9px 13px; border-radius: 14px;
+    font-size: 13.5px; line-height: 1.5; word-break: break-word;
+  }
+  .lchat-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, rgba(0,212,198,0.22), rgba(0,153,255,0.18));
+    border: 1px solid rgba(0,212,198,0.25); color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .lchat-msg.ai {
+    align-self: flex-start;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.09); color: rgba(255,255,255,0.9);
+    border-bottom-left-radius: 4px;
+  }
+  .lchat-msg.typing { color: var(--muted); font-style: italic; }
+  .lchat-footer {
+    padding: 10px 12px 12px; border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0;
+  }
+  .lchat-input {
+    flex: 1; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 9px 13px; color: #fff; font-size: 13.5px;
+    outline: none; resize: none; max-height: 90px; line-height: 1.45;
+    font-family: inherit; transition: border-color 0.15s;
+  }
+  .lchat-input::placeholder { color: var(--muted); }
+  .lchat-input:focus { border-color: rgba(0,212,198,0.4); }
+  .lchat-send {
+    width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg,#00d4c6,#0099ff); border: none;
+    cursor: pointer; display: grid; place-items: center;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .lchat-send:hover { opacity: 0.88; transform: scale(1.05); }
+  .lchat-send svg { width: 18px; height: 18px; }
+  .lchat-suggestions {
+    display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px;
+  }
+  .lchat-chip {
+    font-size: 11.5px; color: var(--teal); background: rgba(0,212,198,0.08);
+    border: 1px solid rgba(0,212,198,0.2); border-radius: 20px;
+    padding: 4px 11px; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .lchat-chip:hover { background: rgba(0,212,198,0.16); border-color: rgba(0,212,198,0.4); }
+
   @media (max-width: 1100px) {
     .tech-hub > .container { padding: 0 24px; }
     .tech-node-name { font-size: 16px; }
@@ -2611,6 +2715,42 @@
     </div>
   </section>
 </main>
+
+<!-- Landing chat widget -->
+<button class="lchat-btn" id="lchat-btn" aria-label="Chat with TruckExpoAI AI">
+  <span class="lchat-badge">1</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<div class="lchat-panel" id="lchat-panel" role="dialog" aria-label="TruckExpoAI chat">
+  <div class="lchat-head">
+    <div class="lchat-head-avatar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="lchat-head-info">
+      <div class="lchat-head-name">TruckExpoAI</div>
+      <div class="lchat-head-status">● Online — ask me anything</div>
+    </div>
+    <button class="lchat-close-btn" id="lchat-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="lchat-messages" id="lchat-messages">
+    <div class="lchat-msg ai">Hi! I'm the TruckExpoAI assistant. Ask me about features, pricing, or how the app works. 🚛</div>
+  </div>
+  <div class="lchat-suggestions" id="lchat-chips">
+    <button class="lchat-chip">What features does it have?</button>
+    <button class="lchat-chip">How much does it cost?</button>
+    <button class="lchat-chip">How do I get access?</button>
+    <button class="lchat-chip">Android or iOS?</button>
+  </div>
+  <div class="lchat-footer">
+    <textarea class="lchat-input" id="lchat-input" rows="1" placeholder="Ask about the app…" aria-label="Chat message"></textarea>
+    <button class="lchat-send" id="lchat-send" aria-label="Send message">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
 
 <!-- Hub video popup -->
 <div id="hub-popup" class="hub-popup" role="dialog" aria-modal="true" aria-label="Feature video">
@@ -3589,6 +3729,98 @@
 </script>
 
 <script>
+/* ── Landing Chat Widget ── */
+(function () {
+  const BACKEND = 'https://truckexpoai-production.up.railway.app/api/landing-chat';
+  const btn = document.getElementById('lchat-btn');
+  const panel = document.getElementById('lchat-panel');
+  const closeBtn = document.getElementById('lchat-close');
+  const input = document.getElementById('lchat-input');
+  const sendBtn = document.getElementById('lchat-send');
+  const msgs = document.getElementById('lchat-messages');
+  const chips = document.getElementById('lchat-chips');
+  const badge = btn && btn.querySelector('.lchat-badge');
+  if (!btn || !panel) return;
+
+  let history = [];
+  let isOpen = false;
+  let isTyping = false;
+
+  function openPanel() {
+    isOpen = true;
+    panel.classList.add('open');
+    if (badge) badge.style.display = 'none';
+    input.focus();
+  }
+  function closePanel() {
+    isOpen = false;
+    panel.classList.remove('open');
+  }
+
+  btn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
+  closeBtn.addEventListener('click', closePanel);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closePanel(); });
+
+  function scrollToBottom() {
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function addMsg(text, role) {
+    const el = document.createElement('div');
+    el.className = `lchat-msg ${role}`;
+    el.textContent = text;
+    msgs.appendChild(el);
+    scrollToBottom();
+    return el;
+  }
+
+  async function send(text) {
+    text = text.trim();
+    if (!text || isTyping) return;
+    if (chips) chips.style.display = 'none';
+    addMsg(text, 'user');
+    history.push({ role: 'user', text });
+    input.value = '';
+    input.style.height = 'auto';
+
+    isTyping = true;
+    const typingEl = addMsg('…', 'ai typing');
+    try {
+      const res = await fetch(BACKEND, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history.slice(-6) }),
+      });
+      const data = await res.json();
+      const reply = data.reply || (data.ok === false ? 'Sorry, something went wrong. Email ceo@truckexpoai.com' : '…');
+      typingEl.textContent = reply;
+      typingEl.classList.remove('typing');
+      history.push({ role: 'ai', text: reply });
+    } catch {
+      typingEl.textContent = 'Connection error. Try again or email ceo@truckexpoai.com';
+      typingEl.classList.remove('typing');
+    }
+    isTyping = false;
+    scrollToBottom();
+  }
+
+  sendBtn.addEventListener('click', () => send(input.value));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); }
+  });
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 90) + 'px';
+  });
+
+  chips && chips.querySelectorAll('.lchat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (!isOpen) openPanel();
+      send(chip.textContent);
+    });
+  });
+})();
+
 /* ── Tech Hub: animated SVG cables + video popup ── */
 (function () {
   let activeOutput = null;
