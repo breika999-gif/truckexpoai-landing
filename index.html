@@ -1764,8 +1764,12 @@
   .lang-option.active { color: var(--teal); }
 
   /* ── TECH HUB ── */
-  .tech-hub { position: relative; padding: 94px 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,212,198,0.04) 0%, transparent 70%); }
-  .tech-hub .section-head { text-align: center; max-width: 100%; margin-bottom: 54px; }
+  .tech-hub {
+    position: relative; padding: 100px 0 120px;
+    background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(0,212,198,0.05) 0%, transparent 70%);
+  }
+  .tech-hub > .container { max-width: 100%; padding: 0 40px; }
+  .tech-hub .section-head { text-align: center; max-width: 100%; margin-bottom: 64px; }
   .tech-hub .section-head h2 { max-width: 100%; }
 
   .hub-svg-overlay {
@@ -1774,72 +1778,108 @@
   }
   @keyframes hub-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -600; } }
   @keyframes node-float {
-    0%,100% { transform: perspective(700px) rotateX(12deg) rotateY(var(--ry,0deg)) translateY(0px); }
-    50%      { transform: perspective(700px) rotateX(12deg) rotateY(var(--ry,0deg)) translateY(-6px); }
+    0%,100% { transform: perspective(900px) rotateX(14deg) rotateY(var(--ry,0deg)) translateY(0px); }
+    50%      { transform: perspective(900px) rotateX(14deg) rotateY(var(--ry,0deg)) translateY(-8px); }
+  }
+  @keyframes logo-bob {
+    0%,100% { transform: perspective(500px) rotateX(-6deg) translateY(0px) scale(1); filter: drop-shadow(0 0 22px rgba(0,212,198,0.55)) drop-shadow(0 10px 20px rgba(0,0,0,0.55)); }
+    50%      { transform: perspective(500px) rotateX(-6deg) translateY(-10px) scale(1.04); filter: drop-shadow(0 0 34px rgba(0,212,198,0.8)) drop-shadow(0 18px 28px rgba(0,0,0,0.45)); }
   }
 
+  /* Full-width nodes row */
   .hub-sources {
-    display: flex; justify-content: center; gap: 18px;
-    flex-wrap: wrap; position: relative; z-index: 1;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: nowrap; position: relative; z-index: 1;
+    width: 100%; gap: 16px;
   }
   .tech-node {
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    padding: 22px 20px 18px; min-width: 110px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 100%);
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.3);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 14px;
+    padding: 28px 18px 24px;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 60%, rgba(0,0,0,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.4);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
     cursor: default;
-    transform: perspective(700px) rotateX(12deg) rotateY(var(--ry, 0deg));
-    animation: node-float 4s ease-in-out infinite;
+    transform: perspective(900px) rotateX(14deg) rotateY(var(--ry, 0deg));
+    animation: node-float 4.5s ease-in-out infinite;
     animation-delay: var(--delay, 0s);
     transition: box-shadow 0.3s, border-color 0.3s;
     position: relative; overflow: hidden;
   }
   .tech-node::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, transparent 100%);
     pointer-events: none; border-radius: inherit;
   }
-  .tech-node:nth-child(1) { --ry: -8deg; --delay: 0s; }
-  .tech-node:nth-child(2) { --ry: -4deg; --delay: 0.5s; }
-  .tech-node:nth-child(3) { --ry:  0deg; --delay: 1s; }
-  .tech-node:nth-child(4) { --ry:  4deg; --delay: 1.5s; }
-  .tech-node:nth-child(5) { --ry:  8deg; --delay: 2s; }
+  .tech-node:nth-child(1) { --ry: -10deg; --delay: 0s; }
+  .tech-node:nth-child(2) { --ry: -5deg;  --delay: 0.4s; }
+  .tech-node:nth-child(3) { --ry:  0deg;  --delay: 0.8s; }
+  .tech-node:nth-child(4) { --ry:  5deg;  --delay: 1.2s; }
+  .tech-node:nth-child(5) { --ry:  10deg; --delay: 1.6s; }
   .tech-node:hover {
-    border-color: rgba(0,212,198,0.5);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,198,0.18), inset 0 1px 0 rgba(255,255,255,0.18);
+    border-color: rgba(0,212,198,0.55);
+    box-shadow: 0 28px 72px rgba(0,0,0,0.55), 0 0 40px rgba(0,212,198,0.22), inset 0 1px 0 rgba(255,255,255,0.22);
   }
   .tech-node-icon {
-    width: 52px; height: 52px; display: grid; place-items: center;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.25);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+    width: 72px; height: 72px; display: grid; place-items: center;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
   }
-  .tech-node-name { font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
-  .tech-node-desc { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.3; }
+  .tech-node-name {
+    font-size: 20px; font-weight: 800; color: #fff;
+    letter-spacing: 0.01em; text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  .tech-node-desc {
+    font-size: 13px; color: rgba(255,255,255,0.55); text-align: center; line-height: 1.4;
+  }
 
+  /* Hub center — big 3D */
   .hub-center-row {
-    display: flex; justify-content: center; margin: 48px 0;
+    display: flex; justify-content: center; margin: 60px 0 56px;
     position: relative; z-index: 1;
   }
   .hub-center {
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    padding: 22px 36px; border-radius: 16px;
-    border: 1px solid rgba(0,212,198,0.45);
-    background: rgba(0,212,198,0.07);
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    padding: 36px 64px 32px; border-radius: 28px;
+    border: 1px solid rgba(0,212,198,0.5);
+    background: linear-gradient(160deg, rgba(0,212,198,0.1) 0%, rgba(0,212,198,0.03) 100%);
     animation: hub-pulse 3s ease-in-out infinite;
+    position: relative; overflow: hidden;
+  }
+  .hub-center::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,198,0.8), transparent);
   }
   @keyframes hub-pulse {
-    0%,100% { box-shadow: 0 0 32px rgba(0,212,198,0.14), 0 0 64px rgba(0,212,198,0.06); }
-    50%      { box-shadow: 0 0 52px rgba(0,212,198,0.26), 0 0 100px rgba(0,212,198,0.12); }
+    0%,100% { box-shadow: 0 0 40px rgba(0,212,198,0.18), 0 0 80px rgba(0,212,198,0.08), 0 32px 64px rgba(0,0,0,0.4); }
+    50%      { box-shadow: 0 0 70px rgba(0,212,198,0.32), 0 0 140px rgba(0,212,198,0.14), 0 32px 64px rgba(0,0,0,0.4); }
   }
-  .hub-logo { width: 60px; height: 60px; object-fit: contain; }
+  .hub-logo {
+    width: 90px; height: 90px; object-fit: contain;
+    animation: logo-bob 3.5s ease-in-out infinite;
+  }
   .hub-name {
     font-family: "Space Grotesk", Inter, sans-serif;
-    font-size: 18px; font-weight: 700; color: var(--teal);
+    font-size: 42px; font-weight: 900; letter-spacing: -0.02em;
+    color: #00ffcc;
+    text-shadow:
+      0 1px 0 #00c8a0,
+      0 2px 0 #00a882,
+      0 3px 0 #008864,
+      0 4px 0 #006848,
+      0 5px 0 #004830,
+      0 6px 0 #002818,
+      0 10px 24px rgba(0,0,0,0.7),
+      0 0 40px rgba(0,255,200,0.35);
+    transform: perspective(600px) rotateX(6deg);
+    display: block; line-height: 1;
+  }
+  .hub-tagline {
+    font-size: 14px; color: rgba(0,212,198,0.65); letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 600;
   }
 
   .hub-outputs {
@@ -1888,18 +1928,28 @@
   .hub-popup-close:hover { color: var(--text); }
   .hub-popup video { width: 100%; border-radius: 26px; display: block; border: 1px solid rgba(255,255,255,0.13); }
 
+  @media (max-width: 1100px) {
+    .tech-hub > .container { padding: 0 24px; }
+    .tech-node-name { font-size: 16px; }
+    .hub-name { font-size: 34px; }
+  }
   @media (max-width: 900px) {
-    .hub-sources { gap: 12px; }
-    .tech-node { min-width: 80px; padding: 12px 14px; }
+    .hub-sources { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .tech-node { flex: 0 0 calc(33% - 10px); padding: 20px 14px; }
     .hub-outputs { grid-template-columns: repeat(2, 1fr); }
+    .hub-name { font-size: 28px; }
+    .hub-center { padding: 28px 40px 24px; }
   }
   @media (max-width: 640px) {
+    .tech-hub > .container { padding: 0 16px; }
     .hub-sources { gap: 8px; }
-    .tech-node { min-width: 68px; padding: 10px 10px; }
-    .tech-node-icon { width: 34px; height: 34px; }
-    .tech-node-name { font-size: 11px; }
-    .hub-center { padding: 16px 24px; }
-    .hub-logo { width: 48px; height: 48px; }
+    .tech-node { flex: 0 0 calc(50% - 8px); padding: 16px 12px; }
+    .tech-node-icon { width: 48px; height: 48px; }
+    .tech-node-name { font-size: 14px; }
+    .tech-node-desc { font-size: 11px; }
+    .hub-center { padding: 22px 28px 20px; }
+    .hub-logo { width: 68px; height: 68px; }
+    .hub-name { font-size: 22px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hub-center { animation: none; }
@@ -2135,35 +2185,35 @@
       <div class="hub-sources">
         <div class="tech-node reveal">
           <div class="tech-node-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#DF1B12"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text></svg>
+            <svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#DF1B12"/><text x="12" y="16.5" text-anchor="middle" font-size="8" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text></svg>
           </div>
           <span class="tech-node-name">TomTom</span>
           <span class="tech-node-desc">Routing &amp; search</span>
         </div>
         <div class="tech-node reveal">
           <div class="tech-node-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <svg width="54" height="54" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           </div>
           <span class="tech-node-name">Google</span>
           <span class="tech-node-desc">Places &amp; fallback</span>
         </div>
         <div class="tech-node reveal">
           <div class="tech-node-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#4264FB"/><circle cx="12" cy="12" r="4.5" fill="white"/><path d="M12 3.5L14 8l5 0-4 3 1.5 5.5L12 13.5 7.5 16.5 9 11 5 8l5 0Z" fill="white" opacity="0.28"/></svg>
+            <svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#4264FB"/><circle cx="12" cy="12" r="4.5" fill="white"/><path d="M12 3.5L14 8l5 0-4 3 1.5 5.5L12 13.5 7.5 16.5 9 11 5 8l5 0Z" fill="white" opacity="0.28"/></svg>
           </div>
           <span class="tech-node-name">Mapbox</span>
           <span class="tech-node-desc">Map &amp; layers</span>
         </div>
         <div class="tech-node reveal">
           <div class="tech-node-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1a1a1a"/><path d="M19.28 9.28a4.33 4.33 0 0 0-.37-3.56 4.38 4.38 0 0 0-4.72-2.1A4.35 4.35 0 0 0 11 2a4.38 4.38 0 0 0-4.17 3.03 4.35 4.35 0 0 0-2.91 2.12 4.38 4.38 0 0 0 .54 5.15 4.33 4.33 0 0 0 .37 3.56 4.38 4.38 0 0 0 4.72 2.1A4.35 4.35 0 0 0 13 19a4.38 4.38 0 0 0 4.18-3.04 4.35 4.35 0 0 0 2.9-2.11 4.38 4.38 0 0 0-.8-4.57z" fill="white" opacity="0.88"/></svg>
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1a1a1a"/><path d="M19.28 9.28a4.33 4.33 0 0 0-.37-3.56 4.38 4.38 0 0 0-4.72-2.1A4.35 4.35 0 0 0 11 2a4.38 4.38 0 0 0-4.17 3.03 4.35 4.35 0 0 0-2.91 2.12 4.38 4.38 0 0 0 .54 5.15 4.33 4.33 0 0 0 .37 3.56 4.38 4.38 0 0 0 4.72 2.1A4.35 4.35 0 0 0 13 19a4.38 4.38 0 0 0 4.18-3.04 4.35 4.35 0 0 0 2.9-2.11 4.38 4.38 0 0 0-.8-4.57z" fill="white" opacity="0.88"/></svg>
           </div>
           <span class="tech-node-name">GPT-4o</span>
           <span class="tech-node-desc">Map actions</span>
         </div>
         <div class="tech-node reveal">
           <div class="tech-node-icon">
-            <svg width="38" height="38" viewBox="0 0 24 24"><defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4285F4"/><stop offset="100%" stop-color="#9C27B0"/></linearGradient></defs><circle cx="12" cy="12" r="11" fill="#111"/><path d="M12 4C6.48 4 2 8.48 2 14s4.48 8 10 8 10-4.48 10-8S17.52 4 12 4zm-1 11v-3H7l5-6v3h4l-5 6z" fill="url(#gm)"/></svg>
+            <svg width="54" height="54" viewBox="0 0 24 24"><defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4285F4"/><stop offset="100%" stop-color="#9C27B0"/></linearGradient></defs><circle cx="12" cy="12" r="11" fill="#111"/><path d="M12 4C6.48 4 2 8.48 2 14s4.48 8 10 8 10-4.48 10-8S17.52 4 12 4zm-1 11v-3H7l5-6v3h4l-5 6z" fill="url(#gm)"/></svg>
           </div>
           <span class="tech-node-name">Gemini 2.0</span>
           <span class="tech-node-desc">AI co-driver</span>
@@ -2174,6 +2224,7 @@
         <div class="hub-center">
           <img src="assets/logo-icon.png" alt="TruckExpoAI" class="hub-logo">
           <span class="hub-name">TruckExpoAI</span>
+          <span class="hub-tagline">Truck Intelligence Platform</span>
         </div>
       </div>
 
