@@ -634,6 +634,180 @@
     font-weight: 700;
   }
 
+  .launch-board {
+    padding: 78px 0 42px;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(0, 212, 198, 0.12), transparent 30%),
+      radial-gradient(circle at 84% 18%, rgba(247, 184, 75, 0.10), transparent 28%),
+      #070a0e;
+  }
+
+  .launch-head {
+    display: grid;
+    gap: 14px;
+    max-width: 760px;
+    margin-bottom: 26px;
+  }
+
+  .launch-head p {
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  .launch-bento {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr 0.85fr;
+    grid-auto-rows: minmax(210px, auto);
+    gap: 16px;
+  }
+
+  .launch-card {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    min-height: 210px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(160deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)),
+      rgba(10, 17, 24, 0.92);
+    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.24);
+  }
+
+  .launch-card::after {
+    content: "";
+    position: absolute;
+    inset: auto 18px 18px auto;
+    width: 78px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 198, 0.72));
+    opacity: 0.72;
+  }
+
+  .launch-card.hero-tile {
+    grid-column: span 2;
+    min-height: 470px;
+    grid-template-columns: minmax(0, 0.98fr) minmax(170px, 0.52fr);
+    align-items: center;
+    background:
+      linear-gradient(145deg, rgba(0, 212, 198, 0.12), rgba(24, 168, 255, 0.06) 42%, rgba(247, 184, 75, 0.07)),
+      #091018;
+  }
+
+  .launch-card.engine-tile {
+    min-height: 470px;
+    align-content: center;
+  }
+
+  .launch-copy {
+    display: grid;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .launch-copy h2,
+  .launch-card h3 {
+    line-height: 1.04;
+  }
+
+  .launch-copy p,
+  .launch-card p {
+    color: var(--muted);
+  }
+
+  .launch-phone {
+    position: relative;
+    z-index: 1;
+    justify-self: center;
+    width: min(210px, 100%);
+    padding: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 32px;
+    background: linear-gradient(180deg, #27313a, #0a0f14);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+  }
+
+  .launch-phone img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .launch-metrics,
+  .engine-grid,
+  .launch-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .launch-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .metric-pill,
+  .engine-pill {
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,0.045);
+    padding: 11px;
+  }
+
+  .metric-pill strong,
+  .engine-pill strong {
+    display: block;
+    color: var(--text);
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 20px;
+  }
+
+  .metric-pill span,
+  .engine-pill span {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .engine-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .launch-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .launch-list li {
+    display: flex;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .launch-list li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(247, 184, 75, 0.10);
+  }
+
+  .launch-download {
+    align-content: space-between;
+  }
+
   .film-section {
     padding: 82px 0 38px;
   }
@@ -1195,6 +1369,23 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .launch-bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .launch-card.hero-tile,
+    .launch-card.engine-tile {
+      grid-column: span 2;
+    }
+
+    .launch-card.hero-tile {
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 0.62fr);
+    }
+
+    .engine-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .proof-item:nth-child(2) {
       border-right: 0;
     }
@@ -1350,6 +1541,81 @@
       grid-template-columns: 1fr;
     }
 
+    .launch-board {
+      padding: 56px 0 34px;
+    }
+
+    .launch-head {
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .launch-head p {
+      font-size: 15px;
+    }
+
+    .launch-bento,
+    .launch-card.hero-tile,
+    .launch-metrics,
+    .engine-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .launch-card.hero-tile,
+    .launch-card.engine-tile {
+      grid-column: auto;
+      min-height: auto;
+    }
+
+    .launch-card {
+      padding: 20px;
+    }
+
+    .launch-copy {
+      gap: 12px;
+    }
+
+    .launch-copy h2 {
+      font-size: 28px;
+      line-height: 1.06;
+    }
+
+    .launch-card h3 {
+      font-size: 23px;
+      line-height: 1.08;
+    }
+
+    .launch-metrics {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .engine-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metric-pill {
+      padding: 9px 7px;
+    }
+
+    .metric-pill strong {
+      font-size: 17px;
+    }
+
+    .metric-pill span {
+      font-size: 11px;
+    }
+
+    .launch-phone {
+      width: min(174px, 54vw);
+    }
+
+    .launch-phone img {
+      height: 282px;
+      aspect-ratio: auto;
+      object-position: top;
+    }
+
     .proof-item {
       border-right: 0;
       border-bottom: 1px solid var(--line);
@@ -1496,6 +1762,123 @@
 
   .lang-option:hover { background: rgba(255,255,255,0.07); color: var(--text); }
   .lang-option.active { color: var(--teal); }
+
+  /* ── TECH HUB ── */
+  .tech-hub { position: relative; padding: 94px 0; }
+  .tech-hub .section-head { text-align: center; max-width: 100%; margin-bottom: 54px; }
+  .tech-hub .section-head h2 { max-width: 100%; }
+
+  .hub-svg-overlay {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: visible; z-index: 0;
+  }
+  @keyframes hub-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -600; } }
+
+  .hub-sources {
+    display: flex; justify-content: center; gap: 20px;
+    flex-wrap: wrap; position: relative; z-index: 1;
+  }
+  .tech-node {
+    display: flex; flex-direction: column; align-items: center; gap: 7px;
+    padding: 16px 18px; min-width: 96px;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    cursor: default;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .tech-node:hover {
+    border-color: rgba(0,212,198,0.4);
+    transform: translateY(-4px) perspective(600px) rotateX(4deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .tech-node-icon { width: 40px; height: 40px; display: grid; place-items: center; }
+  .tech-node-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .tech-node-desc { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.3; }
+
+  .hub-center-row {
+    display: flex; justify-content: center; margin: 48px 0;
+    position: relative; z-index: 1;
+  }
+  .hub-center {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 22px 36px; border-radius: 16px;
+    border: 1px solid rgba(0,212,198,0.45);
+    background: rgba(0,212,198,0.07);
+    animation: hub-pulse 3s ease-in-out infinite;
+  }
+  @keyframes hub-pulse {
+    0%,100% { box-shadow: 0 0 32px rgba(0,212,198,0.14), 0 0 64px rgba(0,212,198,0.06); }
+    50%      { box-shadow: 0 0 52px rgba(0,212,198,0.26), 0 0 100px rgba(0,212,198,0.12); }
+  }
+  .hub-logo { width: 60px; height: 60px; object-fit: contain; }
+  .hub-name {
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--teal);
+  }
+
+  .hub-outputs {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    position: relative; z-index: 1;
+  }
+  .hub-clip {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    cursor: pointer; outline: none;
+  }
+  .hub-clip .clip-phone {
+    width: 100%; border-radius: 26px; padding: 9px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.04)), #081017;
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 22px 52px rgba(0,0,0,0.46), 0 0 0 1px rgba(0,212,198,0.07);
+    position: relative; overflow: hidden;
+    transition: transform 0.22s, border-color 0.22s;
+  }
+  .hub-clip:hover .clip-phone, .hub-clip:focus .clip-phone {
+    transform: translateY(-5px) perspective(800px) rotateX(3deg);
+    border-color: rgba(0,212,198,0.35);
+  }
+  .hub-clip .clip-phone::before {
+    content: ""; position: absolute; top: 6px; left: 50%;
+    transform: translateX(-50%); width: 52px; height: 12px;
+    border-radius: 0 0 8px 8px; background: #06090d; z-index: 2;
+  }
+  .hub-clip .clip-phone video {
+    width: 100%; border-radius: 19px; aspect-ratio: 9/18.5;
+    object-fit: cover; display: block; pointer-events: none;
+  }
+  .hub-clip .clip-label { font-size: 13px; font-weight: 600; color: var(--muted); text-align: center; }
+
+  /* Popup */
+  .hub-popup {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.84); place-items: center; backdrop-filter: blur(10px);
+  }
+  .hub-popup.open { display: grid; }
+  .hub-popup-inner { position: relative; width: min(340px, 88vw); }
+  .hub-popup-close {
+    position: absolute; top: -42px; right: 0; background: none; border: none;
+    color: var(--muted); font-size: 22px; cursor: pointer; line-height: 1;
+    transition: color 0.15s;
+  }
+  .hub-popup-close:hover { color: var(--text); }
+  .hub-popup video { width: 100%; border-radius: 26px; display: block; border: 1px solid rgba(255,255,255,0.13); }
+
+  @media (max-width: 900px) {
+    .hub-sources { gap: 12px; }
+    .tech-node { min-width: 80px; padding: 12px 14px; }
+    .hub-outputs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .hub-sources { gap: 8px; }
+    .tech-node { min-width: 68px; padding: 10px 10px; }
+    .tech-node-icon { width: 34px; height: 34px; }
+    .tech-node-name { font-size: 11px; }
+    .hub-center { padding: 16px 24px; }
+    .hub-logo { width: 48px; height: 48px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hub-center { animation: none; }
+    @keyframes hub-flow { to { stroke-dashoffset: 0; } }
+  }
 </style>
 </head>
 <body>
@@ -1507,7 +1890,7 @@
     <span>TruckExpoAI</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#product" data-t="nav_product">Product</a></li>
+    <li><a href="#tech-hub" data-t="nav_product">Product</a></li>
     <li><a href="#ai" data-t="nav_ai">AI</a></li>
     <li><a href="#pricing" data-t="nav_pricing">Pricing</a></li>
     <li>
@@ -1544,7 +1927,7 @@
             </svg>
             Request beta access
           </a>
-          <a class="btn btn-secondary" href="#product">
+          <a class="btn btn-secondary" href="#tech-hub">
             See the product
           </a>
         </div>
@@ -1594,66 +1977,94 @@
     </div>
   </section>
 
-  <!-- Powered-by technology strip -->
-  <div class="powered-strip">
-    <div class="container powered-inner">
-      <span class="powered-label">Powered by</span>
-      <div class="powered-sep"></div>
 
-      <!-- OpenAI -->
-      <div class="tech-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.28 9.78a5.83 5.83 0 0 0-.5-4.78 5.9 5.9 0 0 0-6.35-2.83A5.87 5.87 0 0 0 11 .5a5.9 5.9 0 0 0-5.62 4.08 5.87 5.87 0 0 0-3.92 2.85 5.9 5.9 0 0 0 .73 6.93 5.83 5.83 0 0 0 .5 4.78 5.9 5.9 0 0 0 6.35 2.83A5.87 5.87 0 0 0 13 23.5a5.9 5.9 0 0 0 5.63-4.09 5.87 5.87 0 0 0 3.91-2.85 5.9 5.9 0 0 0-.26-6.78zM13 21.94a4.37 4.37 0 0 1-2.8-1.02l.14-.08 4.65-2.68a.77.77 0 0 0 .39-.67v-6.54l1.97 1.13a.07.07 0 0 1 .04.06v5.42A4.38 4.38 0 0 1 13 21.94zm-9.38-4.01a4.36 4.36 0 0 1-.52-2.94l.14.08 4.65 2.69a.77.77 0 0 0 .77 0l5.67-3.27v2.26a.07.07 0 0 1-.03.06L9.6 19.5a4.38 4.38 0 0 1-5.98-1.57zm-1.22-9.57a4.35 4.35 0 0 1 2.27-1.91v5.51a.77.77 0 0 0 .39.67l5.67 3.27-1.97 1.14a.07.07 0 0 1-.07 0L4.3 14.7a4.38 4.38 0 0 1-1.9-6.34zm16.17 3.76-5.67-3.28 1.97-1.14a.07.07 0 0 1 .07 0l4.39 2.54a4.38 4.38 0 0 1-.68 7.9v-5.52a.77.77 0 0 0-.08-.5zm1.96-2.96-.14-.09-4.64-2.7a.77.77 0 0 0-.77 0L9.31 9.64V7.38a.07.07 0 0 1 .03-.06l4.39-2.53a4.38 4.38 0 0 1 6.5 4.54v.28l-.7-.05zm-12.31 4.04-1.97-1.14a.07.07 0 0 1-.04-.06V6.58a4.38 4.38 0 0 1 7.18-3.36l-.14.08-4.64 2.68a.77.77 0 0 0-.39.67v6.54zm1.07-2.3 2.52-1.46 2.53 1.46v2.9l-2.53 1.46-2.52-1.46V11z" fill="white" fill-opacity="0.85"/>
-        </svg>
-        <span>OpenAI GPT-4o</span>
+  <section class="section launch-board" id="launch-board" aria-label="TruckExpoAI launch board">
+    <div class="container">
+      <div class="launch-head reveal">
+        <span class="eyebrow">Launch board</span>
+        <h2>The AI cockpit, proven by the real app.</h2>
+        <p>One fast view for route safety, tachograph context, parking, cameras and voice actions.</p>
       </div>
 
-      <!-- Google -->
-      <div class="tech-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        <span>Google</span>
-      </div>
+      <div class="launch-bento">
+        <article class="launch-card hero-tile reveal">
+          <div class="launch-copy">
+            <span class="tagline">Android beta</span>
+            <h2>Built like an app-store launch, backed by live road tools.</h2>
+            <p>Real screenshots, real routing services and a download-ready slot without promising the APK before Sunday.</p>
+            <div class="launch-metrics">
+              <div class="metric-pill">
+                <strong>59,436</strong>
+                <span>TransParking stops</span>
+              </div>
+              <div class="metric-pill">
+                <strong>EU 561</strong>
+                <span>HOS logic</span>
+              </div>
+              <div class="metric-pill">
+                <strong>2 AI</strong>
+                <span>GPT + Gemini</span>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Beta%20APK%20Request">Request beta access</a>
+          </div>
+          <div class="launch-phone">
+            <img src="assets/navigation-live.png" alt="TruckExpoAI live navigation screen" loading="lazy">
+          </div>
+        </article>
 
-      <!-- Mapbox -->
-      <div class="tech-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#4264FB"/>
-          <circle cx="12" cy="12" r="4.5" fill="white"/>
-          <path d="M12 3.5 L14 8 L19 8 L15 11 L16.5 16.5 L12 13.5 L7.5 16.5 L9 11 L5 8 L10 8 Z" fill="white" opacity="0.3"/>
-        </svg>
-        <span>Mapbox</span>
-      </div>
+        <article class="launch-card engine-tile reveal">
+          <span class="tagline">Real engine</span>
+          <h3>Not a mockup stack. The site can say exactly what the app runs.</h3>
+          <div class="engine-grid">
+            <div class="engine-pill">
+              <strong>TomTom</strong>
+              <span>Truck routes</span>
+            </div>
+            <div class="engine-pill">
+              <strong>Mapbox</strong>
+              <span>Live map layers</span>
+            </div>
+            <div class="engine-pill">
+              <strong>Overpass</strong>
+              <span>Cameras + limits</span>
+            </div>
+            <div class="engine-pill">
+              <strong>Google</strong>
+              <span>Places fallback</span>
+            </div>
+          </div>
+        </article>
 
-      <!-- TomTom -->
-      <div class="tech-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="11" fill="#DF1B12"/>
-          <text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text>
-        </svg>
-        <span>TomTom</span>
-      </div>
+        <article class="launch-card reveal">
+          <span class="tagline">Route safety</span>
+          <h3>Restriction checks before the driver commits.</h3>
+          <ul class="launch-list">
+            <li>Truck ban calendar from trafficban.com</li>
+            <li>Height, width, weight and ADR checks via Overpass</li>
+            <li>Speed camera warnings along the route</li>
+          </ul>
+        </article>
 
-      <!-- Gemini -->
-      <div class="tech-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" fill="url(#gem-grad)"/>
-          <defs>
-            <linearGradient id="gem-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#4285F4"/>
-              <stop offset="100%" stop-color="#9C27B0"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span>Gemini 2.0</span>
-      </div>
+        <article class="launch-card reveal">
+          <span class="tagline">Parking intelligence</span>
+          <h3>Stops stay part of the route, not a separate search.</h3>
+          <ul class="launch-list">
+            <li>TransParking handoff for selected stops</li>
+            <li>Fuel and truck parking near route</li>
+            <li>Google Places fallback with G badge</li>
+          </ul>
+        </article>
 
+        <article class="launch-card launch-download reveal">
+          <span class="tagline">Sunday slot</span>
+          <h3>Direct APK download can drop into this block.</h3>
+          <p>For now it keeps the beta request flow. On Sunday we swap the CTA to the real download link and add a QR code.</p>
+          <a class="btn btn-secondary" href="#download">See Android access</a>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
   <section class="section film-section" id="film" aria-label="TruckExpoAI launch film">
     <div class="container film-grid">
@@ -1675,79 +2086,91 @@
     </div>
   </section>
 
-  <section class="section" id="product">
+  <!-- Technology Hub -->
+  <section class="section tech-hub" id="tech-hub">
+    <svg id="hub-svg" class="hub-svg-overlay" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <filter id="hub-glow-teal" x="-120%" y="-120%" width="340%" height="340%">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="hub-glow-blue" x="-120%" y="-120%" width="340%" height="340%">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+    </svg>
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow reveal">Product system</span>
-        <h2 class="reveal">A navigation cockpit that thinks with the driver.</h2>
-        <p class="lead reveal">TruckExpoAI turns the map, voice, route data, parking results, and tachograph state into one fast workflow.</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">Technology stack</span>
+        <h2>Five engines. One truck-native intelligence layer.</h2>
       </div>
 
-      <div class="feature-grid">
-        <article class="feature-card reveal from-left">
-          <div class="feature-shot">
-            <img src="assets/navigation-live.png" alt="Live navigation with route and parking marker" loading="lazy">
+      <div class="hub-sources">
+        <div class="tech-node reveal">
+          <div class="tech-node-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#DF1B12"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text></svg>
           </div>
-          <div class="feature-body">
-            <span class="tagline">Live guidance</span>
-            <h3>Route, ETA and next action stay visible.</h3>
-            <p>The map keeps the driver focused with turn guidance, route progress, and nearby truck-relevant POIs.</p>
+          <span class="tech-node-name">TomTom</span>
+          <span class="tech-node-desc">Routing &amp; search</span>
+        </div>
+        <div class="tech-node reveal">
+          <div class="tech-node-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           </div>
-        </article>
-
-        <article class="feature-card reveal from-right">
-          <div class="feature-shot">
-            <img src="assets/parking-intel.png" alt="Truck parking and fuel markers on navigation map" loading="lazy">
+          <span class="tech-node-name">Google</span>
+          <span class="tech-node-desc">Places &amp; fallback</span>
+        </div>
+        <div class="tech-node reveal">
+          <div class="tech-node-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#4264FB"/><circle cx="12" cy="12" r="4.5" fill="white"/><path d="M12 3.5L14 8l5 0-4 3 1.5 5.5L12 13.5 7.5 16.5 9 11 5 8l5 0Z" fill="white" opacity="0.28"/></svg>
           </div>
-          <div class="feature-body">
-            <span class="tagline">Parking intelligence</span>
-            <h3>Truck stops and TransParking are part of the route.</h3>
-            <p>Find parking near a city, open a selected TransParking page, and keep the marker flow inside the map.</p>
+          <span class="tech-node-name">Mapbox</span>
+          <span class="tech-node-desc">Map &amp; layers</span>
+        </div>
+        <div class="tech-node reveal">
+          <div class="tech-node-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1a1a1a"/><path d="M19.28 9.28a4.33 4.33 0 0 0-.37-3.56 4.38 4.38 0 0 0-4.72-2.1A4.35 4.35 0 0 0 11 2a4.38 4.38 0 0 0-4.17 3.03 4.35 4.35 0 0 0-2.91 2.12 4.38 4.38 0 0 0 .54 5.15 4.33 4.33 0 0 0 .37 3.56 4.38 4.38 0 0 0 4.72 2.1A4.35 4.35 0 0 0 13 19a4.38 4.38 0 0 0 4.18-3.04 4.35 4.35 0 0 0 2.9-2.11 4.38 4.38 0 0 0-.8-4.57z" fill="white" opacity="0.88"/></svg>
           </div>
-        </article>
-
-        <article class="feature-card reveal from-left">
-          <div class="feature-shot wide">
-            <img src="assets/route-options.png" alt="Route alternatives screen in TruckExpoAI" loading="lazy">
+          <span class="tech-node-name">GPT-4o</span>
+          <span class="tech-node-desc">Map actions</span>
+        </div>
+        <div class="tech-node reveal">
+          <div class="tech-node-icon">
+            <svg width="38" height="38" viewBox="0 0 24 24"><defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4285F4"/><stop offset="100%" stop-color="#9C27B0"/></linearGradient></defs><circle cx="12" cy="12" r="11" fill="#111"/><path d="M12 4C6.48 4 2 8.48 2 14s4.48 8 10 8 10-4.48 10-8S17.52 4 12 4zm-1 11v-3H7l5-6v3h4l-5 6z" fill="url(#gm)"/></svg>
           </div>
-          <div class="feature-body">
-            <span class="tagline">Route decisions</span>
-            <h3>Alternatives are quick to compare.</h3>
-            <p>Preview routes, choose the right plan, and let AI answer whether the remaining drive time is enough.</p>
-          </div>
-        </article>
+          <span class="tech-node-name">Gemini 2.0</span>
+          <span class="tech-node-desc">AI co-driver</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 4 phone demo clips section -->
-  <section class="section clips-section" id="demos">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow reveal">See it in action</span>
-        <h2 class="reveal">Real app. Real road.</h2>
-        <p class="lead reveal">Four live clips from the app — navigation, AI, tachograph, and parking on a real route.</p>
+      <div class="hub-center-row">
+        <div class="hub-center">
+          <img src="assets/logo-icon.png" alt="TruckExpoAI" class="hub-logo">
+          <span class="hub-name">TruckExpoAI</span>
+        </div>
       </div>
-      <div class="clips-grid">
-        <div class="clip-card reveal">
+
+      <div class="hub-outputs">
+        <div class="hub-clip reveal" data-src="assets/clips/01-feature-menu.mp4" role="button" tabindex="0" aria-label="Play feature menu clip">
           <div class="clip-phone">
             <video src="assets/clips/01-feature-menu.mp4" poster="assets/clips/01-feature-menu.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <p class="clip-label">Feature menu</p>
         </div>
-        <div class="clip-card reveal">
+        <div class="hub-clip reveal" data-src="assets/clips/02-demo-gps-start.mp4" role="button" tabindex="0" aria-label="Play GPS start clip">
           <div class="clip-phone">
             <video src="assets/clips/02-demo-gps-start.mp4" poster="assets/clips/02-demo-gps-start.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
-          <p class="clip-label">Demo GPS start</p>
+          <p class="clip-label">GPS live start</p>
         </div>
-        <div class="clip-card reveal">
+        <div class="hub-clip reveal" data-src="assets/clips/03-live-navigation-hud.mp4" role="button" tabindex="0" aria-label="Play HUD clip">
           <div class="clip-phone">
             <video src="assets/clips/03-live-navigation-hud.mp4" poster="assets/clips/03-live-navigation-hud.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <p class="clip-label">Live HUD &amp; tacho</p>
         </div>
-        <div class="clip-card reveal">
+        <div class="hub-clip reveal" data-src="assets/clips/04-route-poi-timeline.mp4" role="button" tabindex="0" aria-label="Play POI timeline clip">
           <div class="clip-phone">
             <video src="assets/clips/04-route-poi-timeline.mp4" poster="assets/clips/04-route-poi-timeline.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
@@ -1770,21 +2193,21 @@
           <span class="tagline" data-tx="extras1_tag">Navigation</span>
           <h3 data-tx="extras1_h">Truck route control</h3>
           <ul class="extras-list">
-            <li data-tx="extras1_1">Truck-safe route calculation and alternatives</li>
-            <li data-tx="extras1_2">Route preview with ETA, distance, and traffic state</li>
+            <li data-tx="extras1_1">Truck-safe TomTom routing with alternatives</li>
+            <li data-tx="extras1_2">Route preview with ETA, distance, traffic delay and lane steps</li>
             <li data-tx="extras1_3">Multi-stop dispatcher flow with waypoint ordering</li>
-            <li data-tx="extras1_4">Live turn guidance with route progress on the map</li>
+            <li data-tx="extras1_4">Live turn guidance, route progress and map tracking</li>
           </ul>
         </article>
 
         <article class="extras-card reveal">
           <span class="tagline" data-tx="extras2_tag">AI cockpit</span>
-          <h3 data-tx="extras2_h">Two assistants, one map</h3>
+          <h3 data-tx="extras2_h">Two assistants, voice and map actions</h3>
           <ul class="extras-list">
-            <li data-tx="extras2_1">GPT map actions for routes, waypoints, and searches</li>
-            <li data-tx="extras2_2">Gemini driver assistant for app control and answers</li>
-            <li data-tx="extras2_3">Voice intents that can turn a question into a map action</li>
-            <li data-tx="extras2_4">Route-aware answers using actual distance and drive time</li>
+            <li data-tx="extras2_1">GPT-4o map actions for routes, waypoints, POIs and app intents</li>
+            <li data-tx="extras2_2">Gemini driver assistant with route, tacho, weather and memory context</li>
+            <li data-tx="extras2_3">Voice recording -&gt; transcription -&gt; Gemini/GPT map action</li>
+            <li data-tx="extras2_4">Route-aware answers using actual distance, duration and remaining drive time</li>
           </ul>
         </article>
 
@@ -1792,42 +2215,42 @@
           <span class="tagline" data-tx="extras3_tag">Tacho</span>
           <h3 data-tx="extras3_h">EU driving-time logic</h3>
           <ul class="extras-list">
-            <li data-tx="extras3_1">HOS view for remaining drive time</li>
-            <li data-tx="extras3_2">Rest warnings before a route becomes risky</li>
-            <li data-tx="extras3_3">Tachograph assistant answers in driver language</li>
-            <li data-tx="extras3_4">Planned Bluetooth tachograph handoff</li>
+            <li data-tx="extras3_1">EU 561/2006 continuous, daily and weekly drive-time logic</li>
+            <li data-tx="extras3_2">30/20/10 minute break warnings with parking search trigger</li>
+            <li data-tx="extras3_3">Bluetooth tachograph live context when connected, local fallback when not</li>
+            <li data-tx="extras3_4">Rest logging, offline session queue and end-of-day shift summary</li>
           </ul>
         </article>
 
         <article class="extras-card reveal">
-          <span class="tagline" data-tx="extras4_tag">Stops</span>
-          <h3 data-tx="extras4_h">Parking, fuel, and business POIs</h3>
+          <span class="tagline" data-tx="extras4_tag">Parking &amp; search</span>
+          <h3 data-tx="extras4_h">TransParking, fuel and Google fallback</h3>
           <ul class="extras-list">
-            <li data-tx="extras4_1">Truck parking markers along the route</li>
-            <li data-tx="extras4_2">Fuel markers with distance labels</li>
-            <li data-tx="extras4_3">TransParking handoff for selected stops</li>
-            <li data-tx="extras4_4">Business search results that can become destinations</li>
+            <li data-tx="extras4_1">59,436 TransParking truck parkings from local cache</li>
+            <li data-tx="extras4_2">Truck parking and fuel POIs near driver or along active route</li>
+            <li data-tx="extras4_3">TomTom search with Google Places fallback and a G badge</li>
+            <li data-tx="extras4_4">Business search results, saved POIs and TransParking handoff</li>
           </ul>
         </article>
 
         <article class="extras-card reveal">
           <span class="tagline" data-tx="extras5_tag">Safety</span>
-          <h3 data-tx="extras5_h">Road events and restrictions</h3>
+          <h3 data-tx="extras5_h">Restrictions, bans and cameras</h3>
           <ul class="extras-list">
-            <li data-tx="extras5_1">Truck restriction signs for weight, height, and bans</li>
-            <li data-tx="extras5_2">Speed camera and speed-limit warnings</li>
-            <li data-tx="extras5_3">Tunnel and traffic alerts during navigation</li>
-            <li data-tx="extras5_4">Upcoming parking and fuel timeline</li>
+            <li data-tx="extras5_1">Overpass truck restrictions for height, width, weight, no-truck and ADR</li>
+            <li data-tx="extras5_2">Truck ban calendar from trafficban.com for selected date</li>
+            <li data-tx="extras5_3">Speed camera warnings along route via Overpass API</li>
+            <li data-tx="extras5_4">Mapbox Tilequery tunnel/bridge checks plus TomTom traffic alerts</li>
           </ul>
         </article>
 
         <article class="extras-card reveal">
-          <span class="tagline" data-tx="extras6_tag">Fleet ready</span>
-          <h3 data-tx="extras6_h">Built to grow beyond one driver</h3>
+          <span class="tagline" data-tx="extras6_tag">Backend &amp; fleet</span>
+          <h3 data-tx="extras6_h">APIs behind the cockpit</h3>
           <ul class="extras-list">
-            <li data-tx="extras6_1">Company POIs and saved driver places</li>
-            <li data-tx="extras6_2">Route explanations for dispatch decisions</li>
-            <li data-tx="extras6_3">Backend APIs for AI, POIs, tacho, and routing</li>
+            <li data-tx="extras6_1">Flask APIs for route calculation, POIs, tacho, cameras and AI</li>
+            <li data-tx="extras6_2">User-owned POIs, camera reports and route start/complete logs</li>
+            <li data-tx="extras6_3">Open-Meteo and OpenWeather context for route and destination weather</li>
             <li data-tx="extras6_4">Android APK testing before store distribution</li>
           </ul>
         </article>
@@ -1977,7 +2400,7 @@
             <span class="tagline">Coming soon</span>
             <h3>Cars, campervans &amp; EVs</h3>
             <div class="price">Soon</div>
-            <p>Коли, кемпери, електрически &mdash; скоро пускаме.</p>
+            <p>Cars, campervans, electric vehicles &mdash; launching soon.</p>
           </div>
           <ul class="price-list">
             <li>Car &amp; campervan routing</li>
@@ -2018,12 +2441,20 @@
   </section>
 </main>
 
+<!-- Hub video popup -->
+<div id="hub-popup" class="hub-popup" role="dialog" aria-modal="true" aria-label="Feature video">
+  <div class="hub-popup-inner">
+    <button id="hub-popup-close" class="hub-popup-close" aria-label="Close video">✕</button>
+    <video id="hub-popup-video" playsinline controls style="width:100%;border-radius:26px;display:block;border:1px solid rgba(255,255,255,0.13);"></video>
+  </div>
+</div>
+
 <footer>
   <div class="container footer-grid">
     <div>&copy; 2026 TruckExpoAI. AI navigation for professional drivers.</div>
     <div class="footer-links">
       <a href="mailto:ceo@truckexpoai.com">ceo@truckexpoai.com</a>
-      <a href="#product" data-tx="nav_product">Product</a>
+      <a href="#tech-hub" data-tx="nav_product">Product</a>
       <a href="#extras" data-tx="footer_extras">Extras</a>
       <a href="#pricing" data-tx="nav_pricing">Pricing</a>
     </div>
@@ -2072,40 +2503,40 @@
       extras_h: 'All the extras, grouped like a driver uses them.',
       extras_lead: 'TruckExpoAI has a lot inside, so the site keeps it readable: route decisions, AI, tacho, POIs, safety, and fleet tools each get their own lane.',
       extras1_tag: 'Navigation', extras1_h: 'Truck route control',
-      extras1_1: 'Truck-safe route calculation and alternatives',
-      extras1_2: 'Route preview with ETA, distance, and traffic state',
+      extras1_1: 'Truck-safe TomTom routing with alternatives',
+      extras1_2: 'Route preview with ETA, distance, traffic delay and lane steps',
       extras1_3: 'Multi-stop dispatcher flow with waypoint ordering',
-      extras1_4: 'Live turn guidance with route progress on the map',
-      extras2_tag: 'AI cockpit', extras2_h: 'Two assistants, one map',
-      extras2_1: 'GPT map actions for routes, waypoints, and searches',
-      extras2_2: 'Gemini driver assistant for app control and answers',
-      extras2_3: 'Voice intents that can turn a question into a map action',
-      extras2_4: 'Route-aware answers using actual distance and drive time',
+      extras1_4: 'Live turn guidance, route progress and map tracking',
+      extras2_tag: 'AI cockpit', extras2_h: 'Two assistants, voice and map actions',
+      extras2_1: 'GPT-4o map actions for routes, waypoints, POIs and app intents',
+      extras2_2: 'Gemini driver assistant with route, tacho, weather and memory context',
+      extras2_3: 'Voice recording -> transcription -> Gemini/GPT map action',
+      extras2_4: 'Route-aware answers using actual distance, duration and remaining drive time',
       extras3_tag: 'Tacho', extras3_h: 'EU driving-time logic',
-      extras3_1: 'HOS view for remaining drive time',
-      extras3_2: 'Rest warnings before a route becomes risky',
-      extras3_3: 'Tachograph assistant answers in driver language',
-      extras3_4: 'Planned Bluetooth tachograph handoff',
-      extras4_tag: 'Stops', extras4_h: 'Parking, fuel, and business POIs',
-      extras4_1: 'Truck parking markers along the route',
-      extras4_2: 'Fuel markers with distance labels',
-      extras4_3: 'TransParking handoff for selected stops',
-      extras4_4: 'Business search results that can become destinations',
-      extras5_tag: 'Safety', extras5_h: 'Road events and restrictions',
-      extras5_1: 'Truck restriction signs for weight, height, and bans',
-      extras5_2: 'Speed camera and speed-limit warnings',
-      extras5_3: 'Tunnel and traffic alerts during navigation',
-      extras5_4: 'Upcoming parking and fuel timeline',
-      extras6_tag: 'Fleet ready', extras6_h: 'Built to grow beyond one driver',
-      extras6_1: 'Company POIs and saved driver places',
-      extras6_2: 'Route explanations for dispatch decisions',
-      extras6_3: 'Backend APIs for AI, POIs, tacho, and routing',
+      extras3_1: 'EU 561/2006 continuous, daily and weekly drive-time logic',
+      extras3_2: '30/20/10 minute break warnings with parking search trigger',
+      extras3_3: 'Bluetooth tachograph live context when connected, local fallback when not',
+      extras3_4: 'Rest logging, offline session queue and end-of-day shift summary',
+      extras4_tag: 'Parking & search', extras4_h: 'TransParking, fuel and Google fallback',
+      extras4_1: '59,436 TransParking truck parkings from local cache',
+      extras4_2: 'Truck parking and fuel POIs near driver or along active route',
+      extras4_3: 'TomTom search with Google Places fallback and a G badge',
+      extras4_4: 'Business search results, saved POIs and TransParking handoff',
+      extras5_tag: 'Safety', extras5_h: 'Restrictions, bans and cameras',
+      extras5_1: 'Overpass truck restrictions for height, width, weight, no-truck and ADR',
+      extras5_2: 'Truck ban calendar from trafficban.com for selected date',
+      extras5_3: 'Speed camera warnings along route via Overpass API',
+      extras5_4: 'Mapbox Tilequery tunnel/bridge checks plus TomTom traffic alerts',
+      extras6_tag: 'Backend & fleet', extras6_h: 'APIs behind the cockpit',
+      extras6_1: 'Flask APIs for route calculation, POIs, tacho, cameras and AI',
+      extras6_2: 'User-owned POIs, camera reports and route start/complete logs',
+      extras6_3: 'Open-Meteo and OpenWeather context for route and destination weather',
       extras6_4: 'Android APK testing before store distribution',
       footer_extras: 'Extras',
       pr_eyebrow: 'Pricing', pr_h: 'Start simple. Scale for serious fleets.',
       free_tag: 'Free', free_h: 'Driver preview', free_p: 'For trying the Android navigation experience.', free_btn: 'Request preview',
       pro_tag: 'Pro', pro_h: 'Working driver', pro_p: 'For drivers who want the AI cockpit every day.', pro_btn: 'Get Pro',
-      fleet_tag: 'Coming soon', fleet_h: 'Cars, campervans & EVs', fleet_p: 'Cars, campervans, electric — launching soon.', fleet_btn: 'Notify me',
+      fleet_tag: 'Coming soon', fleet_h: 'Cars, campervans & EVs', fleet_p: 'Cars, campervans, electric vehicles — launching soon.', fleet_btn: 'Notify me',
       dl_eyebrow: 'Android first', dl_h: 'Bring the AI cockpit into the cab.',
       dl_p: 'TruckExpoAI is built on React Native, Mapbox, GPT-4o, Gemini, and a Flask backend. Android builds are available by request while store distribution is prepared.',
       dl_btn1: 'Android APK', dl_btn1s: 'Beta request',
@@ -2150,34 +2581,34 @@
       extras_h: 'Todas las extras, agrupadas como las usa un conductor.',
       extras_lead: 'TruckExpoAI tiene mucho dentro, por eso el sitio lo ordena por trabajo real: ruta, IA, tacógrafo, PDIs, seguridad y herramientas de flota.',
       extras1_tag: 'Navegación', extras1_h: 'Control de ruta para camión',
-      extras1_1: 'Cálculo de ruta segura para camiones y alternativas',
-      extras1_2: 'Vista previa con ETA, distancia y tráfico',
+      extras1_1: 'Rutas TomTom para camión con alternativas',
+      extras1_2: 'Vista previa con ETA, distancia, retraso de tráfico e instrucciones de carril',
       extras1_3: 'Flujo multi-parada con orden de waypoints',
-      extras1_4: 'Guía en vivo con progreso de ruta en el mapa',
-      extras2_tag: 'Cabina IA', extras2_h: 'Dos asistentes, un mapa',
-      extras2_1: 'Acciones GPT para rutas, waypoints y búsquedas',
-      extras2_2: 'Asistente Gemini para control de app y respuestas',
-      extras2_3: 'Intenciones de voz que convierten preguntas en acciones',
-      extras2_4: 'Respuestas con distancia y tiempo real de ruta',
+      extras1_4: 'Guía en vivo, progreso de ruta y seguimiento del mapa',
+      extras2_tag: 'Cabina IA', extras2_h: 'Dos asistentes, voz y acciones de mapa',
+      extras2_1: 'Acciones GPT-4o para rutas, waypoints, PDIs e intenciones de app',
+      extras2_2: 'Asistente Gemini con contexto de ruta, tacógrafo, clima y memoria',
+      extras2_3: 'Grabación de voz -> transcripción -> acción de mapa Gemini/GPT',
+      extras2_4: 'Respuestas con distancia, duración y tiempo de conducción restante',
       extras3_tag: 'Tacógrafo', extras3_h: 'Lógica de tiempo de conducción UE',
-      extras3_1: 'Vista HOS para tiempo de conducción restante',
-      extras3_2: 'Avisos de descanso antes de que una ruta sea arriesgada',
-      extras3_3: 'Asistente de tacógrafo en lenguaje de conductor',
-      extras3_4: 'Traspaso planificado a tacógrafo Bluetooth',
-      extras4_tag: 'Paradas', extras4_h: 'Parking, combustible y negocios',
-      extras4_1: 'Marcadores de parking para camiones en la ruta',
-      extras4_2: 'Marcadores de combustible con distancias',
-      extras4_3: 'Traspaso a TransParking para paradas seleccionadas',
-      extras4_4: 'Búsqueda de negocios que puede crear destinos',
-      extras5_tag: 'Seguridad', extras5_h: 'Eventos de carretera y restricciones',
-      extras5_1: 'Señales de restricción por peso, altura y prohibiciones',
-      extras5_2: 'Avisos de radares y límites de velocidad',
-      extras5_3: 'Alertas de túnel y tráfico durante navegación',
-      extras5_4: 'Timeline de parking y combustible próximos',
-      extras6_tag: 'Listo para flota', extras6_h: 'Preparado para crecer más allá de un conductor',
-      extras6_1: 'PDIs de empresa y lugares guardados del conductor',
-      extras6_2: 'Explicaciones de ruta para decisiones de despacho',
-      extras6_3: 'APIs backend para IA, PDIs, tacógrafo y rutas',
+      extras3_1: 'Lógica EU 561/2006 para conducción continua, diaria y semanal',
+      extras3_2: 'Avisos de pausa a 30/20/10 minutos con búsqueda de parking',
+      extras3_3: 'Contexto live de tacógrafo Bluetooth conectado y fallback local',
+      extras3_4: 'Registro de descansos, cola offline y resumen de fin de jornada',
+      extras4_tag: 'Parking y búsqueda', extras4_h: 'TransParking, combustible y fallback Google',
+      extras4_1: '59,436 parkings TransParking para camiones desde caché local',
+      extras4_2: 'PDIs de parking y combustible cerca del conductor o en la ruta',
+      extras4_3: 'Búsqueda TomTom con fallback Google Places y badge G',
+      extras4_4: 'Negocios, PDIs guardados y traspaso a TransParking',
+      extras5_tag: 'Seguridad', extras5_h: 'Restricciones, prohibiciones y radares',
+      extras5_1: 'Restricciones Overpass por altura, ancho, peso, no camiones y ADR',
+      extras5_2: 'Calendario de prohibiciones de camiones desde trafficban.com',
+      extras5_3: 'Avisos de radares en la ruta vía Overpass API',
+      extras5_4: 'Mapbox Tilequery para túneles/puentes más alertas TomTom',
+      extras6_tag: 'Backend y flota', extras6_h: 'APIs detrás de la cabina',
+      extras6_1: 'APIs Flask para rutas, PDIs, tacógrafo, radares e IA',
+      extras6_2: 'PDIs por usuario, reportes de radares y logs de rutas',
+      extras6_3: 'Open-Meteo y OpenWeather para clima de ruta y destino',
       extras6_4: 'Pruebas APK Android antes de distribución en tiendas',
       footer_extras: 'Extras',
       pr_eyebrow: 'Precios', pr_h: 'Empieza sencillo. Escala para flotas serias.',
@@ -2228,34 +2659,34 @@
       extras_h: 'Всички екстри, групирани както ги ползва шофьорът.',
       extras_lead: 'TruckExpoAI има много вътре, затова сайтът ги подрежда по работа: маршрут, ИИ, тахограф, ТОИ, безопасност и флот.',
       extras1_tag: 'Навигация', extras1_h: 'Контрол на маршрута за камион',
-      extras1_1: 'Камионен маршрут с алтернативи',
-      extras1_2: 'Преглед с ETA, дистанция и трафик',
+      extras1_1: 'TomTom маршрути за камион с алтернативи',
+      extras1_2: 'Преглед с ETA, дистанция, трафик забавяне и ленти',
       extras1_3: 'Multi-stop диспечер с подреждане на точки',
-      extras1_4: 'Live насоки с прогрес на маршрута върху картата',
-      extras2_tag: 'ИИ кабина', extras2_h: 'Два асистента, една карта',
-      extras2_1: 'GPT действия за маршрути, точки и търсене',
-      extras2_2: 'Gemini асистент за контрол на app-а и отговори',
-      extras2_3: 'Гласови намерения, които стават действия на картата',
-      extras2_4: 'Отговори с реална дистанция и време по маршрута',
+      extras1_4: 'Live насоки, прогрес на маршрута и map tracking',
+      extras2_tag: 'ИИ кабина', extras2_h: 'Два асистента, глас и действия на картата',
+      extras2_1: 'GPT-4o действия за маршрути, точки, ТОИ и app intents',
+      extras2_2: 'Gemini асистент с контекст за маршрут, тахограф, време и памет',
+      extras2_3: 'Гласов запис -> транскрипция -> Gemini/GPT действие на картата',
+      extras2_4: 'Отговори с реална дистанция, продължителност и оставащо време',
       extras3_tag: 'Тахограф', extras3_h: 'Логика за време на шофиране в ЕС',
-      extras3_1: 'HOS изглед за оставащо време за каране',
-      extras3_2: 'Предупреждения за пауза преди рисков маршрут',
-      extras3_3: 'Тахограф асистент на езика на шофьора',
-      extras3_4: 'Планирана Bluetooth връзка с тахограф',
-      extras4_tag: 'Спирки', extras4_h: 'Паркинг, гориво и бизнес ТОИ',
-      extras4_1: 'Камионни паркинги по маршрута',
-      extras4_2: 'Гориво с етикети за дистанция',
-      extras4_3: 'TransParking отваряне за избрани спирки',
-      extras4_4: 'Бизнес резултати, които стават дестинации',
-      extras5_tag: 'Безопасност', extras5_h: 'Пътни събития и ограничения',
-      extras5_1: 'Знаци за тегло, височина и забрани',
-      extras5_2: 'Камери и ограничения на скоростта',
-      extras5_3: 'Тунели и трафик предупреждения при навигация',
-      extras5_4: 'Timeline за близки паркинги и гориво',
-      extras6_tag: 'Готов за флот', extras6_h: 'Готов да расте отвъд един шофьор',
-      extras6_1: 'Фирмени ТОИ и запазени места на шофьора',
-      extras6_2: 'Обяснения на маршрута за диспечерски решения',
-      extras6_3: 'Backend API за ИИ, ТОИ, тахограф и маршрути',
+      extras3_1: 'EU 561/2006 логика за непрекъснато, дневно и седмично каране',
+      extras3_2: 'Предупреждения за пауза на 30/20/10 минути с търсене на паркинг',
+      extras3_3: 'Live контекст от Bluetooth тахограф и локален fallback',
+      extras3_4: 'Логване на почивки, offline queue и summary в края на деня',
+      extras4_tag: 'Паркинг и търсене', extras4_h: 'TransParking, гориво и Google fallback',
+      extras4_1: '59,436 TransParking камионни паркинга от локален cache',
+      extras4_2: 'Паркинг и гориво до шофьора или по активния маршрут',
+      extras4_3: 'TomTom търсене с Google Places fallback и G badge',
+      extras4_4: 'Бизнес резултати, запазени ТОИ и TransParking handoff',
+      extras5_tag: 'Безопасност', extras5_h: 'Ограничения, забрани и камери',
+      extras5_1: 'Overpass ограничения за височина, ширина, тегло, no-truck и ADR',
+      extras5_2: 'Календар за забрани на камиони от trafficban.com',
+      extras5_3: 'Предупреждения за камери по маршрута през Overpass API',
+      extras5_4: 'Mapbox Tilequery за тунели/мостове плюс TomTom traffic alerts',
+      extras6_tag: 'Backend и флот', extras6_h: 'API-тата зад кабината',
+      extras6_1: 'Flask API за маршрути, ТОИ, тахограф, камери и ИИ',
+      extras6_2: 'User-owned ТОИ, докладвани камери и route start/complete logs',
+      extras6_3: 'Open-Meteo и OpenWeather контекст за време по маршрут и дестинация',
       extras6_4: 'Android APK тестове преди магазините',
       footer_extras: 'Екстри',
       pr_eyebrow: 'Цени', pr_h: 'Започни просто. Мащабирай за сериозни флотове.',
@@ -2493,7 +2924,7 @@
 
 </script>
 
-<!-- Three.js — 3D Earth with GPS satellite in hero -->
+<!-- Three.js - 3D Earth with GPS satellite in hero -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script>
 (function () {
@@ -2519,20 +2950,18 @@
   const camera = new THREE.PerspectiveCamera(42, W() / H(), 0.1, 100);
   camera.position.set(0.6, 0.2, 3.8);
 
-  // Lighting — sun only, no rim light
   const sun = new THREE.DirectionalLight(0xfff5e0, 1.6);
   sun.position.set(6, 3, 5);
   scene.add(sun);
   scene.add(new THREE.AmbientLight(0x0d1a2a, 2.0));
 
-  // --- Stars ---
   const starCount = 1800;
   const starPositions = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount; i++) {
     const r = 28 + Math.random() * 12;
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
-    starPositions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+    starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
     starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
     starPositions[i * 3 + 2] = r * Math.cos(phi);
   }
@@ -2545,7 +2974,6 @@
 
   const loader = new THREE.TextureLoader();
 
-  // Earth
   const earth = new THREE.Mesh(
     new THREE.SphereGeometry(0.72, 64, 64),
     new THREE.MeshPhongMaterial({
@@ -2558,7 +2986,6 @@
   earth.position.set(0.5, -0.1, 0);
   scene.add(earth);
 
-  // Clouds
   const clouds = new THREE.Mesh(
     new THREE.SphereGeometry(0.732, 64, 64),
     new THREE.MeshPhongMaterial({
@@ -2570,7 +2997,6 @@
   clouds.position.copy(earth.position);
   scene.add(clouds);
 
-  // Atmosphere
   const atmo = new THREE.Mesh(
     new THREE.SphereGeometry(0.80, 64, 64),
     new THREE.MeshPhongMaterial({
@@ -2581,16 +3007,13 @@
   atmo.position.copy(earth.position);
   scene.add(atmo);
 
-  // --- GPS Satellite (realistic) ---
   const satGroup = new THREE.Group();
 
-  // Main body — hexagonal prism (like real GPS Block III)
   const bodyMat = new THREE.MeshPhongMaterial({ color: 0xb8c8d8, shininess: 90, specular: new THREE.Color(0x445566) });
   const body = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.072, 6), bodyMat);
   body.rotation.x = Math.PI / 2;
   satGroup.add(body);
 
-  // Body end caps
   const capMat = new THREE.MeshPhongMaterial({ color: 0x889aa8, shininess: 60 });
   [-1, 1].forEach(s => {
     const cap = new THREE.Mesh(new THREE.CircleGeometry(0.028, 6), capMat);
@@ -2599,58 +3022,50 @@
     satGroup.add(cap);
   });
 
-  // Gold foil thermal blanket strip around body
   const foilMat = new THREE.MeshPhongMaterial({ color: 0xd4a017, emissive: new THREE.Color(0x3a2000), shininess: 120 });
   const foil = new THREE.Mesh(new THREE.CylinderGeometry(0.0285, 0.0285, 0.03, 6, 1, true), foilMat);
   foil.rotation.x = Math.PI / 2;
   satGroup.add(foil);
 
-  // Solar panels — two large wings with cell grid lines
   const panelMat = new THREE.MeshPhongMaterial({ color: 0x1a4d8a, emissive: new THREE.Color(0x060e1a), shininess: 80 });
-  const armMat  = new THREE.MeshPhongMaterial({ color: 0x778899, shininess: 40 });
+  const armMat = new THREE.MeshPhongMaterial({ color: 0x778899, shininess: 40 });
 
   [-1, 1].forEach(side => {
-    // Arm connecting body to panel
     const arm = new THREE.Mesh(new THREE.BoxGeometry(0.044, 0.006, 0.006), armMat);
     arm.position.x = side * 0.048;
     satGroup.add(arm);
 
-    // Panel frame (slightly lighter border)
     const frame = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.002, 0.052), panelMat);
     frame.position.x = side * 0.115;
     satGroup.add(frame);
 
-    // Grid lines on panel (3 vertical, 2 horizontal)
     const lineMat = new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.55 });
     for (let col = -1; col <= 1; col++) {
       const pts = [
         new THREE.Vector3(side * 0.115 + col * 0.032, 0.003, -0.022),
-        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003,  0.022)
+        new THREE.Vector3(side * 0.115 + col * 0.032, 0.003, 0.022)
       ];
       scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
     }
     for (let row = -1; row <= 1; row++) {
       const pts = [
-        new THREE.Vector3(side * 0.07,  0.003, row * 0.018),
-        new THREE.Vector3(side * 0.16,  0.003, row * 0.018)
+        new THREE.Vector3(side * 0.07, 0.003, row * 0.018),
+        new THREE.Vector3(side * 0.16, 0.003, row * 0.018)
       ];
       scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
     }
   });
 
-  // Dish antenna — paraboloid (inverted cone + small feed horn)
   const dishMat = new THREE.MeshPhongMaterial({ color: 0xdde8ee, shininess: 110, specular: new THREE.Color(0x88aacc) });
   const dish = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.014, 16, 1, true), dishMat);
   dish.rotation.x = Math.PI / 2;
   dish.position.set(0, -0.034, 0);
   satGroup.add(dish);
 
-  // Feed horn (small cylinder at dish center)
   const horn = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.006, 0.012, 8), dishMat);
   horn.position.set(0, -0.048, 0);
   satGroup.add(horn);
 
-  // Navigation antenna array — 3 tiny rods on top
   const rodMat = new THREE.MeshPhongMaterial({ color: 0xaabbcc });
   [-0.012, 0, 0.012].forEach(offset => {
     const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.002, 0.002, 0.022, 5), rodMat);
@@ -2658,7 +3073,6 @@
     satGroup.add(rod);
   });
 
-  // Faint signal beam from dish toward Earth
   const beamPts = [new THREE.Vector3(0, -0.05, 0), new THREE.Vector3(0, -0.28, 0)];
   const beam = new THREE.Line(
     new THREE.BufferGeometry().setFromPoints(beamPts),
@@ -2668,7 +3082,6 @@
 
   scene.add(satGroup);
 
-  // Faint orbit ring
   const orbitPoints = [];
   const ORBIT_R = 1.18;
   const ORBIT_TILT = 0.52;
@@ -2687,7 +3100,6 @@
   orbitLine.position.copy(earth.position);
   scene.add(orbitLine);
 
-  // Mouse parallax
   let mx = 0, my = 0;
   window.addEventListener('mousemove', e => {
     mx = (e.clientX / window.innerWidth - 0.5) * 0.5;
@@ -2710,7 +3122,6 @@
     earth.rotation.x += (0.41 + my - earth.rotation.x) * 0.03;
     clouds.rotation.x = earth.rotation.x;
 
-    // Satellite orbit
     const sx = earth.position.x + Math.cos(t) * ORBIT_R;
     const sy = earth.position.y + Math.sin(t) * ORBIT_R * Math.sin(ORBIT_TILT);
     const sz = earth.position.z + Math.sin(t) * ORBIT_R * Math.cos(ORBIT_TILT);
@@ -2724,6 +3135,475 @@
 
     renderer.render(scene, camera);
   })();
+})();
+</script>
+<script>
+(function () {
+  if (!window.THREE) return;
+
+  const container = document.getElementById('vanta-bg');
+  if (!container) return;
+
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let noMotion = mq.matches;
+  if (mq.addEventListener) {
+    mq.addEventListener('change', e => { noMotion = e.matches; });
+  }
+
+  const W = () => Math.max(1, container.clientWidth);
+  const H = () => Math.max(1, container.clientHeight);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+  renderer.setSize(W(), H());
+  container.appendChild(renderer.domElement);
+  Object.assign(renderer.domElement.style, { width:'100%', height:'100%' });
+  renderer.domElement.setAttribute('role', 'img');
+  renderer.domElement.setAttribute('aria-label', 'Animated 3D route ribbon showing truck navigation signals');
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, W() / H(), 0.1, 80);
+  camera.position.set(0.15, 2.35, 5.3);
+  camera.lookAt(0, -0.15, 0);
+
+  scene.add(new THREE.AmbientLight(0x1b3140, 1.9));
+  const key = new THREE.DirectionalLight(0xe8fbff, 2.0);
+  key.position.set(-3, 5, 4);
+  scene.add(key);
+  const accent = new THREE.PointLight(0x00d4c6, 2.2, 9);
+  accent.position.set(1.8, 1.6, 1.7);
+  scene.add(accent);
+
+  const routeGroup = new THREE.Group();
+  routeGroup.position.set(0.85, -0.62, -0.25);
+  routeGroup.rotation.x = -0.12;
+  scene.add(routeGroup);
+
+  const routeCurve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(-2.9, 0, 1.35),
+    new THREE.Vector3(-2.12, 0, 0.68),
+    new THREE.Vector3(-1.18, 0, 0.46),
+    new THREE.Vector3(-0.28, 0, -0.08),
+    new THREE.Vector3(0.62, 0, -0.42),
+    new THREE.Vector3(1.44, 0, -0.92),
+    new THREE.Vector3(2.62, 0, -1.34)
+  ]);
+
+  function buildRibbon(curve, width, yOffset) {
+    const steps = 160;
+    const vertices = [];
+    const indices = [];
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const point = curve.getPoint(t);
+      const tangent = curve.getTangent(t).normalize();
+      const side = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize().multiplyScalar(width * 0.5);
+      vertices.push(point.x + side.x, yOffset, point.z + side.z);
+      vertices.push(point.x - side.x, yOffset, point.z - side.z);
+      if (i < steps) {
+        const a = i * 2;
+        indices.push(a, a + 1, a + 2, a + 1, a + 3, a + 2);
+      }
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    geometry.setIndex(indices);
+    geometry.computeVertexNormals();
+    return geometry;
+  }
+
+  const roadMat = new THREE.MeshPhongMaterial({
+    color: 0x0a1720,
+    emissive: 0x00151a,
+    shininess: 80,
+    transparent: true,
+    opacity: 0.84,
+    side: THREE.DoubleSide
+  });
+  const road = new THREE.Mesh(buildRibbon(routeCurve, 0.42, 0), roadMat);
+  routeGroup.add(road);
+
+  const safeMat = new THREE.MeshBasicMaterial({
+    color: 0x00d4c6,
+    transparent: true,
+    opacity: 0.42,
+    side: THREE.DoubleSide
+  });
+  const safeStrip = new THREE.Mesh(buildRibbon(routeCurve, 0.13, 0.012), safeMat);
+  routeGroup.add(safeStrip);
+
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0x66fff2, transparent: true, opacity: 0.54 });
+  [-0.24, 0.24].forEach(sideOffset => {
+    const pts = [];
+    for (let i = 0; i <= 150; i++) {
+      const t = i / 150;
+      const point = routeCurve.getPoint(t);
+      const tangent = routeCurve.getTangent(t).normalize();
+      const side = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize().multiplyScalar(sideOffset);
+      pts.push(new THREE.Vector3(point.x + side.x, 0.035, point.z + side.z));
+    }
+    routeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), edgeMat));
+  });
+
+  const dashMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.42 });
+  for (let i = 0; i < 18; i++) {
+    const a = i / 18;
+    const b = Math.min(1, a + 0.022);
+    const pts = [routeCurve.getPoint(a), routeCurve.getPoint(b)].map(p => new THREE.Vector3(p.x, 0.055, p.z));
+    routeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), dashMat));
+  }
+
+  const alertGeometry = buildRibbon(new THREE.CatmullRomCurve3([
+    routeCurve.getPoint(0.52),
+    routeCurve.getPoint(0.58),
+    routeCurve.getPoint(0.64)
+  ]), 0.16, 0.07);
+  const alertMat = new THREE.MeshBasicMaterial({
+    color: 0xf7b84b,
+    transparent: true,
+    opacity: 0.82,
+    side: THREE.DoubleSide
+  });
+  routeGroup.add(new THREE.Mesh(alertGeometry, alertMat));
+
+  function addBeacon(t, color, height, radius) {
+    const point = routeCurve.getPoint(t);
+    const beacon = new THREE.Group();
+    beacon.position.set(point.x, 0.05, point.z);
+
+    const pole = new THREE.Mesh(
+      new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, height, 12),
+      new THREE.MeshPhongMaterial({ color, emissive: color, emissiveIntensity: 0.18, transparent: true, opacity: 0.72 })
+    );
+    pole.position.y = height * 0.5;
+    beacon.add(pole);
+
+    const head = new THREE.Mesh(
+      new THREE.SphereGeometry(radius, 20, 12),
+      new THREE.MeshPhongMaterial({ color, emissive: color, emissiveIntensity: 0.9, shininess: 80 })
+    );
+    head.position.y = height;
+    beacon.add(head);
+
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(radius * 2.1, radius * 0.055, 8, 42),
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.28 })
+    );
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = 0.03;
+    beacon.add(ring);
+
+    routeGroup.add(beacon);
+    return beacon;
+  }
+
+  const beacons = [
+    addBeacon(0.18, 0x18a8ff, 0.32, 0.055),
+    addBeacon(0.45, 0x00d4c6, 0.40, 0.065),
+    addBeacon(0.63, 0xf7b84b, 0.35, 0.06),
+    addBeacon(0.84, 0x33d17a, 0.44, 0.07)
+  ];
+
+  const truck = new THREE.Group();
+  const truckMat = new THREE.MeshPhongMaterial({ color: 0x00d4c6, emissive: 0x002c2a, shininess: 90 });
+  const cabMat = new THREE.MeshPhongMaterial({ color: 0xf7b84b, emissive: 0x2c1800, shininess: 60 });
+  const wheelMat = new THREE.MeshPhongMaterial({ color: 0x071017 });
+  const trailer = new THREE.Mesh(new THREE.BoxGeometry(0.23, 0.09, 0.42), truckMat);
+  trailer.position.set(0, 0.11, 0);
+  truck.add(trailer);
+  const cab = new THREE.Mesh(new THREE.BoxGeometry(0.23, 0.11, 0.18), cabMat);
+  cab.position.set(0, 0.12, -0.27);
+  truck.add(cab);
+  [-0.09, 0.09].forEach(x => {
+    [-0.17, 0.16].forEach(z => {
+      const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.025, 16), wheelMat);
+      wheel.rotation.z = Math.PI / 2;
+      wheel.position.set(x, 0.055, z);
+      truck.add(wheel);
+    });
+  });
+  routeGroup.add(truck);
+
+  const arcMat = new THREE.LineBasicMaterial({ color: 0x18a8ff, transparent: true, opacity: 0.26 });
+  [0.9, 1.25, 1.65].forEach((radius, idx) => {
+    const pts = [];
+    for (let i = 0; i <= 96; i++) {
+      const a = (i / 96) * Math.PI * 1.25 + Math.PI * 0.05;
+      pts.push(new THREE.Vector3(Math.cos(a) * radius, 0.42 + idx * 0.12, Math.sin(a) * radius - 0.25));
+    }
+    routeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), arcMat));
+  });
+
+  const particleCount = 900;
+  const particlePositions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    particlePositions[i * 3] = (Math.random() - 0.5) * 7.2;
+    particlePositions[i * 3 + 1] = Math.random() * 2.4 - 0.65;
+    particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 4.4;
+  }
+  const particleGeo = new THREE.BufferGeometry();
+  particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+  const particles = new THREE.Points(
+    particleGeo,
+    new THREE.PointsMaterial({ color: 0x7deee7, size: 0.022, transparent: true, opacity: 0.38 })
+  );
+  particles.position.set(0.55, 0.15, -0.25);
+  scene.add(particles);
+
+  const gridMat = new THREE.LineBasicMaterial({ color: 0x1b5362, transparent: true, opacity: 0.17 });
+  const gridPts = [];
+  for (let i = -6; i <= 6; i++) {
+    gridPts.push(new THREE.Vector3(i * 0.5, -0.82, -2.2), new THREE.Vector3(i * 0.5, -0.82, 1.6));
+    gridPts.push(new THREE.Vector3(-3.0, -0.82, i * 0.32), new THREE.Vector3(3.0, -0.82, i * 0.32));
+  }
+  const grid = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(gridPts), gridMat);
+  grid.position.set(0.75, 0, -0.2);
+  scene.add(grid);
+
+  let mx = 0, my = 0;
+  function trackPointer(clientX, clientY) {
+    mx = (clientX / Math.max(1, window.innerWidth) - 0.5);
+    my = (clientY / Math.max(1, window.innerHeight) - 0.5);
+  }
+  window.addEventListener('mousemove', e => trackPointer(e.clientX, e.clientY), { passive: true });
+  container.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    if (touch) trackPointer(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  function resizeScene() {
+    camera.aspect = W() / H();
+    camera.updateProjectionMatrix();
+    renderer.setSize(W(), H());
+    renderer.render(scene, camera);
+  }
+
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(resizeScene);
+    ro.observe(container);
+  } else {
+    window.addEventListener('resize', resizeScene);
+  }
+
+  let t = 0;
+  let last = performance.now();
+  (function animate() {
+    requestAnimationFrame(animate);
+    const now = performance.now();
+    const dt = Math.min(0.04, (now - last) / 1000);
+    last = now;
+
+    if (!noMotion && !document.hidden) {
+      t += dt * 0.24;
+      particles.rotation.y += dt * 0.05;
+      routeGroup.rotation.y += (mx * 0.18 - routeGroup.rotation.y) * 0.035;
+      routeGroup.rotation.x += (-0.12 + my * 0.08 - routeGroup.rotation.x) * 0.035;
+      beacons.forEach((beacon, index) => {
+        const pulse = 1 + Math.sin(now * 0.002 + index) * 0.08;
+        beacon.scale.set(pulse, pulse, pulse);
+        beacon.rotation.y += dt * (0.35 + index * 0.04);
+      });
+      const truckT = (t % 1);
+      const point = routeCurve.getPoint(truckT);
+      const tangent = routeCurve.getTangent(truckT).normalize();
+      truck.position.set(point.x, 0.115, point.z);
+      truck.rotation.y = Math.atan2(tangent.x, tangent.z);
+    }
+
+    camera.position.x += (0.15 + mx * 0.35 - camera.position.x) * 0.025;
+    camera.position.y += (2.35 - my * 0.22 - camera.position.y) * 0.025;
+    camera.lookAt(0.38, -0.32, -0.2);
+
+    renderer.render(scene, camera);
+  })();
+})();
+</script>
+
+<script>
+/* ── Tech Hub: animated SVG cables + video popup ── */
+(function () {
+  function getCenter(el) {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function cubicPath(a, b) {
+    const dx = Math.abs(b.x - a.x) * 0.55;
+    const dy = Math.abs(b.y - a.y) * 0.55;
+    const cp1x = a.x + (b.x > a.x ? dx : -dx);
+    const cp1y = a.y + dy * 0.3;
+    const cp2x = b.x - (b.x > a.x ? dx : -dx);
+    const cp2y = b.y - dy * 0.3;
+    return `M ${a.x} ${a.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${b.x} ${b.y}`;
+  }
+
+  function drawCables() {
+    const svg = document.getElementById('hub-svg');
+    if (!svg) return;
+    svg.innerHTML = '';
+
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    ['hub-glow-teal', 'hub-glow-blue'].forEach((id, i) => {
+      const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+      filter.setAttribute('id', id);
+      filter.setAttribute('x', '-50%'); filter.setAttribute('y', '-50%');
+      filter.setAttribute('width', '200%'); filter.setAttribute('height', '200%');
+      const blur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+      blur.setAttribute('stdDeviation', i === 0 ? '3' : '4');
+      blur.setAttribute('result', 'blur');
+      const merge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
+      const n1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+      n1.setAttribute('in', 'blur');
+      const n2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+      n2.setAttribute('in', 'SourceGraphic');
+      merge.appendChild(n1); merge.appendChild(n2);
+      filter.appendChild(blur); filter.appendChild(merge);
+      defs.appendChild(filter);
+    });
+    svg.appendChild(defs);
+
+    const hub = document.querySelector('.hub-center');
+    const nodes = document.querySelectorAll('.tech-node');
+    const clips = document.querySelectorAll('.hub-clip');
+    if (!hub || !nodes.length || !clips.length) return;
+
+    const svgRect = svg.getBoundingClientRect();
+    function rel(pt) { return { x: pt.x - svgRect.left, y: pt.y - svgRect.top }; }
+
+    const hubPt = rel(getCenter(hub));
+
+    const cableColors = ['#e63535','#34a853','#2d7ff9','#ffffff','#a78bfa'];
+    nodes.forEach((node, i) => {
+      const nodePt = rel(getCenter(node));
+      const d = cubicPath(nodePt, hubPt);
+      const color = cableColors[i] || '#00ffcc';
+
+      // glow cable
+      const glow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      glow.setAttribute('d', d);
+      glow.setAttribute('fill', 'none');
+      glow.setAttribute('stroke', color);
+      glow.setAttribute('stroke-width', '3');
+      glow.setAttribute('stroke-linecap', 'round');
+      glow.setAttribute('opacity', '0.3');
+      glow.setAttribute('filter', 'url(#hub-glow-teal)');
+      svg.appendChild(glow);
+
+      // main cable
+      const cable = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      cable.setAttribute('d', d);
+      cable.setAttribute('fill', 'none');
+      cable.setAttribute('stroke', color);
+      cable.setAttribute('stroke-width', '1.5');
+      cable.setAttribute('stroke-linecap', 'round');
+      cable.setAttribute('opacity', '0.7');
+      svg.appendChild(cable);
+
+      // animated impulse
+      const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pulse.setAttribute('d', d);
+      pulse.setAttribute('fill', 'none');
+      pulse.setAttribute('stroke', color);
+      pulse.setAttribute('stroke-width', '3');
+      pulse.setAttribute('stroke-linecap', 'round');
+      const total = cable.getTotalLength ? cable.getTotalLength() : 200;
+      pulse.setAttribute('stroke-dasharray', `${total * 0.12} ${total}`);
+      pulse.style.animation = `hub-flow ${1.8 + i * 0.4}s linear infinite`;
+      svg.appendChild(pulse);
+    });
+
+    // Hub → clips
+    const clipColors = ['#00ffcc', '#00ffcc', '#00d4ff', '#00d4ff'];
+    clips.forEach((clip, i) => {
+      const clipPt = rel(getCenter(clip));
+      const d = cubicPath(hubPt, clipPt);
+      const color = clipColors[i] || '#00d4ff';
+
+      const glow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      glow.setAttribute('d', d);
+      glow.setAttribute('fill', 'none');
+      glow.setAttribute('stroke', color);
+      glow.setAttribute('stroke-width', '4');
+      glow.setAttribute('opacity', '0.2');
+      glow.setAttribute('filter', 'url(#hub-glow-blue)');
+      svg.appendChild(glow);
+
+      const cable = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      cable.setAttribute('d', d);
+      cable.setAttribute('fill', 'none');
+      cable.setAttribute('stroke', color);
+      cable.setAttribute('stroke-width', '1.5');
+      cable.setAttribute('opacity', '0.6');
+      svg.appendChild(cable);
+
+      const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pulse.setAttribute('d', d);
+      pulse.setAttribute('fill', 'none');
+      pulse.setAttribute('stroke', color);
+      pulse.setAttribute('stroke-width', '3');
+      const total = cable.getTotalLength ? cable.getTotalLength() : 200;
+      pulse.setAttribute('stroke-dasharray', `${total * 0.1} ${total}`);
+      pulse.style.animation = `hub-flow ${2.2 + i * 0.35}s linear infinite`;
+      svg.appendChild(pulse);
+    });
+  }
+
+  function initHub() {
+    const section = document.getElementById('tech-hub');
+    if (!section) return;
+
+    // Draw after a tick so layout is stable
+    requestAnimationFrame(() => { requestAnimationFrame(drawCables); });
+
+    // Redraw on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(drawCables, 120);
+    });
+
+    // Popup logic
+    const popup = document.getElementById('hub-popup');
+    const popupVideo = document.getElementById('hub-popup-video');
+    const popupClose = document.getElementById('hub-popup-close');
+    if (!popup || !popupVideo || !popupClose) return;
+
+    function openPopup(src) {
+      popupVideo.src = src;
+      popupVideo.play().catch(() => {});
+      popup.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      popup.classList.remove('open');
+      popupVideo.pause();
+      popupVideo.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.hub-clip').forEach(clip => {
+      clip.addEventListener('click', () => {
+        const src = clip.dataset.src;
+        if (src) openPopup(src);
+      });
+      clip.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); clip.click(); }
+      });
+    });
+
+    popupClose.addEventListener('click', closePopup);
+    popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+  }
+
+  // Wait for full page render
+  if (document.readyState === 'complete') {
+    initHub();
+  } else {
+    window.addEventListener('load', initHub);
+  }
 })();
 </script>
 </body>
