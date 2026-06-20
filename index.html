@@ -336,20 +336,6 @@
   .chip-dot.teal { background: var(--teal); box-shadow: 0 0 0 4px rgba(0,212,198,0.14); }
 
   /* Demo clips grid */
-  .clips-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-  }
-
-  .clip-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-
   .clip-phone {
     width: 100%;
     border-radius: 28px;
@@ -391,12 +377,7 @@
     letter-spacing: 0.02em;
   }
 
-  @media (max-width: 900px) {
-    .clips-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  }
-
   @media (max-width: 520px) {
-    .clips-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .clip-phone { border-radius: 20px; padding: 7px; }
   }
 
@@ -420,8 +401,6 @@
 
   /* Feature cards — directional reveal */
   .feature-card.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .feature-card.reveal.from-left  { transform: translateX(-50px) translateY(0); }
-  .feature-card.reveal.from-right { transform: translateX(50px) translateY(0); }
   .feature-card.reveal.in { opacity: 1; transform: translate(0,0) !important; }
 
   /* Extras cards stagger */
@@ -467,6 +446,12 @@
     aspect-ratio: 9 / 19.45;
     object-fit: cover;
     border: 1px solid rgba(255,255,255,0.12);
+  }
+  .phone-frame img.hero-route-image {
+    aspect-ratio: 189 / 320;
+    object-fit: contain;
+    object-position: center;
+    background: #07101b;
   }
 
   .route-ticket,
@@ -544,66 +529,6 @@
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     background: rgba(9, 15, 22, 0.74);
-  }
-
-  /* Powered-by tech strip */
-  .powered-strip {
-    order: 90;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: rgba(9, 15, 22, 0.55);
-    padding: 18px 0;
-  }
-
-  .powered-inner {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .powered-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--soft);
-    margin-right: 8px;
-    white-space: nowrap;
-  }
-
-  .powered-sep {
-    width: 1px;
-    height: 20px;
-    background: var(--line);
-    flex-shrink: 0;
-  }
-
-  .tech-logo {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    transition: border-color 0.2s, background 0.2s;
-    white-space: nowrap;
-  }
-
-  .tech-logo:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.14);
-  }
-
-  .tech-logo svg { flex-shrink: 0; display: block; }
-
-  .tech-logo span {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.01em;
   }
 
   .proof-grid {
@@ -901,29 +826,6 @@
     min-height: 100%;
   }
 
-  .feature-shot {
-    min-height: 330px;
-    display: grid;
-    place-items: center;
-    background:
-      linear-gradient(145deg, rgba(0, 212, 198, 0.08), rgba(24, 168, 255, 0.06)),
-      #0a1118;
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-  }
-
-  .feature-shot img {
-    width: min(68%, 260px);
-    border-radius: 26px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.42);
-  }
-
-  .feature-shot.wide img {
-    width: 84%;
-    max-width: 390px;
-    border-radius: 18px;
-  }
-
   .feature-body {
     padding: 20px;
     display: grid;
@@ -933,8 +835,7 @@
   .feature-body p,
   .ai-panel p,
   .workflow-step p,
-  .price-card p,
-  .route-copy p {
+  .price-card p {
     color: var(--muted);
   }
 
@@ -1086,18 +987,6 @@
   }
 
   .assistant .chat-line strong { color: var(--amber); }
-
-  .route-lab {
-    display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 32px;
-    align-items: center;
-  }
-
-  .route-copy {
-    display: grid;
-    gap: 18px;
-  }
 
   .route-list {
     display: grid;
@@ -1335,7 +1224,6 @@
     }
 
     .hero-grid,
-    .route-lab,
     .film-grid,
     .download-box {
       grid-template-columns: 1fr;
@@ -1436,11 +1324,6 @@
       justify-content: center;
     }
 
-    .feature-card.reveal.from-left,
-    .feature-card.reveal.from-right {
-      transform: translateY(32px);
-    }
-
     .section {
       padding: 66px 0;
     }
@@ -1504,6 +1387,11 @@
       border-radius: 21px;
       height: 300px;
       aspect-ratio: auto;
+    }
+    .phone-frame img.hero-route-image {
+      height: auto;
+      aspect-ratio: 189 / 320;
+      object-fit: contain;
     }
 
     .route-ticket,
@@ -1627,10 +1515,6 @@
       border-bottom: 0;
     }
 
-    .feature-shot {
-      min-height: 260px;
-    }
-
     .film-section {
       padding: 54px 0 18px;
     }
@@ -1650,14 +1534,6 @@
     .brand-tile img {
       width: 70px;
       height: 70px;
-    }
-
-    .feature-shot img {
-      width: min(62%, 220px);
-    }
-
-    .feature-shot.wide img {
-      width: 88%;
     }
 
     .workflow-step,
@@ -1767,6 +1643,11 @@
   .tech-hub {
     position: relative; padding: 100px 0 120px;
     background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(0,212,198,0.05) 0%, transparent 70%);
+    isolation: isolate;
+  }
+  .tech-hub::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, rgba(3,10,15,0.62) 72%, rgba(3,10,15,0.92) 100%);
   }
   .tech-hub > .container { max-width: 100%; padding: 0 40px; }
   .tech-hub .section-head { text-align: center; max-width: 100%; margin-bottom: 64px; }
@@ -1774,16 +1655,22 @@
 
   .hub-svg-overlay {
     position: absolute; inset: 0; width: 100%; height: 100%;
-    pointer-events: none; overflow: visible; z-index: 0;
+    pointer-events: none; overflow: visible; z-index: 0; opacity: 0;
+    transition: opacity 0.6s ease;
   }
+  .tech-hub.hub-active .hub-svg-overlay { opacity: 1; }
   @keyframes hub-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -600; } }
+  @keyframes hub-receive {
+    0%, 72%, 100% { transform: scale(1); filter: brightness(1); }
+    80% { transform: scale(1.025); filter: brightness(1.18); }
+  }
   @keyframes node-float {
     0%,100% { transform: perspective(900px) rotateX(14deg) rotateY(var(--ry,0deg)) translateY(0px); }
     50%      { transform: perspective(900px) rotateX(14deg) rotateY(var(--ry,0deg)) translateY(-8px); }
   }
   @keyframes logo-bob {
-    0%,100% { transform: perspective(500px) rotateX(-6deg) translateY(0px) scale(1); filter: drop-shadow(0 0 22px rgba(0,212,198,0.55)) drop-shadow(0 10px 20px rgba(0,0,0,0.55)); }
-    50%      { transform: perspective(500px) rotateX(-6deg) translateY(-10px) scale(1.04); filter: drop-shadow(0 0 34px rgba(0,212,198,0.8)) drop-shadow(0 18px 28px rgba(0,0,0,0.45)); }
+    0%,100% { transform: perspective(1100px) rotateX(4deg) rotateY(-2deg) translateY(0); filter: drop-shadow(0 0 22px rgba(0,212,198,0.38)) drop-shadow(0 28px 30px rgba(0,0,0,0.58)); }
+    50%      { transform: perspective(1100px) rotateX(2deg) rotateY(2deg) translateY(-8px); filter: drop-shadow(0 0 34px rgba(0,212,198,0.56)) drop-shadow(0 34px 38px rgba(0,0,0,0.48)); }
   }
 
   /* Full-width nodes row */
@@ -1811,25 +1698,41 @@
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(0,0,0,0.45);
     backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-    cursor: default;
+    cursor: pointer;
     transform: perspective(900px) rotateX(14deg) rotateY(var(--ry, 0deg));
     animation: node-float 4.5s ease-in-out infinite;
     animation-delay: var(--delay, 0s);
     transition: box-shadow 0.35s, border-color 0.3s, transform 0.3s;
-    position: relative; overflow: hidden;
+    position: relative; overflow: visible;
+  }
+  /* Glow blob behind tech cards — uses --accent brand color */
+  .tech-node::after {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; width: 160%; height: 120%;
+    transform: translate(-50%, -55%);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0; z-index: -1;
+    filter: blur(44px);
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .tech-node:hover::after, .tech-node.is-active::after {
+    opacity: 0.32;
   }
   .tech-node::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
     background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, transparent 100%);
     pointer-events: none; border-radius: inherit;
   }
+  .tech-node:focus-visible { outline: 3px solid #00d4c6; outline-offset: 5px; }
   /* each card has its own brand accent color for depth layers */
   .tech-node:nth-child(1) { --ry: -10deg; --delay: 0s;   --accent: #df1b12; }
   .tech-node:nth-child(2) { --ry: -5deg;  --delay: 0.4s; --accent: #4285f4; }
   .tech-node:nth-child(3) { --ry:  0deg;  --delay: 0.8s; --accent: #4264fb; }
   .tech-node:nth-child(4) { --ry:  5deg;  --delay: 1.2s; --accent: #e8e8e8; }
   .tech-node:nth-child(5) { --ry:  10deg; --delay: 1.6s; --accent: #9c27b0; }
-  .tech-node:hover {
+  .tech-node:hover, .tech-node.is-active {
     border-color: rgba(0,212,198,0.6);
     box-shadow:
       0 1px 0 rgba(255,255,255,0.18),
@@ -1850,13 +1753,38 @@
     box-shadow: 0 8px 22px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
     transition: transform 0.3s;
   }
-  .tech-node:hover .tech-node-icon {
+  .tech-node-icon.brand-lockup {
+    width: min(180px, 100%); height: 80px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .tech-node-icon.brand-lockup img { display: block; object-fit: contain; }
+  .tech-node-icon.brand-lockup.mapbox-lockup img {
+    width: 160px; height: auto;
+  }
+  .tech-node-icon.logo-3d img {
+    width: 112px; max-width: none; height: 112px; object-fit: contain;
+    filter: drop-shadow(0 7px 5px rgba(0,0,0,0.48));
+  }
+  .tech-node-icon.logo-3d.openai-lockup img { width: 106px; height: 106px; }
+  .tech-node-icon.logo-3d.google-lockup { display: flex; align-items: center; justify-content: center; }
+  .tech-node-icon.logo-3d.google-lockup img { margin: 0 auto; }
+  .tech-node-icon.logo-3d.gemini-lockup img { width: 108px; height: 108px; }
+  .tech-node-icon.brand-lockup.tomtom-lockup { background: rgba(0,0,0,0.22); position: relative; }
+  .tech-node-icon.brand-lockup.tomtom-lockup::after {
+    content: ""; position: absolute; inset: 0;
+    background: url("assets/tomtom-logo-3d.png") center / 230px 230px no-repeat;
+    filter: brightness(1.42) drop-shadow(0 5px 4px rgba(0,0,0,0.75)) drop-shadow(0 0 8px rgba(255,255,255,0.12));
+  }
+  .tech-node-icon.brand-lockup.tomtom-lockup img {
+    width: 230px; max-width: none; height: 230px; object-fit: contain; opacity: 0;
+  }
+  .tech-node:hover .tech-node-icon, .tech-node.is-active .tech-node-icon {
     transform: scale(1.08) translateY(-2px);
   }
   .tech-node-name {
     font-family: "Space Grotesk", Inter, sans-serif;
     font-size: 19px; font-weight: 800; color: #fff;
-    letter-spacing: 0.01em; text-align: center;
+    width: 100%; display: block; letter-spacing: 0.01em; text-align: center;
     /* 3D layered text depth — uses card accent color */
     text-shadow:
       0 1px 0 var(--accent),
@@ -1867,64 +1795,218 @@
     line-height: 1.15;
   }
   .tech-node-desc {
-    font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.4;
+    width: 100%; display: block; font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.4;
     letter-spacing: 0.03em; text-transform: uppercase; font-weight: 500;
   }
 
   /* Hub center — big 3D */
   .hub-center-row {
-    display: flex; justify-content: center; margin: 60px 0 56px;
-    position: relative; z-index: 1;
+    display: flex; justify-content: center; margin: 72px 0 68px;
+    position: relative; z-index: 2;
   }
   .hub-center {
     display: flex; flex-direction: column; align-items: center; gap: 16px;
-    padding: 36px 64px 32px; border-radius: 28px;
-    border: 1px solid rgba(0,212,198,0.5);
-    background: linear-gradient(160deg, rgba(0,212,198,0.1) 0%, rgba(0,212,198,0.03) 100%);
-    animation: hub-pulse 3s ease-in-out infinite;
-    position: relative; overflow: hidden;
+    width: min(680px, 100%);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    position: relative;
+    overflow: visible;
+  }
+  .hub-center.is-processing .hub-logo { animation: logo-bob 3.5s ease-in-out infinite, hub-receive 2.4s ease-in-out infinite; }
+  /* Hub flash when a tech card is hovered */
+  .hub-center.is-receiving .hub-logo {
+    filter: brightness(1.35) drop-shadow(0 0 48px rgba(0,212,198,0.65)) drop-shadow(0 28px 30px rgba(0,0,0,0.5));
+    transform: perspective(1100px) rotateX(2deg) scale(1.04);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .hub-center .hub-logo {
+    transition: filter 0.4s ease, transform 0.4s ease;
   }
   .hub-center::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0,212,198,0.8), transparent);
+    display: none;
   }
+  /* Pulsing ripple rings around hub logo */
+  @keyframes hub-ripple-expand {
+    0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0.45; }
+    100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+  }
+  .hub-ripple {
+    position: absolute; top: 42%; left: 50%;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 212, 198, 0.3);
+    box-shadow: 0 0 18px rgba(0,212,198,0.12), inset 0 0 18px rgba(0,212,198,0.06);
+    transform: translate(-50%, -50%) scale(0.6);
+    animation: hub-ripple-expand 3.5s ease-out infinite;
+    pointer-events: none; z-index: 0;
+  }
+  .hub-ripple:nth-child(2) { animation-delay: 1.17s; border-color: rgba(0,212,198,0.22); }
+  .hub-ripple:nth-child(3) { animation-delay: 2.33s; border-color: rgba(0,212,198,0.15); }
   @keyframes hub-pulse {
     0%,100% { box-shadow: 0 0 40px rgba(0,212,198,0.18), 0 0 80px rgba(0,212,198,0.08), 0 32px 64px rgba(0,0,0,0.4); }
     50%      { box-shadow: 0 0 70px rgba(0,212,198,0.32), 0 0 140px rgba(0,212,198,0.14), 0 32px 64px rgba(0,0,0,0.4); }
   }
   .hub-logo {
-    width: 90px; height: 90px; object-fit: contain;
+    width: min(380px, 42vw);
+    height: auto;
+    aspect-ratio: 1;
+    display: block;
+    object-fit: contain;
+    border-radius: 28%;
+    transform-origin: center;
+    will-change: transform, filter;
     animation: logo-bob 3.5s ease-in-out infinite;
+  }
+  .hub-title-plate {
+    width: min(640px, 92vw);
+    padding: 20px 34px 22px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    position: relative; isolation: isolate; overflow: hidden;
+    border: 1px solid rgba(88,174,255,0.42);
+    border-radius: 10px;
+    background:
+      linear-gradient(145deg, rgba(27,44,66,0.82), rgba(5,11,20,0.72) 58%, rgba(11,24,42,0.78));
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    box-shadow:
+      0 2px 0 rgba(126,198,255,0.24),
+      0 5px 0 #0a1828,
+      0 9px 0 #06101d,
+      0 14px 0 rgba(2,7,14,0.9),
+      0 28px 42px rgba(0,0,0,0.56),
+      0 0 36px rgba(38,137,255,0.24),
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(55,145,255,0.2);
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+    transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+  }
+  .hub-title-plate::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    background: linear-gradient(110deg, rgba(255,255,255,0.1), transparent 28%, transparent 68%, rgba(51,146,255,0.08));
+    pointer-events: none;
+  }
+  @keyframes hub-plate-scan {
+    0% { transform: translateX(-130%) skewX(-18deg); opacity: 0; }
+    20% { opacity: 0.72; }
+    100% { transform: translateX(150%) skewX(-18deg); opacity: 0; }
+  }
+  .hub-title-plate::after {
+    content: ""; position: absolute; inset: -20% auto -20% -32%; z-index: 2;
+    width: 24%; pointer-events: none; opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(189,229,255,0.62), transparent);
+    filter: blur(2px);
+  }
+  .hub-center.is-receiving .hub-title-plate {
+    transform: perspective(1000px) rotateX(2deg) translateY(-3px);
+    border-color: rgba(117,202,255,0.95);
+    background: linear-gradient(145deg, rgba(34,67,105,0.9), rgba(5,15,29,0.78) 56%, rgba(16,43,76,0.88));
+    box-shadow:
+      0 2px 0 rgba(184,226,255,0.55),
+      0 6px 0 #102c4a,
+      0 11px 0 #071a31,
+      0 16px 0 rgba(1,8,18,0.95),
+      0 32px 48px rgba(0,0,0,0.6),
+      0 0 34px rgba(58,163,255,0.68),
+      0 0 78px rgba(29,112,255,0.38),
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(72,166,255,0.38);
+  }
+  .hub-center.is-receiving .hub-title-plate::after { animation: hub-plate-scan 0.72s ease-out; }
+  .hub-center.is-receiving .hub-name {
+    filter: brightness(1.2) saturate(1.18);
+    text-shadow:
+      0 1px 0 #78c9ff,
+      0 2px 0 #419dff,
+      0 4px 0 #1968be,
+      0 6px 0 #0a376d,
+      0 12px 26px rgba(0,0,0,0.72),
+      0 0 38px rgba(80,177,255,0.86);
   }
   .hub-name {
     font-family: "Space Grotesk", Inter, sans-serif;
-    font-size: 42px; font-weight: 900; letter-spacing: -0.02em;
-    color: #00ffcc;
+    font-size: 50px; font-weight: 900; letter-spacing: 0;
+    color: #74c9ff;
+    background: linear-gradient(180deg, #f4fbff 0%, #8ed8ff 32%, #399cff 62%, #1463d8 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.15px rgba(196,231,255,0.54);
     text-shadow:
-      0 1px 0 #00c8a0,
-      0 2px 0 #00a882,
-      0 3px 0 #008864,
-      0 4px 0 #006848,
-      0 5px 0 #004830,
-      0 6px 0 #002818,
+      0 1px 0 #4aa7ff,
+      0 2px 0 #277ed8,
+      0 3px 0 #155ca8,
+      0 4px 0 #0b3f79,
+      0 5px 0 #06284f,
+      0 7px 0 #031b38,
       0 10px 24px rgba(0,0,0,0.7),
-      0 0 40px rgba(0,255,200,0.35);
-    transform: perspective(600px) rotateX(6deg);
-    display: block; line-height: 1;
+      0 0 32px rgba(43,149,255,0.54);
+    transform: perspective(700px) rotateX(5deg);
+    display: block; line-height: 1; text-align: center;
   }
   .hub-tagline {
-    font-size: 14px; color: rgba(0,212,198,0.65); letter-spacing: 0.12em;
+    font-size: 13px; color: rgba(157,213,255,0.82); letter-spacing: 0.12em;
     text-transform: uppercase; font-weight: 600;
   }
 
+  .hub-flow-statement {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: -24px auto 44px; color: rgba(255,255,255,0.62);
+    font-size: 13px; font-weight: 700; text-transform: uppercase; position: relative; z-index: 2;
+  }
+  .hub-flow-statement span, .hub-flow-statement strong { background: #050d12; padding: 2px 5px; }
+  .hub-flow-statement::before, .hub-flow-statement::after {
+    content: ""; width: clamp(30px, 8vw, 110px); height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,198,0.62));
+  }
+  .hub-flow-statement::after { transform: rotate(180deg); }
+  .hub-flow-statement strong { color: #fff; font-size: 16px; text-transform: none; }
+  .hub-output-tabs { display: none; }
+
   .hub-outputs {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    position: relative; z-index: 1;
+    position: relative; z-index: 3;
+  }
+  /* Downward flow lines from phone clips */
+  .hub-outputs::after {
+    content: '';
+    position: absolute;
+    bottom: -70px; left: 0; right: 0; height: 70px;
+    background:
+      linear-gradient(to bottom, rgba(0,245,212,0.22), transparent) calc(12.5%) 0 / 1.5px 100% no-repeat,
+      linear-gradient(to bottom, rgba(0,212,255,0.22), transparent) calc(37.5%) 0 / 1.5px 100% no-repeat,
+      linear-gradient(to bottom, rgba(0,245,212,0.22), transparent) calc(62.5%) 0 / 1.5px 100% no-repeat,
+      linear-gradient(to bottom, rgba(0,212,255,0.22), transparent) calc(87.5%) 0 / 1.5px 100% no-repeat;
+    pointer-events: none;
+    z-index: 0;
   }
   .hub-clip {
     display: flex; flex-direction: column; align-items: center; gap: 12px;
-    cursor: pointer; outline: none;
+    cursor: pointer; outline: none; opacity: 1;
+    position: relative;
+    transition: opacity 0.24s ease, transform 0.24s ease;
   }
+  /* Play button overlay on phone clips */
+  .hub-clip::before {
+    content: '\25B6';
+    position: absolute; top: 38%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    width: 56px; height: 56px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    color: #fff; font-size: 18px; padding-left: 3px;
+    opacity: 0; z-index: 6;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 24px rgba(0,212,198,0.15);
+  }
+  .hub-clip:hover::before, .hub-clip:focus::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .hub-outputs.has-selection .hub-clip:not(.is-active) { opacity: 0.34; transform: scale(0.97); }
+  .hub-clip.is-active { opacity: 1; transform: translateY(-5px); }
   .hub-clip .clip-phone {
     width: 100%; border-radius: 26px; padding: 9px;
     background: linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.04)), #081017;
@@ -1942,11 +2024,25 @@
     transform: translateX(-50%); width: 52px; height: 12px;
     border-radius: 0 0 8px 8px; background: #06090d; z-index: 2;
   }
+  .hub-clip .clip-phone::after {
+    content: ""; position: absolute; left: -4px; top: 22%; width: 3px; height: 54px;
+    border-radius: 3px 0 0 3px; background: rgba(255,255,255,0.24);
+    box-shadow: 0 72px 0 rgba(255,255,255,0.16);
+  }
   .hub-clip .clip-phone video {
     width: 100%; border-radius: 19px; aspect-ratio: 9/18.5;
     object-fit: cover; display: block; pointer-events: none;
   }
-  .hub-clip .clip-label { font-size: 13px; font-weight: 600; color: var(--muted); text-align: center; }
+  .hub-clip .clip-label { font-size: 15px; font-weight: 750; color: #fff; text-align: center; margin: 0; }
+  .hub-clip .clip-detail { font-size: 12px; color: var(--muted); text-align: center; margin: -7px 0 0; }
+
+  .hub-cable { transition: opacity 0.24s ease, filter 0.24s ease; }
+  .hub-svg-overlay.has-selection .hub-cable:not(.is-active) { opacity: 0.11 !important; }
+  .hub-svg-overlay .hub-cable.is-active { opacity: 1 !important; filter: saturate(1.35) brightness(1.35); }
+  /* Speed up impulse pulses when cable is active */
+  .hub-svg-overlay .hub-cable.is-active.hub-pulse {
+    animation-duration: 0.7s !important;
+  }
 
   /* Popup */
   .hub-popup {
@@ -1973,22 +2069,55 @@
     .tech-node { flex: 0 0 calc(33% - 10px); padding: 20px 14px; }
     .hub-outputs { grid-template-columns: repeat(2, 1fr); }
     .hub-name { font-size: 28px; }
-    .hub-center { padding: 28px 40px 24px; }
+    .hub-center { width: min(680px, 100%); padding: 0; }
+    .hub-logo { width: min(300px, 58vw); }
+    .hub-title-plate { width: min(560px, 90vw); }
   }
   @media (max-width: 640px) {
     .tech-hub > .container { padding: 0 16px; }
     .hub-sources { gap: 8px; }
     .tech-node { flex: 0 0 calc(50% - 8px); padding: 16px 12px; }
     .tech-node-icon { width: 48px; height: 48px; }
+    .tech-node-icon.logo-3d img { width: 72px; height: 72px; }
+    .tech-node-icon.logo-3d.openai-lockup img { width: 68px; height: 68px; }
+    .tech-node-icon.logo-3d.gemini-lockup img { width: 70px; height: 70px; }
+    .tech-node-icon.brand-lockup { width: min(132px, 100%); height: 48px; border-radius: 12px; }
+    .tech-node-icon.brand-lockup.mapbox-lockup img { width: 118px; }
+    .tech-node-icon.brand-lockup.tomtom-lockup::after { background-size: 178px 178px; }
+    .tech-node-icon.brand-lockup.tomtom-lockup img { width: 178px; height: 178px; }
     .tech-node-name { font-size: 14px; }
     .tech-node-desc { font-size: 11px; }
-    .hub-center { padding: 22px 28px 20px; }
-    .hub-logo { width: 68px; height: 68px; }
-    .hub-name { font-size: 22px; }
+    .hub-center-row { margin: 48px 0 54px; }
+    .hub-center { width: 100%; padding: 0; }
+    .hub-logo { width: min(230px, 72vw); height: auto; }
+    .hub-title-plate { width: calc(100% - 8px); padding: 15px 12px 17px; gap: 8px; }
+    .hub-name { font-size: 30px; }
+    .hub-tagline { font-size: 10px; line-height: 1.35; text-align: center; }
+    .hub-flow-statement { margin: -18px auto 28px; gap: 9px; font-size: 10px; }
+    .hub-flow-statement strong { font-size: 14px; }
+    .hub-output-tabs {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+      margin: 0 0 20px; position: relative; z-index: 2;
+    }
+    .hub-output-tab {
+      min-height: 48px; padding: 10px 8px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.13); background: #0b151b;
+      color: rgba(255,255,255,0.66); font: 700 12px/1.2 Inter, sans-serif;
+      cursor: pointer; transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .hub-output-tab[aria-selected="true"] {
+      color: #fff; background: rgba(0,212,198,0.13); border-color: rgba(0,212,198,0.54);
+    }
+    .hub-outputs { display: block; }
+    .hub-clip { display: none; width: min(286px, 82vw); margin: 0 auto; }
+    .hub-clip.is-mobile-active { display: flex; }
+    .hub-clip .clip-label { font-size: 16px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hub-center { animation: none; }
-    @keyframes hub-flow { to { stroke-dashoffset: 0; } }
+    .tech-node, .hub-logo, .hub-center.is-processing .hub-logo, .hub-cable, .hub-ripple { animation: none !important; transition: none !important; }
+    .hub-svg-overlay .hub-pulse { display: none; }
+    .hub-ripple { display: none; }
+    .hub-title-plate::after { display: none; }
   }
 </style>
 </head>
@@ -2056,7 +2185,7 @@
           <p class="ticket-copy">Live route, POI timeline, parking and fuel markers.</p>
         </div>
         <div class="phone-frame">
-          <img src="assets/navigation-live.png" alt="TruckExpoAI navigation screen with route and truck parking marker" fetchpriority="high">
+          <img class="hero-route-image" src="assets/navigation-3d-route.jpg" alt="TruckExpoAI 3D navigation route with truck parking markers" fetchpriority="high">
         </div>
         <div class="hos-ticket">
           <div class="ticket-top"><span>Tacho</span><span class="pill amber">Plan</span></div>
@@ -2088,94 +2217,6 @@
     </div>
   </section>
 
-
-  <section class="section launch-board" id="launch-board" aria-label="TruckExpoAI launch board">
-    <div class="container">
-      <div class="launch-head reveal">
-        <span class="eyebrow">Launch board</span>
-        <h2>The AI cockpit, proven by the real app.</h2>
-        <p>One fast view for route safety, tachograph context, parking, cameras and voice actions.</p>
-      </div>
-
-      <div class="launch-bento">
-        <article class="launch-card hero-tile reveal">
-          <div class="launch-copy">
-            <span class="tagline">Android beta</span>
-            <h2>Built like an app-store launch, backed by live road tools.</h2>
-            <p>Real screenshots, real routing services and a download-ready slot without promising the APK before Sunday.</p>
-            <div class="launch-metrics">
-              <div class="metric-pill">
-                <strong>59,436</strong>
-                <span>TransParking stops</span>
-              </div>
-              <div class="metric-pill">
-                <strong>EU 561</strong>
-                <span>HOS logic</span>
-              </div>
-              <div class="metric-pill">
-                <strong>2 AI</strong>
-                <span>GPT + Gemini</span>
-              </div>
-            </div>
-            <a class="btn btn-primary" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Beta%20APK%20Request">Request beta access</a>
-          </div>
-          <div class="launch-phone">
-            <img src="assets/navigation-live.png" alt="TruckExpoAI live navigation screen" loading="lazy">
-          </div>
-        </article>
-
-        <article class="launch-card engine-tile reveal">
-          <span class="tagline">Real engine</span>
-          <h3>Not a mockup stack. The site can say exactly what the app runs.</h3>
-          <div class="engine-grid">
-            <div class="engine-pill">
-              <strong>TomTom</strong>
-              <span>Truck routes</span>
-            </div>
-            <div class="engine-pill">
-              <strong>Mapbox</strong>
-              <span>Live map layers</span>
-            </div>
-            <div class="engine-pill">
-              <strong>Overpass</strong>
-              <span>Cameras + limits</span>
-            </div>
-            <div class="engine-pill">
-              <strong>Google</strong>
-              <span>Places fallback</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="launch-card reveal">
-          <span class="tagline">Route safety</span>
-          <h3>Restriction checks before the driver commits.</h3>
-          <ul class="launch-list">
-            <li>Truck ban calendar from trafficban.com</li>
-            <li>Height, width, weight and ADR checks via Overpass</li>
-            <li>Speed camera warnings along the route</li>
-          </ul>
-        </article>
-
-        <article class="launch-card reveal">
-          <span class="tagline">Parking intelligence</span>
-          <h3>Stops stay part of the route, not a separate search.</h3>
-          <ul class="launch-list">
-            <li>TransParking handoff for selected stops</li>
-            <li>Fuel and truck parking near route</li>
-            <li>Google Places fallback with G badge</li>
-          </ul>
-        </article>
-
-        <article class="launch-card launch-download reveal">
-          <span class="tagline">Sunday slot</span>
-          <h3>Direct APK download can drop into this block.</h3>
-          <p>For now it keeps the beta request flow. On Sunday we swap the CTA to the real download link and add a QR code.</p>
-          <a class="btn btn-secondary" href="#download">See Android access</a>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section class="section film-section" id="film" aria-label="TruckExpoAI launch film">
     <div class="container film-grid">
@@ -2218,37 +2259,37 @@
       </div>
 
       <div class="hub-sources">
-        <div class="tech-node reveal">
-          <div class="tech-node-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#DF1B12"/><text x="12" y="16.5" text-anchor="middle" font-size="8" font-weight="900" font-family="Arial,sans-serif" fill="white">TT</text></svg>
+        <div class="tech-node reveal" data-output="1" role="button" tabindex="0" aria-label="TomTom powers GPS live start">
+          <div class="tech-node-icon brand-lockup tomtom-lockup">
+            <img src="assets/tomtom-logo-3d.png" alt="TomTom" width="1254" height="1254" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">TomTom</span>
           <span class="tech-node-desc">Routing &amp; search</span>
         </div>
-        <div class="tech-node reveal">
-          <div class="tech-node-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <div class="tech-node reveal" data-output="3" role="button" tabindex="0" aria-label="Google powers route and POI search">
+          <div class="tech-node-icon logo-3d google-lockup">
+            <img src="assets/google-logo-3d.png" alt="Google" width="1254" height="1254" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">Google</span>
           <span class="tech-node-desc">Places &amp; fallback</span>
         </div>
-        <div class="tech-node reveal">
-          <div class="tech-node-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#4264FB"/><circle cx="12" cy="12" r="4.5" fill="white"/><path d="M12 3.5L14 8l5 0-4 3 1.5 5.5L12 13.5 7.5 16.5 9 11 5 8l5 0Z" fill="white" opacity="0.28"/></svg>
+        <div class="tech-node reveal" data-output="2" role="button" tabindex="0" aria-label="Mapbox powers the live navigation HUD">
+          <div class="tech-node-icon brand-lockup mapbox-lockup">
+            <img src="assets/mapbox-logo-3d.png" alt="Mapbox" width="2100" height="749" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">Mapbox</span>
           <span class="tech-node-desc">Map &amp; layers</span>
         </div>
-        <div class="tech-node reveal">
-          <div class="tech-node-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#1a1a1a"/><path d="M19.28 9.28a4.33 4.33 0 0 0-.37-3.56 4.38 4.38 0 0 0-4.72-2.1A4.35 4.35 0 0 0 11 2a4.38 4.38 0 0 0-4.17 3.03 4.35 4.35 0 0 0-2.91 2.12 4.38 4.38 0 0 0 .54 5.15 4.33 4.33 0 0 0 .37 3.56 4.38 4.38 0 0 0 4.72 2.1A4.35 4.35 0 0 0 13 19a4.38 4.38 0 0 0 4.18-3.04 4.35 4.35 0 0 0 2.9-2.11 4.38 4.38 0 0 0-.8-4.57z" fill="white" opacity="0.88"/></svg>
+        <div class="tech-node reveal" data-output="0" role="button" tabindex="0" aria-label="GPT-4o powers map actions">
+          <div class="tech-node-icon logo-3d openai-lockup">
+            <img src="assets/openai-logo-3d.png" alt="OpenAI" width="1254" height="1254" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">GPT-4o</span>
           <span class="tech-node-desc">Map actions</span>
         </div>
-        <div class="tech-node reveal">
-          <div class="tech-node-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24"><defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4285F4"/><stop offset="100%" stop-color="#9C27B0"/></linearGradient></defs><circle cx="12" cy="12" r="11" fill="#111"/><path d="M12 4C6.48 4 2 8.48 2 14s4.48 8 10 8 10-4.48 10-8S17.52 4 12 4zm-1 11v-3H7l5-6v3h4l-5 6z" fill="url(#gm)"/></svg>
+        <div class="tech-node reveal" data-output="0" role="button" tabindex="0" aria-label="Gemini powers the AI co-driver">
+          <div class="tech-node-icon logo-3d gemini-lockup">
+            <img src="assets/gemini-logo-3d.png" alt="Gemini" width="1254" height="1254" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">Gemini 2.0</span>
           <span class="tech-node-desc">AI co-driver</span>
@@ -2257,36 +2298,54 @@
 
       <div class="hub-center-row">
         <div class="hub-center">
-          <img src="assets/logo-icon.png" alt="TruckExpoAI" class="hub-logo">
-          <span class="hub-name">TruckExpoAI</span>
-          <span class="hub-tagline">Truck Intelligence Platform</span>
+          <div class="hub-ripple" aria-hidden="true"></div>
+          <div class="hub-ripple" aria-hidden="true"></div>
+          <div class="hub-ripple" aria-hidden="true"></div>
+          <img src="assets/truckexpoai-hub-3d.png" alt="TruckExpoAI 3D technology hub" class="hub-logo" loading="lazy" decoding="async">
+          <div class="hub-title-plate">
+            <span class="hub-name">TruckExpoAI</span>
+            <span class="hub-tagline">Truck Intelligence Platform</span>
+          </div>
         </div>
       </div>
 
+      <p class="hub-flow-statement"><span>Five engines</span><strong>One AI. Every road tool.</strong><span>Real output</span></p>
+
+      <div class="hub-output-tabs" role="tablist" aria-label="Product demos">
+        <button class="hub-output-tab" type="button" role="tab" aria-selected="true" data-output="0">Voice AI</button>
+        <button class="hub-output-tab" type="button" role="tab" aria-selected="false" data-output="1">Navigation</button>
+        <button class="hub-output-tab" type="button" role="tab" aria-selected="false" data-output="2">Live HUD</button>
+        <button class="hub-output-tab" type="button" role="tab" aria-selected="false" data-output="3">Parking &amp; POI</button>
+      </div>
+
       <div class="hub-outputs">
-        <div class="hub-clip reveal" data-src="assets/clips/01-feature-menu.mp4" role="button" tabindex="0" aria-label="Play feature menu clip">
+        <div class="hub-clip is-mobile-active reveal" data-src="assets/clips/01-feature-menu.mp4" data-output="0" role="button" tabindex="0" aria-label="Play voice AI and feature menu clip">
           <div class="clip-phone">
             <video src="assets/clips/01-feature-menu.mp4" poster="assets/clips/01-feature-menu.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
-          <p class="clip-label">Feature menu</p>
+          <p class="clip-label">Voice AI &amp; control</p>
+          <p class="clip-detail">Speak, transcribe, act on the map</p>
         </div>
-        <div class="hub-clip reveal" data-src="assets/clips/02-demo-gps-start.mp4" role="button" tabindex="0" aria-label="Play GPS start clip">
+        <div class="hub-clip reveal" data-src="assets/clips/02-demo-gps-start.mp4" data-output="1" role="button" tabindex="0" aria-label="Play truck navigation clip">
           <div class="clip-phone">
             <video src="assets/clips/02-demo-gps-start.mp4" poster="assets/clips/02-demo-gps-start.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
-          <p class="clip-label">GPS live start</p>
+          <p class="clip-label">Truck navigation</p>
+          <p class="clip-detail">Route, restrictions, live traffic</p>
         </div>
-        <div class="hub-clip reveal" data-src="assets/clips/03-live-navigation-hud.mp4" role="button" tabindex="0" aria-label="Play HUD clip">
+        <div class="hub-clip reveal" data-src="assets/clips/03-live-navigation-hud.mp4" data-output="2" role="button" tabindex="0" aria-label="Play live HUD and tacho clip">
           <div class="clip-phone">
             <video src="assets/clips/03-live-navigation-hud.mp4" poster="assets/clips/03-live-navigation-hud.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <p class="clip-label">Live HUD &amp; tacho</p>
+          <p class="clip-detail">Guidance and driver-time awareness</p>
         </div>
-        <div class="hub-clip reveal" data-src="assets/clips/04-route-poi-timeline.mp4" role="button" tabindex="0" aria-label="Play POI timeline clip">
+        <div class="hub-clip reveal" data-src="assets/clips/04-route-poi-timeline.mp4" data-output="3" role="button" tabindex="0" aria-label="Play parking and POI timeline clip">
           <div class="clip-phone">
             <video src="assets/clips/04-route-poi-timeline.mp4" poster="assets/clips/04-route-poi-timeline.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
-          <p class="clip-label">Route &amp; POI timeline</p>
+          <p class="clip-label">Parking &amp; POI</p>
+          <p class="clip-detail">Stops, cameras and route timeline</p>
         </div>
       </div>
     </div>
@@ -2862,9 +2921,6 @@
     ['.ai-panel.assistant .tagline', 'ai2_tag', 'text'],
     ['.ai-panel.assistant h3', 'ai2_h', 'text'],
     ['.ai-panel.assistant > p', 'ai2_p', 'text'],
-    ['.route-copy .eyebrow', 'ri_eyebrow', 'text'],
-    ['.route-copy h2', 'ri_h', 'text'],
-    ['.route-copy > p', 'ri_p', 'text'],
     ['.pricing .eyebrow', 'pr_eyebrow', 'text'],
     ['.pricing h2', 'pr_h', 'text'],
     ['.price-card:nth-child(1) .tagline', 'free_tag', 'text'],
@@ -3535,6 +3591,10 @@
 <script>
 /* ── Tech Hub: animated SVG cables + video popup ── */
 (function () {
+  let activeOutput = null;
+  let activeSource = null;
+  let hubVisible = false;
+
   function getCenter(el) {
     const r = el.getBoundingClientRect();
     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -3585,13 +3645,21 @@
 
     const hubPt = rel(getCenter(hub));
 
-    function makeCable(d, color, filterBig, filterSmall) {
+    function markCable(el, kind, index, isPulse) {
+      el.classList.add('hub-cable', `hub-cable-${kind}`, `hub-cable-${kind}-${index}`);
+      if (isPulse) el.classList.add('hub-pulse');
+      el.dataset.kind = kind;
+      el.dataset.index = String(index);
+    }
+
+    function makeCable(d, color, filterBig, filterSmall, kind, index) {
       // outer soft glow (wide)
       const glow2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       glow2.setAttribute('d', d); glow2.setAttribute('fill', 'none');
       glow2.setAttribute('stroke', color); glow2.setAttribute('stroke-width', '18');
       glow2.setAttribute('stroke-linecap', 'round'); glow2.setAttribute('opacity', '0.08');
       glow2.setAttribute('filter', `url(#${filterBig})`);
+      markCable(glow2, kind, index, false);
       svg.appendChild(glow2);
 
       // inner glow
@@ -3600,6 +3668,7 @@
       glow1.setAttribute('stroke', color); glow1.setAttribute('stroke-width', '6');
       glow1.setAttribute('stroke-linecap', 'round'); glow1.setAttribute('opacity', '0.25');
       glow1.setAttribute('filter', `url(#${filterSmall})`);
+      markCable(glow1, kind, index, false);
       svg.appendChild(glow1);
 
       // main cable line
@@ -3607,12 +3676,13 @@
       cable.setAttribute('d', d); cable.setAttribute('fill', 'none');
       cable.setAttribute('stroke', color); cable.setAttribute('stroke-width', '2');
       cable.setAttribute('stroke-linecap', 'round'); cable.setAttribute('opacity', '0.85');
+      markCable(cable, kind, index, false);
       svg.appendChild(cable);
 
       return cable;
     }
 
-    function makePulse(d, color, total, dur) {
+    function makePulse(d, color, total, dur, kind, index) {
       const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       pulse.setAttribute('d', d); pulse.setAttribute('fill', 'none');
       pulse.setAttribute('stroke', color); pulse.setAttribute('stroke-width', '5');
@@ -3620,6 +3690,7 @@
       const dash = Math.max(18, total * 0.06);
       pulse.setAttribute('stroke-dasharray', `${dash} ${total}`);
       pulse.style.animation = `hub-flow ${dur}s linear infinite`;
+      markCable(pulse, kind, index, true);
       svg.appendChild(pulse);
 
       // bright white core of the impulse
@@ -3630,6 +3701,7 @@
       const coreOffset = Math.max(6, total * 0.03);
       core.setAttribute('stroke-dasharray', `${coreOffset} ${total}`);
       core.style.animation = `hub-flow ${dur}s linear infinite`;
+      markCable(core, kind, index, true);
       svg.appendChild(core);
     }
 
@@ -3638,9 +3710,9 @@
       const nodePt = rel(getCenter(node));
       const d = cubicPath(nodePt, hubPt);
       const color = cableColors[i] || '#00ffcc';
-      const cable = makeCable(d, color, 'hub-glow-teal', 'hub-glow-blue');
+      const cable = makeCable(d, color, 'hub-glow-teal', 'hub-glow-blue', 'source', i);
       const total = cable.getTotalLength ? cable.getTotalLength() : 250;
-      makePulse(d, color, total, 1.6 + i * 0.3);
+      makePulse(d, color, total, 1.6 + i * 0.3, 'source', i);
     });
 
     // Hub → clips
@@ -3649,9 +3721,46 @@
       const clipPt = rel(getCenter(clip));
       const d = cubicPath(hubPt, clipPt);
       const color = clipColors[i] || '#00d4ff';
-      const cable = makeCable(d, color, 'hub-glow-blue', 'hub-glow-teal');
+      const cable = makeCable(d, color, 'hub-glow-blue', 'hub-glow-teal', 'output', i);
       const total = cable.getTotalLength ? cable.getTotalLength() : 250;
-      makePulse(d, color, total, 2.0 + i * 0.3);
+      makePulse(d, color, total, 2.0 + i * 0.3, 'output', i);
+    });
+
+    applySelection();
+  }
+
+  function applySelection() {
+    const svg = document.getElementById('hub-svg');
+    const outputs = document.querySelector('.hub-outputs');
+    const hub = document.querySelector('.hub-center');
+    if (!svg || !outputs || !hub) return;
+
+    const hasSelection = activeOutput !== null;
+    svg.classList.toggle('has-selection', hasSelection);
+    outputs.classList.toggle('has-selection', hasSelection);
+    hub.classList.toggle('is-processing', hubVisible);
+    hub.classList.toggle('is-receiving', activeSource !== null);
+
+    document.querySelectorAll('.tech-node').forEach((node, index) => {
+      node.classList.toggle('is-active', index === activeSource);
+    });
+    document.querySelectorAll('.hub-clip').forEach((clip, index) => {
+      clip.classList.toggle('is-active', index === activeOutput);
+    });
+    document.querySelectorAll('.hub-cable').forEach(cable => {
+      const index = Number(cable.dataset.index);
+      const matchesSource = cable.dataset.kind === 'source' && index === activeSource;
+      const matchesOutput = cable.dataset.kind === 'output' && index === activeOutput;
+      cable.classList.toggle('is-active', matchesSource || matchesOutput);
+    });
+  }
+
+  function updateHubVideos() {
+    const mobile = window.matchMedia('(max-width: 640px)').matches;
+    document.querySelectorAll('.hub-clip video').forEach((video, index) => {
+      const shouldPlay = hubVisible && (!mobile || index === (activeOutput ?? 0));
+      if (shouldPlay) video.play().catch(() => {});
+      else video.pause();
     });
   }
 
@@ -3662,11 +3771,65 @@
     // Draw after a tick so layout is stable
     requestAnimationFrame(() => { requestAnimationFrame(drawCables); });
 
+    const nodes = Array.from(section.querySelectorAll('.tech-node'));
+    const clips = Array.from(section.querySelectorAll('.hub-clip'));
+    const tabs = Array.from(section.querySelectorAll('.hub-output-tab'));
+    const canHover = window.matchMedia('(hover: hover)').matches;
+
+    function selectOutput(outputIndex, sourceIndex = null) {
+      activeOutput = outputIndex;
+      activeSource = sourceIndex;
+      applySelection();
+      tabs.forEach((tab, index) => tab.setAttribute('aria-selected', String(index === outputIndex)));
+      clips.forEach((clip, index) => clip.classList.toggle('is-mobile-active', index === outputIndex));
+      updateHubVideos();
+    }
+
+    function clearSelection() {
+      activeOutput = null;
+      activeSource = null;
+      applySelection();
+    }
+
+    nodes.forEach((node, sourceIndex) => {
+      const outputIndex = Number(node.dataset.output);
+      node.addEventListener('pointerenter', () => selectOutput(outputIndex, sourceIndex));
+      node.addEventListener('pointerleave', () => { if (canHover) clearSelection(); });
+      node.addEventListener('focus', () => selectOutput(outputIndex, sourceIndex));
+      node.addEventListener('blur', clearSelection);
+      node.addEventListener('click', () => selectOutput(outputIndex, sourceIndex));
+      node.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectOutput(outputIndex, sourceIndex);
+        }
+      });
+    });
+
+    clips.forEach((clip, outputIndex) => {
+      clip.addEventListener('pointerenter', () => selectOutput(outputIndex));
+      clip.addEventListener('pointerleave', () => { if (canHover) clearSelection(); });
+      clip.addEventListener('focus', () => selectOutput(outputIndex));
+      clip.addEventListener('blur', clearSelection);
+    });
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => selectOutput(Number(tab.dataset.output)));
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      hubVisible = entries[0].isIntersecting;
+      section.classList.toggle('hub-active', hubVisible);
+      applySelection();
+      updateHubVideos();
+    }, { threshold: 0.12 });
+    observer.observe(section);
+
     // Redraw on resize
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(drawCables, 120);
+      resizeTimer = setTimeout(() => { drawCables(); updateHubVideos(); }, 120);
     });
 
     // Popup logic
