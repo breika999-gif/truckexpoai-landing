@@ -1793,47 +1793,82 @@
     width: 100%; gap: 16px;
   }
   .tech-node {
-    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 14px;
-    padding: 28px 18px 24px;
-    border-radius: 24px;
-    background: linear-gradient(160deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 60%, rgba(0,0,0,0.1) 100%);
-    border: 1px solid rgba(255,255,255,0.16);
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.4);
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 16px;
+    padding: 36px 20px 32px;
+    border-radius: 28px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 60%, rgba(0,0,0,0.12) 100%);
+    border: 1px solid rgba(255,255,255,0.18);
+    /* 3D thickness: stacked bottom+right edge layers */
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.12),
+      0 2px 0 rgba(0,0,0,0.35),
+      0 4px 0 rgba(0,0,0,0.28),
+      0 6px 0 rgba(0,0,0,0.22),
+      0 8px 0 rgba(0,0,0,0.16),
+      0 10px 0 rgba(0,0,0,0.10),
+      0 12px 0 rgba(0,0,0,0.06),
+      0 28px 56px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(0,0,0,0.45);
     backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
     cursor: default;
     transform: perspective(900px) rotateX(14deg) rotateY(var(--ry, 0deg));
     animation: node-float 4.5s ease-in-out infinite;
     animation-delay: var(--delay, 0s);
-    transition: box-shadow 0.3s, border-color 0.3s;
+    transition: box-shadow 0.35s, border-color 0.3s, transform 0.3s;
     position: relative; overflow: hidden;
   }
   .tech-node::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, transparent 100%);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, transparent 100%);
     pointer-events: none; border-radius: inherit;
   }
-  .tech-node:nth-child(1) { --ry: -10deg; --delay: 0s; }
-  .tech-node:nth-child(2) { --ry: -5deg;  --delay: 0.4s; }
-  .tech-node:nth-child(3) { --ry:  0deg;  --delay: 0.8s; }
-  .tech-node:nth-child(4) { --ry:  5deg;  --delay: 1.2s; }
-  .tech-node:nth-child(5) { --ry:  10deg; --delay: 1.6s; }
+  /* each card has its own brand accent color for depth layers */
+  .tech-node:nth-child(1) { --ry: -10deg; --delay: 0s;   --accent: #df1b12; }
+  .tech-node:nth-child(2) { --ry: -5deg;  --delay: 0.4s; --accent: #4285f4; }
+  .tech-node:nth-child(3) { --ry:  0deg;  --delay: 0.8s; --accent: #4264fb; }
+  .tech-node:nth-child(4) { --ry:  5deg;  --delay: 1.2s; --accent: #e8e8e8; }
+  .tech-node:nth-child(5) { --ry:  10deg; --delay: 1.6s; --accent: #9c27b0; }
   .tech-node:hover {
-    border-color: rgba(0,212,198,0.55);
-    box-shadow: 0 28px 72px rgba(0,0,0,0.55), 0 0 40px rgba(0,212,198,0.22), inset 0 1px 0 rgba(255,255,255,0.22);
+    border-color: rgba(0,212,198,0.6);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.18),
+      0 2px 0 rgba(0,212,198,0.25),
+      0 4px 0 rgba(0,212,198,0.18),
+      0 6px 0 rgba(0,212,198,0.12),
+      0 8px 0 rgba(0,212,198,0.08),
+      0 10px 0 rgba(0,0,0,0.10),
+      0 34px 72px rgba(0,0,0,0.6),
+      0 0 50px rgba(0,212,198,0.22),
+      inset 0 1px 0 rgba(255,255,255,0.25);
+    transform: perspective(900px) rotateX(10deg) rotateY(var(--ry, 0deg)) translateY(-4px);
   }
   .tech-node-icon {
-    width: 72px; height: 72px; display: grid; place-items: center;
-    border-radius: 18px;
-    background: rgba(0,0,0,0.3);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    width: 80px; height: 80px; display: grid; place-items: center;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.32);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: transform 0.3s;
+  }
+  .tech-node:hover .tech-node-icon {
+    transform: scale(1.08) translateY(-2px);
   }
   .tech-node-name {
-    font-size: 20px; font-weight: 800; color: #fff;
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 19px; font-weight: 800; color: #fff;
     letter-spacing: 0.01em; text-align: center;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    /* 3D layered text depth — uses card accent color */
+    text-shadow:
+      0 1px 0 var(--accent),
+      0 2px 0 color-mix(in srgb, var(--accent) 70%, #000),
+      0 3px 0 color-mix(in srgb, var(--accent) 45%, #000),
+      0 4px 0 rgba(0,0,0,0.4),
+      0 8px 14px rgba(0,0,0,0.55);
+    line-height: 1.15;
   }
   .tech-node-desc {
-    font-size: 13px; color: rgba(255,255,255,0.55); text-align: center; line-height: 1.4;
+    font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.4;
+    letter-spacing: 0.03em; text-transform: uppercase; font-weight: 500;
   }
 
   /* Hub center — big 3D */
