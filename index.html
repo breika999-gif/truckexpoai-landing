@@ -1769,14 +1769,13 @@
   .tech-node-icon.logo-3d.google-lockup { display: flex; align-items: center; justify-content: center; }
   .tech-node-icon.logo-3d.google-lockup img { margin: 0 auto; }
   .tech-node-icon.logo-3d.gemini-lockup img { width: 108px; height: 108px; }
-  .tech-node-icon.brand-lockup.tomtom-lockup { background: rgba(0,0,0,0.22); position: relative; }
-  .tech-node-icon.brand-lockup.tomtom-lockup::after {
-    content: ""; position: absolute; inset: 0;
-    background: url("assets/tomtom-logo-3d.png") center / 230px 230px no-repeat;
-    filter: brightness(1.42) drop-shadow(0 5px 4px rgba(0,0,0,0.75)) drop-shadow(0 0 8px rgba(255,255,255,0.12));
+  .tech-node-icon.logo-3d.tomtom-lockup img {
+    width: 106px;
+    height: 106px;
   }
-  .tech-node-icon.brand-lockup.tomtom-lockup img {
-    width: 230px; max-width: none; height: 230px; object-fit: contain; opacity: 0;
+  .tech-node-icon.logo-3d.mapbox-lockup img {
+    width: 120px;
+    height: 120px;
   }
   .tech-node:hover .tech-node-icon, .tech-node.is-active .tech-node-icon {
     transform: scale(1.08) translateY(-2px);
@@ -2185,10 +2184,8 @@
     .tech-node-icon.logo-3d img { width: 72px; height: 72px; }
     .tech-node-icon.logo-3d.openai-lockup img { width: 68px; height: 68px; }
     .tech-node-icon.logo-3d.gemini-lockup img { width: 70px; height: 70px; }
-    .tech-node-icon.brand-lockup { width: min(132px, 100%); height: 48px; border-radius: 12px; }
-    .tech-node-icon.brand-lockup.mapbox-lockup img { width: 118px; }
-    .tech-node-icon.brand-lockup.tomtom-lockup::after { background-size: 178px 178px; }
-    .tech-node-icon.brand-lockup.tomtom-lockup img { width: 178px; height: 178px; }
+    .tech-node-icon.logo-3d.tomtom-lockup img { width: 70px; height: 70px; }
+    .tech-node-icon.logo-3d.mapbox-lockup img { width: 76px; height: 76px; }
     .tech-node-name { font-size: 14px; }
     .tech-node-desc { font-size: 11px; }
     .hub-center-row { margin: 48px 0 54px; }
@@ -2364,7 +2361,7 @@
 
       <div class="hub-sources">
         <div class="tech-node reveal" data-output="1" role="button" tabindex="0" aria-label="TomTom powers GPS live start">
-          <div class="tech-node-icon brand-lockup tomtom-lockup">
+          <div class="tech-node-icon logo-3d tomtom-lockup">
             <img src="assets/tomtom-logo-3d.png" alt="TomTom" width="1254" height="1254" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">TomTom</span>
@@ -2378,7 +2375,7 @@
           <span class="tech-node-desc">Places &amp; fallback</span>
         </div>
         <div class="tech-node reveal" data-output="2" role="button" tabindex="0" aria-label="Mapbox powers the live navigation HUD">
-          <div class="tech-node-icon brand-lockup mapbox-lockup">
+          <div class="tech-node-icon logo-3d mapbox-lockup">
             <img src="assets/mapbox-logo-3d.png" alt="Mapbox" width="2100" height="749" loading="lazy" decoding="async">
           </div>
           <span class="tech-node-name">Mapbox</span>
