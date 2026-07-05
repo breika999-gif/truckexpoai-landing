@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TruckExpoAI pitch deck — a Gemini-native voice co-pilot for professional truck drivers across Europe.">
+<title>TruckExpoAI — Pitch Deck</title>
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #070a0e;
+    --bg-2: #0b1117;
+    --panel: #111923;
+    --line: rgba(145, 181, 204, 0.18);
+    --text: #edf6fb;
+    --muted: #9fb2c3;
+    --teal: #00d4c6;
+    --teal-2: #18a8ff;
+    --amber: #f7b84b;
+    --ink: #061017;
+    --max: 900px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: radial-gradient(1200px 700px at 80% -10%, rgba(0,212,198,0.10), transparent 60%), var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--teal); }
+  .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+  header.top {
+    padding: 28px 0 10px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  header.top img { width: 40px; height: 40px; border-radius: 9px; }
+  header.top .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+  header.top .tag { margin-left: auto; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+  section.slide {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .kicker {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal); font-weight: 700; margin-bottom: 10px;
+  }
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(30px, 6vw, 52px); line-height: 1.05; letter-spacing: -0.02em;
+    margin: 6px 0 14px;
+  }
+  h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(22px, 4vw, 30px); margin: 4px 0 14px; letter-spacing: -0.01em;
+  }
+  p.lead { font-size: 18px; color: var(--text); max-width: 720px; }
+  p { color: var(--muted); }
+  .hero-sub { font-size: 20px; color: var(--muted); max-width: 640px; }
+  ul { padding-left: 0; list-style: none; margin: 14px 0; }
+  ul li { position: relative; padding-left: 26px; margin: 10px 0; color: var(--text); }
+  ul li::before {
+    content: ""; position: absolute; left: 4px; top: 10px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 12px rgba(0,212,198,0.7);
+  }
+  ul li b { color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+  }
+  .card .n { font-family: "Space Grotesk", sans-serif; font-size: 30px; font-weight: 700; color: var(--teal); }
+  .card .l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .pill {
+    display: inline-block; background: rgba(0,212,198,0.12); border: 1px solid rgba(0,212,198,0.35);
+    color: var(--teal); font-size: 12px; font-weight: 600; padding: 4px 11px; border-radius: 999px; margin: 3px 4px 3px 0;
+  }
+  .ask { background: linear-gradient(135deg, rgba(0,212,198,0.10), rgba(24,168,255,0.06)); border: 1px solid rgba(0,212,198,0.3); border-radius: 14px; padding: 22px; }
+  footer { padding: 34px 0 60px; color: var(--muted); font-size: 14px; }
+  footer a { font-weight: 600; }
+  .cta { display: inline-block; margin-top: 8px; background: var(--teal); color: var(--ink); font-weight: 700; padding: 10px 18px; border-radius: 10px; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="assets/logo-icon.png" alt="TruckExpoAI">
+    <span class="brand">TruckExpoAI</span>
+    <span class="tag">Pitch Deck · 2026</span>
+  </header>
+
+  <section class="slide">
+    <div class="kicker">Gemini-native · Voice-first · Built for the cab</div>
+    <h1>The AI co-pilot for<br>professional truck drivers.</h1>
+    <p class="hero-sub">A Gemini-powered voice assistant that gives European truckers truck-safe navigation, automatic tachograph (hours-of-service) guidance, and hands-free AI — so they never take their hands off the wheel or eyes off the road.</p>
+    <div style="margin-top:16px;">
+      <span class="pill">Gemini 2.0 Flash — in production</span>
+      <span class="pill">6M+ EU trucks</span>
+      <span class="pill">Working app + live demo</span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Problem</div>
+    <h2>Commercial driving is complex, dangerous, and heavily penalized.</h2>
+    <ul>
+      <li><b>Regulatory penalties.</b> EU Regulation 561/2006 (hours-of-service) fines reach up to €5,000 per violation, and the Smart Tachograph V2 mandate is forcing retrofits across the fleet right now.</li>
+      <li><b>Unsafe routing.</b> Consumer apps (Google Maps, Waze) don't know truck dimensions — they route heavy trucks under low bridges and into weight-restricted zones.</li>
+      <li><b>Driver distraction.</b> Tapping through navigation and watching tachograph timers while driving is a top safety hazard — and Europe is short ~500,000 drivers.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Solution</div>
+    <h2>One voice. Hands on the wheel.</h2>
+    <ul>
+      <li><b>Gemini voice co-pilot.</b> Ask anything by voice — routes, parking, rest times, restrictions — and get spoken answers plus live map actions. No screen tapping.</li>
+      <li><b>Truck-safe navigation.</b> HGV routing by vehicle profile (weight, height, length, axles, ADR hazmat) with live restrictions, driving bans by country, speed cameras and parking.</li>
+      <li><b>Automatic tachograph / HOS.</b> Tracks EU 561/2006 driving and rest limits, warns before the 4.5h / 9h / weekly limits, and finds legal parking before time runs out.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Why Gemini</div>
+    <h2>Built on Gemini, not bolted on.</h2>
+    <ul>
+      <li><b>In production today.</b> Gemini 2.0 Flash powers the in-cab assistant and voice transcription — not a roadmap promise, it's live in the app.</li>
+      <li><b>Function-calling navigation.</b> Voice intent → structured map actions (set route, add waypoint, avoid restriction, find parking) executed on the map.</li>
+      <li><b>Multilingual by design.</b> EU drivers cross borders daily (Bulgarian, Polish, Romanian, Spanish…). Gemini's language range is a real edge over legacy nav.</li>
+      <li><b>Where we're going.</b> Gemini-only navigation, Gemini Vision ("snap the road sign, I'll tell you if you can pass"), and Gemini Live for real-time in-cab conversation.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Market</div>
+    <h2>A massive, underserved, regulated sector.</h2>
+    <div class="grid">
+      <div class="card"><div class="n">€350B</div><div class="l">European road freight — moves 70%+ of land cargo</div></div>
+      <div class="card"><div class="n">6M+</div><div class="l">Commercial truck drivers operating in the EU</div></div>
+      <div class="card"><div class="n">€5,000</div><div class="l">Max fine per HOS violation — the app pays for itself</div></div>
+      <div class="card"><div class="n">2025–26</div><div class="l">Smart Tachograph V2 retrofit mandate — the "why now"</div></div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;">Market figures are industry estimates (IRU / EU Commission) and are being verified.</p>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Status &amp; Traction</div>
+    <h2>A working product, not a slide.</h2>
+    <ul>
+      <li><b>Shipping app.</b> React Native (Android), signed release build, running on real hardware with live demo clips.</li>
+      <li><b>Live backend.</b> Flask on Google-friendly infra (Postgres + Redis), JWT auth, Gemini + navigation APIs in production.</li>
+      <li><b>Beyond MVP.</b> Android Auto module, B2B fleet dashboard (live driver location + HOS), offline maps, RevenueCat subscriptions wired.</li>
+      <li><b>Honest stage.</b> Solo founder (a long-haul driver who lives the problem), pre-revenue, seeking first partners and early users.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">Business Model</div>
+    <h2>Two revenue lines.</h2>
+    <ul>
+      <li><b>B2C subscription.</b> Monthly plan for individual drivers — premium voice, HOS planning, and navigation.</li>
+      <li><b>B2B fleet.</b> Dashboard + API licenses for fleet operators to track real-time driver compliance and telemetry — where the recurring revenue scales.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">The Ask</div>
+    <div class="ask">
+      <h2 style="margin-top:0;">What we're looking for from Google.</h2>
+      <ul>
+        <li><b>Early access</b> to Gemini (and Veo / Imagen) to build our next 0-to-1 in-cab features.</li>
+        <li><b>Google Cloud credits</b> + technical support to scale the AI and backend.</li>
+        <li><b>Collaboration</b> with Google DeepMind / Labs engineers to make trucking a flagship Gemini automotive use case.</li>
+        <li><b>Potential investment</b> as traction grows.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div><b>TruckExpoAI</b> — AI navigation for professional drivers.</div>
+    <div>Miroslav Dimitrov, Founder · <a href="mailto:ceo@truckexpoai.com">ceo@truckexpoai.com</a> · <a href="https://truckexpoai.com/">truckexpoai.com</a></div>
+    <a class="cta" href="https://truckexpoai.com/">See the live product →</a>
+  </footer>
+</div>
+</body>
+</html>
