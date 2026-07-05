@@ -2720,28 +2720,28 @@
       <div class="hub-outputs">
         <div class="hub-clip is-mobile-active reveal" data-src="assets/clips/01-feature-menu.mp4" data-output="0" role="button" tabindex="0" aria-label="Play voice AI and feature menu clip">
           <div class="clip-phone">
-            <video src="assets/clips/01-feature-menu.mp4" poster="assets/clips/01-feature-menu.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <video src="assets/clips/01-feature-menu.mp4" poster="assets/clips/01-feature-menu.jpg" muted playsinline preload="none"></video>
           </div>
           <p class="clip-label">Voice AI &amp; control</p>
           <p class="clip-detail">Speak, transcribe, act on the map</p>
         </div>
         <div class="hub-clip reveal" data-src="assets/clips/08-phone-controls.mp4" data-output="1" role="button" tabindex="0" aria-label="Play movable cockpit controls clip">
           <div class="clip-phone">
-            <video src="assets/clips/08-phone-controls.mp4" poster="assets/clips/08-phone-controls.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <video src="assets/clips/08-phone-controls.mp4" poster="assets/clips/08-phone-controls.jpg" muted playsinline preload="none"></video>
           </div>
           <p class="clip-label">Movable cockpit controls</p>
           <p class="clip-detail">Phone, audio and navigation buttons placed for real driving</p>
         </div>
         <div class="hub-clip reveal" data-src="assets/clips/09-live-navigation-tacho.mp4" data-output="2" role="button" tabindex="0" aria-label="Play live navigation and tachograph route clip">
           <div class="clip-phone">
-            <video src="assets/clips/09-live-navigation-tacho.mp4" poster="assets/clips/09-live-navigation-tacho.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <video src="assets/clips/09-live-navigation-tacho.mp4" poster="assets/clips/09-live-navigation-tacho.jpg" muted playsinline preload="none"></video>
           </div>
           <p class="clip-label">Live route + tacho</p>
           <p class="clip-detail">Driver-time awareness, route progress and HUD guidance</p>
         </div>
         <div class="hub-clip reveal" data-src="assets/clips/10-satellite-navigation.mp4" data-output="3" role="button" tabindex="0" aria-label="Play satellite navigation clip">
           <div class="clip-phone">
-            <video src="assets/clips/10-satellite-navigation.mp4" poster="assets/clips/10-satellite-navigation.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <video src="assets/clips/10-satellite-navigation.mp4" poster="assets/clips/10-satellite-navigation.jpg" muted playsinline preload="none"></video>
           </div>
           <p class="clip-label">Satellite route view</p>
           <p class="clip-detail">Truck guidance on real terrain with a cleaner premium map feel</p>
@@ -4373,11 +4373,8 @@
   }
 
   function updateHubVideos() {
-    const mobile = window.matchMedia('(max-width: 640px)').matches;
-    document.querySelectorAll('.hub-clip video').forEach((video, index) => {
-      const shouldPlay = hubVisible && (!mobile || index === (activeOutput ?? 0));
-      if (shouldPlay) video.play().catch(() => {});
-      else video.pause();
+    document.querySelectorAll('.hub-clip video').forEach(video => {
+      video.pause();
     });
   }
 
