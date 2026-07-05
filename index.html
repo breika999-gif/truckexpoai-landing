@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<!-- Preload only the tiny first hub clip; bigger ones are warmed on hover via JS -->
+<link rel="preload" as="video" href="assets/clips/01-feature-menu.mp4">
 <style>
   :root {
     color-scheme: dark;
@@ -3143,7 +3145,7 @@
 <div id="hub-popup" class="hub-popup" role="dialog" aria-modal="true" aria-label="Feature video">
   <div class="hub-popup-inner">
     <button id="hub-popup-close" class="hub-popup-close" aria-label="Close video">✕</button>
-    <video id="hub-popup-video" playsinline controls style="width:100%;border-radius:26px;display:block;border:1px solid rgba(255,255,255,0.13);"></video>
+    <video id="hub-popup-video" playsinline controls preload="none" style="width:100%;border-radius:26px;display:block;border:1px solid rgba(255,255,255,0.13);"></video>
   </div>
 </div>
 
@@ -4454,8 +4456,29 @@
     const popupClose = document.getElementById('hub-popup-close');
     if (!popup || !popupVideo || !popupClose) return;
 
-    function openPopup(src) {
+    // Pre-warm video source on hover/focus so playback starts instantly on click
+    function preloadVideo(src) {
+      if (!src || popupVideo.dataset.preloaded === src) return;
+      popupVideo.dataset.preloaded = src;
+      popupVideo.preload = 'auto';
       popupVideo.src = src;
+      popupVideo.load();
+    }
+
+    document.querySelectorAll('.hub-clip[data-src], .demo-card[data-src]').forEach(clip => {
+      const src = clip.dataset.src;
+      if (src) {
+        clip.addEventListener('pointerenter', () => preloadVideo(src), { passive: true });
+        clip.addEventListener('focus', () => preloadVideo(src), { passive: true });
+      }
+    });
+
+    function openPopup(src) {
+      // If already preloaded, just play — no lag
+      if (popupVideo.dataset.preloaded !== src) {
+        popupVideo.preload = 'auto';
+        popupVideo.src = src;
+      }
       popupVideo.play().catch(() => {});
       popup.classList.add('open');
       document.body.style.overflow = 'hidden';
