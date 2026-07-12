@@ -40,6 +40,8 @@
   html {
     scroll-behavior: smooth;
     background: var(--bg);
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -49,6 +51,7 @@
     color: var(--text);
     line-height: 1.55;
     overflow-x: hidden;
+    max-width: 100%;
   }
 
   body::before {
@@ -1335,6 +1338,16 @@
       padding: 76px 0 18px;
     }
 
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 54px 0 auto;
+      height: 300px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(3, 8, 14, 0.96) 0%, rgba(3, 8, 14, 0.82) 62%, rgba(3, 8, 14, 0) 100%);
+    }
+
     .hero-grid {
       gap: 18px;
     }
@@ -2530,6 +2543,7 @@
     <li><a href="#tech-hub" data-t="nav_product">Product</a></li>
     <li><a href="#ai" data-t="nav_ai">AI</a></li>
     <li><a href="#pricing" data-t="nav_pricing">Pricing</a></li>
+    <li><a href="deck.html">Pitch deck</a></li>
     <li>
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language" aria-expanded="false">
@@ -2569,8 +2583,8 @@
           </a>
         </div>
         <div class="hero-badges reveal">
-          <span class="chip"><span class="chip-dot teal"></span>GPT-4o map actions</span>
-          <span class="chip"><span class="chip-dot amber"></span>Gemini driver assistant</span>
+          <span class="chip"><span class="chip-dot teal"></span>Gemini-native co-driver</span>
+          <span class="chip"><span class="chip-dot amber"></span>GPT route fallback</span>
           <span class="chip"><span class="chip-dot"></span>EU HOS aware</span>
         </div>
       </div>
@@ -2608,8 +2622,8 @@
         <div class="proof-label">Parking, fuel and business results</div>
       </div>
       <div class="proof-item">
-        <div class="proof-value">Dual AI</div>
-        <div class="proof-label">GPT navigation plus Gemini assistant</div>
+        <div class="proof-value">Gemini core</div>
+        <div class="proof-label">Gemini intelligence with model-agnostic route fallback</div>
       </div>
     </div>
   </section>
@@ -2759,7 +2773,7 @@
       <div class="section-head">
         <span class="eyebrow reveal">Real app footage</span>
         <h2 class="reveal">Actual TruckExpoAI screens, cut into clean product demos.</h2>
-        <p class="lead reveal">Short proof clips from the Android build: AI search, live parking sources, route planning, restrictions, 3D maps, movable controls, tachograph guidance and satellite navigation.</p>
+        <p class="lead reveal">Five short proof clips from the Android build: AI assistance, truck restrictions, tachograph guidance, live parking sources and route planning.</p>
       </div>
 
       <div class="demo-reel-grid">
@@ -2771,14 +2785,6 @@
           <p class="demo-detail">Driver asks, AI finds stops and reads drive-time context.</p>
         </div>
 
-        <div class="demo-card reveal" data-src="assets/clips/06-ai-parking-route.mp4" role="button" tabindex="0" aria-label="Play AI parking route demo">
-          <div class="clip-phone">
-            <img src="assets/clips/06-ai-parking-route.jpg" alt="AI parking route preview" loading="lazy" decoding="async">
-          </div>
-          <p class="demo-label">AI parking search</p>
-          <p class="demo-detail">Route-aware parking result from the cockpit chat.</p>
-        </div>
-
         <div class="demo-card reveal" data-src="assets/clips/07-restrictions-3d-map.mp4" role="button" tabindex="0" aria-label="Play truck restrictions and 3D map demo">
           <div class="clip-phone">
             <img src="assets/clips/07-restrictions-3d-map.jpg" alt="Truck restrictions and 3D map preview" loading="lazy" decoding="async">
@@ -2787,36 +2793,12 @@
           <p class="demo-detail">Truck bans, map modes and 3D navigation surfaces.</p>
         </div>
 
-        <div class="demo-card reveal" data-src="assets/clips/08-phone-controls.mp4" role="button" tabindex="0" aria-label="Play movable cockpit controls demo">
-          <div class="clip-phone">
-            <img src="assets/clips/08-phone-controls.jpg" alt="Movable cockpit controls preview" loading="lazy" decoding="async">
-          </div>
-          <p class="demo-label">Movable cockpit controls</p>
-          <p class="demo-detail">Phone, audio and navigation buttons placed for real driving.</p>
-        </div>
-
         <div class="demo-card reveal" data-src="assets/clips/09-live-navigation-tacho.mp4" role="button" tabindex="0" aria-label="Play live navigation and tachograph route demo">
           <div class="clip-phone">
             <img src="assets/clips/09-live-navigation-tacho.jpg" alt="Live navigation and tachograph route preview" loading="lazy" decoding="async">
           </div>
           <p class="demo-label">Live route + tacho</p>
           <p class="demo-detail">Driver-time awareness, route progress and HUD guidance.</p>
-        </div>
-
-        <div class="demo-card reveal" data-src="assets/clips/10-satellite-navigation.mp4" role="button" tabindex="0" aria-label="Play satellite navigation demo">
-          <div class="clip-phone">
-            <img src="assets/clips/10-satellite-navigation.jpg" alt="Satellite navigation preview" loading="lazy" decoding="async">
-          </div>
-          <p class="demo-label">Satellite route view</p>
-          <p class="demo-detail">Truck guidance on real terrain with a cleaner premium map feel.</p>
-        </div>
-
-        <div class="demo-card reveal" data-src="assets/clips/11-gemini-gpt-parking-search.mp4" role="button" tabindex="0" aria-label="Play Gemini and GPT parking search demo">
-          <div class="clip-phone">
-            <img src="assets/clips/11-gemini-gpt-parking-search.jpg" alt="Gemini and GPT parking search preview" loading="lazy" decoding="async">
-          </div>
-          <p class="demo-label">Gemini + GPT parking search</p>
-          <p class="demo-detail">AI asks for parking and turns results into visible map choices.</p>
         </div>
 
         <div class="demo-card reveal" data-src="assets/clips/12-live-parking-sources.mp4" role="button" tabindex="0" aria-label="Play live parking sources demo">
@@ -2953,16 +2935,16 @@
   <section class="section ai-section" id="ai" style="position:relative;overflow:hidden;">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Dual AI architecture</span>
-        <h2 class="reveal">Two assistants. One map.</h2>
-        <p class="lead reveal">TruckExpoAI separates navigation actions from driver assistance, so the app can be powerful without becoming chaotic.</p>
+        <span class="eyebrow reveal">Gemini-first architecture</span>
+        <h2 class="reveal">One co-driver. Every road tool.</h2>
+        <p class="lead reveal">Gemini is the primary intelligence layer, with deterministic map actions and a model-agnostic fallback for route-critical commands.</p>
       </div>
 
       <div class="ai-grid">
         <article class="ai-panel navigator reveal">
-          <span class="tagline">GPT-4o navigator</span>
-          <h3>Controls the map and route.</h3>
-          <p>Used for commands that should change the route, search businesses, show truck parking, or place markers on the map.</p>
+          <span class="tagline">Gemini co-driver</span>
+          <h3>Understands the driver and the shift.</h3>
+          <p>Combines route, tachograph, parking, weather and app context to answer and act from one cockpit conversation.</p>
           <div class="chat-lines">
             <div class="chat-line"><strong>Driver</strong>Search for a logistics company near Plovdiv.</div>
             <div class="chat-line"><strong>TruckExpoAI</strong>Business results appear as cards and tappable map markers.</div>
@@ -2970,9 +2952,9 @@
         </article>
 
         <article class="ai-panel assistant reveal">
-          <span class="tagline">Gemini assistant</span>
-          <h3>Answers like a co-driver.</h3>
-          <p>Used for tachograph questions, app control, TransParking intents, and general trucking help while keeping context deterministic.</p>
+          <span class="tagline">Route-action fallback</span>
+          <h3>Keeps map commands deterministic.</h3>
+          <p>A model-agnostic fallback validates route changes, business search, truck parking and map markers when a command needs extra structure.</p>
           <div class="chat-lines">
             <div class="chat-line"><strong>Driver</strong>Can I reach Munich before rest?</div>
             <div class="chat-line"><strong>TruckExpoAI</strong>Compares real route duration with remaining driving minutes.</div>
@@ -3050,8 +3032,8 @@
             <p>For drivers who want the AI cockpit every day.</p>
           </div>
           <ul class="price-list">
-            <li>GPT map actions</li>
-            <li>Gemini tacho assistant</li>
+            <li>Gemini AI co-driver</li>
+            <li>Structured route-action fallback</li>
             <li>Truck parking markers</li>
             <li>TransParking handoff</li>
             <li>Business search to map</li>
@@ -3083,7 +3065,7 @@
       <div class="download-copy">
         <span class="eyebrow reveal">Android first</span>
         <h2 class="reveal">Bring the AI cockpit into the cab.</h2>
-        <p class="reveal">TruckExpoAI is built on React Native, Mapbox, GPT-4o, Gemini, and a Flask backend. Android builds are available for testing while store distribution is prepared.</p>
+        <p class="reveal">TruckExpoAI is built on React Native, Mapbox, Gemini and a scalable Flask backend, with model-agnostic fallback for route-critical actions. Android builds are available for testing while store distribution is prepared.</p>
       </div>
       <div class="store-row reveal">
         <a class="store-btn" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Android%20APK">
@@ -3099,6 +3081,13 @@
             <path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
           </svg>
           <span><span class="store-small">For companies</span><span class="store-name">Fleet demo</span></span>
+        </a>
+        <a class="store-btn" href="deck.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <span><span class="store-small">For investors</span><span class="store-name">Pitch deck</span></span>
         </a>
       </div>
     </div>
@@ -3173,13 +3162,13 @@
       hero_lead: 'Truck-safe navigation with AI that understands routes, tachograph limits, parking, fuel, companies, and the real questions drivers ask from the cab.',
       hero_btn1: 'Request beta access',
       hero_btn2: 'See the product',
-      chip1: 'GPT-4o map actions',
-      chip2: 'Gemini driver assistant',
+      chip1: 'Gemini-native co-driver',
+      chip2: 'GPT route fallback',
       chip3: 'EU HOS aware',
       proof1v: 'Truck', proof1l: 'Routes, restrictions and map layers',
       proof2v: 'HOS',   proof2l: 'EU 561/2006 driving context',
       proof3v: 'POI',   proof3l: 'Parking, fuel and business results',
-      proof4v: 'Dual AI', proof4l: 'GPT navigation plus Gemini assistant',
+      proof4v: 'Gemini core', proof4l: 'Gemini intelligence with model-agnostic route fallback',
       feat1_tag: 'Live guidance', feat1_h: 'Route, ETA and next action stay visible.',
       feat1_p: 'The map keeps the driver focused with turn guidance, route progress, and nearby truck-relevant POIs.',
       feat2_tag: 'Parking intelligence', feat2_h: 'Truck stops and TransParking are part of the route.',
@@ -3191,12 +3180,12 @@
       wf2_h: 'AI reads context', wf2_p: 'The assistant receives route distance, duration, destination, tachograph state, and active POI cards.',
       wf3_h: 'Map updates', wf3_p: 'Markers, cards, route actions, and app intents are pushed into the mobile navigation screen.',
       wf4_h: 'Driver acts', wf4_p: 'Open TransParking, navigate to a business, pick a stop, or continue with a clear ETA answer.',
-      ai_eyebrow: 'Dual AI architecture', ai_h: 'Two assistants. One map.',
-      ai_lead: 'TruckExpoAI separates navigation actions from driver assistance, so the app can be powerful without becoming chaotic.',
-      ai1_tag: 'GPT-4o navigator', ai1_h: 'Controls the map and route.',
-      ai1_p: 'Used for commands that should change the route, search businesses, show truck parking, or place markers on the map.',
-      ai2_tag: 'Gemini assistant', ai2_h: 'Answers like a co-driver.',
-      ai2_p: 'Used for tachograph questions, app control, TransParking intents, and general trucking help while keeping context deterministic.',
+      ai_eyebrow: 'Gemini-first architecture', ai_h: 'One co-driver. Every road tool.',
+      ai_lead: 'Gemini is the primary intelligence layer, with deterministic map actions and a model-agnostic fallback for route-critical commands.',
+      ai1_tag: 'Gemini co-driver', ai1_h: 'Understands the driver and the shift.',
+      ai1_p: 'Combines route, tachograph, parking, weather and app context to answer and act from one cockpit conversation.',
+      ai2_tag: 'Route-action fallback', ai2_h: 'Keeps map commands deterministic.',
+      ai2_p: 'A model-agnostic fallback validates route changes, business search, truck parking and map markers when a command needs extra structure.',
       ri_eyebrow: 'Route intelligence', ri_h: 'The answer is based on the actual route, not a guess.',
       ri_p: 'The app sends the assistant real route distance, route duration, destination name, and remaining drive time. That makes "Can I reach X?" a deterministic driver decision.',
       extras_eyebrow: 'Feature map',
@@ -3238,7 +3227,7 @@
       pro_tag: 'Pro', pro_h: 'Working driver', pro_p: 'For drivers who want the AI cockpit every day.', pro_btn: 'Get Pro',
       fleet_tag: 'Coming soon', fleet_h: 'Cars, campervans & EVs', fleet_p: 'Cars, campervans, electric vehicles — launching soon.', fleet_btn: 'Notify me',
       dl_eyebrow: 'Android first', dl_h: 'Bring the AI cockpit into the cab.',
-      dl_p: 'TruckExpoAI is built on React Native, Mapbox, GPT-4o, Gemini, and a Flask backend. Android builds are available by request while store distribution is prepared.',
+      dl_p: 'TruckExpoAI is built on React Native, Mapbox, Gemini and a scalable Flask backend, with model-agnostic fallback for route-critical actions. Android builds are available by request while store distribution is prepared.',
       dl_btn1: 'Android APK', dl_btn1s: 'Beta request',
       dl_btn2: 'Fleet demo', dl_btn2s: 'For companies',
     },
@@ -3251,13 +3240,13 @@
       hero_lead: 'Navegación segura para camiones con IA que entiende rutas, límites del tacógrafo, aparcamiento, combustible, empresas y las preguntas reales que hacen los conductores desde la cabina.',
       hero_btn1: 'Solicitar acceso beta',
       hero_btn2: 'Ver el producto',
-      chip1: 'Acciones de mapa GPT-4o',
-      chip2: 'Asistente Gemini para conductores',
+      chip1: 'Copiloto nativo de Gemini',
+      chip2: 'Respaldo GPT para rutas',
       chip3: 'Compatible con HOS de la UE',
       proof1v: 'Camión', proof1l: 'Rutas, restricciones y capas del mapa',
       proof2v: 'HOS',    proof2l: 'Contexto de conducción EU 561/2006',
       proof3v: 'PDI',    proof3l: 'Parking, combustible y resultados de negocios',
-      proof4v: 'IA Dual', proof4l: 'Navegación GPT más asistente Gemini',
+      proof4v: 'Núcleo Gemini', proof4l: 'Inteligencia Gemini con respaldo de ruta independiente del modelo',
       feat1_tag: 'Guía en vivo', feat1_h: 'Ruta, ETA y siguiente acción siempre visibles.',
       feat1_p: 'El mapa mantiene al conductor enfocado con guía de giros, progreso de ruta y PDIs relevantes para camiones.',
       feat2_tag: 'Inteligencia de parking', feat2_h: 'Las paradas de camiones y TransParking forman parte de la ruta.',
@@ -3269,12 +3258,12 @@
       wf2_h: 'La IA lee el contexto', wf2_p: 'El asistente recibe la distancia de ruta, duración, destino, estado del tacógrafo y tarjetas PDI activas.',
       wf3_h: 'El mapa se actualiza', wf3_p: 'Los marcadores, tarjetas, acciones de ruta e intenciones de la app se envían a la pantalla de navegación móvil.',
       wf4_h: 'El conductor actúa', wf4_p: 'Abre TransParking, navega a un negocio, elige una parada o continúa con una respuesta clara de ETA.',
-      ai_eyebrow: 'Arquitectura IA dual', ai_h: 'Dos asistentes. Un mapa.',
-      ai_lead: 'TruckExpoAI separa las acciones de navegación de la asistencia al conductor, para que la app sea potente sin volverse caótica.',
-      ai1_tag: 'Navegador GPT-4o', ai1_h: 'Controla el mapa y la ruta.',
-      ai1_p: 'Para comandos que deben cambiar la ruta, buscar negocios, mostrar parking para camiones o colocar marcadores en el mapa.',
-      ai2_tag: 'Asistente Gemini', ai2_h: 'Responde como un copiloto.',
-      ai2_p: 'Para preguntas sobre el tacógrafo, control de la app, intenciones TransParking y ayuda general de transporte manteniendo el contexto determinista.',
+      ai_eyebrow: 'Arquitectura Gemini-first', ai_h: 'Un copiloto. Todas las herramientas de carretera.',
+      ai_lead: 'Gemini es la capa principal de inteligencia, con acciones de mapa deterministas y un respaldo independiente del modelo para comandos críticos de ruta.',
+      ai1_tag: 'Copiloto Gemini', ai1_h: 'Entiende al conductor y el turno.',
+      ai1_p: 'Combina ruta, tacógrafo, parking, clima y contexto de la app para responder y actuar desde una sola conversación en cabina.',
+      ai2_tag: 'Respaldo de acciones de ruta', ai2_h: 'Mantiene deterministas los comandos del mapa.',
+      ai2_p: 'Un respaldo independiente del modelo valida cambios de ruta, búsquedas de negocios, parking de camiones y marcadores cuando hace falta más estructura.',
       ri_eyebrow: 'Inteligencia de ruta', ri_h: 'La respuesta se basa en la ruta real, no en una estimación.',
       ri_p: 'La app envía al asistente la distancia real de ruta, duración, nombre del destino y tiempo de conducción restante. Esto convierte "¿Puedo llegar a X?" en una decisión determinista.',
       extras_eyebrow: 'Mapa de funciones',
@@ -3316,7 +3305,7 @@
       pro_tag: 'Pro', pro_h: 'Conductor profesional', pro_p: 'Para conductores que quieren la cabina IA cada día.', pro_btn: 'Obtener Pro',
       fleet_tag: 'Próximamente', fleet_h: 'Coches, autocaravanas y eléctricos', fleet_p: 'Coches, autocaravanas, eléctricos — próximamente.', fleet_btn: 'Avísame',
       dl_eyebrow: 'Android primero', dl_h: 'Lleva la cabina IA al vehículo.',
-      dl_p: 'TruckExpoAI está construido con React Native, Mapbox, GPT-4o, Gemini y un backend Flask. Las builds Android están disponibles bajo solicitud mientras se prepara la distribución en tiendas.',
+      dl_p: 'TruckExpoAI está construido con React Native, Mapbox, Gemini y un backend Flask escalable, con respaldo independiente del modelo para acciones críticas de ruta. Las builds Android están disponibles bajo solicitud mientras se prepara la distribución en tiendas.',
       dl_btn1: 'APK Android', dl_btn1s: 'Solicitud beta',
       dl_btn2: 'Demo de flota', dl_btn2s: 'Para empresas',
     },
@@ -3329,13 +3318,13 @@
       hero_lead: 'Навигация за камиони с ИИ, който разбира маршрути, ограничения на тахографа, паркиране, гориво, фирми и реалните въпроси, които шофьорите задават от кабината.',
       hero_btn1: 'Заяви бета достъп',
       hero_btn2: 'Виж продукта',
-      chip1: 'GPT-4o действия на картата',
-      chip2: 'Gemini асистент за шофьори',
+      chip1: 'Gemini-native копилот',
+      chip2: 'GPT резервен маршрут',
       chip3: 'Съвместим с EU ВРВ',
       proof1v: 'Камион', proof1l: 'Маршрути, ограничения и слоеве на картата',
       proof2v: 'ВРВ',    proof2l: 'Режим на работа EU 561/2006',
       proof3v: 'ТОИ',    proof3l: 'Паркинг, гориво и бизнес резултати',
-      proof4v: 'Двоен ИИ', proof4l: 'GPT навигация плюс Gemini асистент',
+      proof4v: 'Gemini ядро', proof4l: 'Gemini интелект с моделно независим резервен маршрут',
       feat1_tag: 'Live насоки', feat1_h: 'Маршрут, ETA и следващо действие винаги видими.',
       feat1_p: 'Картата държи шофьора съсредоточен с навигация при завои, напредък по маршрута и близки ТОИ за камиони.',
       feat2_tag: 'Интелигентно паркиране', feat2_h: 'Камионни спирки и TransParking са част от маршрута.',
@@ -3347,12 +3336,12 @@
       wf2_h: 'ИИ чете контекста', wf2_p: 'Асистентът получава разстояние на маршрута, продължителност, дестинация, статус на тахографа и активни ТОИ карти.',
       wf3_h: 'Картата се обновява', wf3_p: 'Маркери, карти, действия по маршрута и намерения на приложението се изпращат към мобилния навигационен екран.',
       wf4_h: 'Шофьорът действа', wf4_p: 'Отвори TransParking, навигирай до бизнес, избери спирка или продължи с ясен отговор за ETA.',
-      ai_eyebrow: 'Двойна ИИ архитектура', ai_h: 'Два асистента. Една карта.',
-      ai_lead: 'TruckExpoAI разделя навигационните действия от помощта за шофьора, за да е мощно приложението без да става хаотично.',
-      ai1_tag: 'GPT-4o навигатор', ai1_h: 'Управлява картата и маршрута.',
-      ai1_p: 'За команди, които трябва да променят маршрута, търсят бизнеси, показват камионен паркинг или поставят маркери на картата.',
-      ai2_tag: 'Gemini асистент', ai2_h: 'Отговаря като копилот.',
-      ai2_p: 'За въпроси относно тахографа, управление на приложението, намерения за TransParking и обща помощ за транспорта при детерминистичен контекст.',
+      ai_eyebrow: 'Gemini-first архитектура', ai_h: 'Един копилот. Всеки пътен инструмент.',
+      ai_lead: 'Gemini е основният интелигентен слой, с детерминистични действия към картата и моделно независим резервен вариант за критичните route команди.',
+      ai1_tag: 'Gemini копилот', ai1_h: 'Разбира шофьора и работната смяна.',
+      ai1_p: 'Комбинира маршрут, тахограф, паркинги, време и контекст от приложението, за да отговаря и действа от един разговор в кабината.',
+      ai2_tag: 'Резервни route actions', ai2_h: 'Поддържа командите към картата детерминистични.',
+      ai2_p: 'Моделно независим резервен слой валидира промени на маршрута, бизнес търсене, камионни паркинги и маркери, когато командата изисква допълнителна структура.',
       ri_eyebrow: 'Интелигентност на маршрута', ri_h: 'Отговорът се базира на реалния маршрут, не на предположение.',
       ri_p: 'Приложението изпраща на асистента реалното разстояние на маршрута, продължителност, име на дестинацията и оставащо време за шофиране. Това прави "Мога ли да стигна до X?" детерминистично решение.',
       extras_eyebrow: 'Карта на екстрите',
@@ -3394,7 +3383,7 @@
       pro_tag: 'Про', pro_h: 'Работещ шофьор', pro_p: 'За шофьори, които искат ИИ кабината всеки ден.', pro_btn: 'Вземи Про',
       fleet_tag: 'Скоро', fleet_h: 'Коли, кемпери, електрически', fleet_p: 'Коли, кемпери, електрически — скоро пускаме.', fleet_btn: 'Уведоми ме',
       dl_eyebrow: 'Android първо', dl_h: 'Внеси ИИ кабината в камиона.',
-      dl_p: 'TruckExpoAI е изграден на React Native, Mapbox, GPT-4o, Gemini и Flask backend. Android билдове са достъпни със заявка докато се подготвя дистрибуцията в магазините.',
+      dl_p: 'TruckExpoAI е изграден на React Native, Mapbox, Gemini и мащабируем Flask backend, с моделно независим резервен слой за критичните route actions. Android билдове са достъпни със заявка докато се подготвя дистрибуцията в магазините.',
       dl_btn1: 'Android APK', dl_btn1s: 'Бета заявка',
       dl_btn2: 'Демо за флот', dl_btn2s: 'За компании',
     }
