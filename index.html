@@ -2537,6 +2537,7 @@
   .founder-public { display: grid; grid-template-columns: .72fr 1.28fr; gap: 72px; align-items: start; }
   .founder-profile { display: flex; gap: 22px; align-items: center; }
   .founder-monogram { width: 88px; height: 88px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid rgba(0,212,198,.45); border-radius: 8px; background: #101923; color: #00d4c6; font: 800 28px/1 Inter, sans-serif; }
+  .founder-photo-thumb { width: 88px; height: 88px; flex: 0 0 auto; border: 1px solid rgba(0,212,198,.45); border-radius: 8px; object-fit: cover; object-position: center 24%; }
   .founder-profile h2 { margin: 0; font-size: clamp(30px,4vw,48px); }
   .founder-profile p { margin: 8px 0 0; color: #00d4c6; font-weight: 800; }
   .founder-story { color: #a9bac7; font-size: 18px; }
@@ -3114,7 +3115,7 @@
   <section class="founder-section" id="founder">
     <div class="container founder-public">
       <div class="founder-profile reveal">
-        <div class="founder-monogram" aria-hidden="true">MD</div>
+        <img class="founder-photo-thumb" src="assets/founder-miroslav.webp" alt="Miroslav Dimitrov, founder of TruckExpoAI" loading="lazy" width="88" height="88">
         <div><span class="eyebrow">Founder & company</span><h2>Miroslav Dimitrov</h2><p>Founder, product lead and long-haul truck driver</p></div>
       </div>
       <div class="founder-story reveal">

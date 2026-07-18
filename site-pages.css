@@ -143,6 +143,7 @@ h3 { font-size: 22px; line-height: 1.2; }
 .founder-layout { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 70px; align-items: start; }
 .founder-identity { padding-top: 6px; }
 .founder-mark { width: 96px; height: 96px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); font: 800 30px/1 "Space Grotesk", sans-serif; color: var(--cyan); }
+.founder-photo { width: min(100%, 320px); aspect-ratio: 4 / 5; display: block; margin-bottom: 24px; border: 1px solid var(--line); border-radius: 8px; object-fit: cover; object-position: center 20%; box-shadow: 0 24px 70px rgba(0,0,0,.36); }
 .founder-role { margin: 10px 0 0; color: var(--cyan); font-weight: 800; }
 .founder-copy { margin: 20px 0 0; color: var(--muted); font-size: 18px; }
 .founder-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
