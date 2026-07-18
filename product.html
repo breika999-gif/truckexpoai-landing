@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TruckExpoAI Product | AI Truck Navigation</title>
+  <meta name="description" content="See the working TruckExpoAI Android technical alpha: HGV routing, live traffic, parking, EU driving-time planning and AI-assisted navigation.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="site-pages.css">
+</head>
+<body>
+  <header class="page-nav">
+    <div class="page-nav-inner">
+      <a class="page-brand" href="index.html"><img src="assets/favicon-192.png" alt=""><span>TruckExpoAI</span></a>
+      <nav class="page-links" aria-label="Primary">
+        <a href="product.html" aria-current="page">Product</a><a href="about.html">Founder</a><a href="deck.html">Pitch</a>
+      </nav>
+      <a class="page-cta" href="contact.html">Contact founder</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="eyebrow">Working product evidence</span>
+          <h1>TruckExpoAI Product</h1>
+          <p class="lead">A working Android technical alpha built for European truck drivers: truck-aware routing, traffic, parking, driving-time planning and an AI co-driver in one cab interface.</p>
+          <div class="hero-actions"><a class="page-cta" href="#demos">Watch real app footage</a><a class="inline-link" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20product%20demo">Request a live demo</a></div>
+        </div>
+        <div class="hero-art"><img src="assets/navigation-3d-route.jpg" alt="TruckExpoAI live truck navigation interface"></div>
+      </div>
+    </section>
+
+    <div class="shell status-row" aria-label="Product status">
+      <div class="status-item"><span class="status-label">Product</span><div class="status-value"><span class="status-dot"></span>Android technical alpha</div></div>
+      <div class="status-item"><span class="status-label">Infrastructure</span><div class="status-value"><span class="status-dot"></span>Production Flask backend</div></div>
+      <div class="status-item"><span class="status-label">Testing</span><div class="status-value"><span class="status-dot amber"></span>Private road testing</div></div>
+    </div>
+
+    <section class="page-section" id="demos">
+      <div class="shell">
+        <div class="section-heading"><div><span class="eyebrow">Real Android recordings</span><h2>No mockups. The app running on a phone.</h2></div><p>These short captures show the actual interface used during development and field testing. They are intentionally unpolished product evidence, not rendered concept videos.</p></div>
+        <div class="demo-grid">
+          <article class="demo-proof"><video controls playsinline preload="metadata" poster="assets/clips/13-route-planning.jpg"><source src="assets/clips/13-route-planning.mp4" type="video/mp4"></video><h3>Truck route planning</h3><p>Destination search, route calculation and alternatives inside the Android app.</p></article>
+          <article class="demo-proof"><video controls playsinline preload="metadata" poster="assets/clips/09-live-navigation-tacho.jpg"><source src="assets/clips/09-live-navigation-tacho.mp4" type="video/mp4"></video><h3>Live navigation and HOS</h3><p>Turn guidance, speed, traffic context and driving-time information on the map.</p></article>
+          <article class="demo-proof"><video controls playsinline preload="metadata" poster="assets/clips/12-live-parking-sources.jpg"><source src="assets/clips/12-live-parking-sources.mp4" type="video/mp4"></video><h3>Truck parking sources</h3><p>Parking discovery, selection and routing through the in-cab workflow.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="shell">
+        <div class="section-heading"><div><span class="eyebrow">Capability map</span><h2>What works today</h2></div><p>The alpha combines commercial map data, a truck profile and AI actions. Production claims are deliberately separated from features that still require physical validation.</p></div>
+        <div class="capability-grid">
+          <article class="capability"><span class="capability-state"><span class="status-dot"></span>Working alpha</span><h3>HGV routes and alternatives</h3><p>Routes use vehicle dimensions and preferences, with traffic-aware alternatives and turn guidance.</p></article>
+          <article class="capability"><span class="capability-state"><span class="status-dot"></span>Working alpha</span><h3>Parking and fuel along route</h3><p>Truck parking and fuel POIs can be discovered, compared, selected and used as destinations or stops.</p></article>
+          <article class="capability"><span class="capability-state"><span class="status-dot"></span>Working alpha</span><h3>Gemini co-driver</h3><p>Natural-language requests can trigger structured map actions while retaining a deterministic routing layer.</p></article>
+          <article class="capability"><span class="capability-state"><span class="status-dot"></span>Working alpha</span><h3>EU driving-time planning</h3><p>Regulation 561/2006 planning surfaces 4.5-hour driving windows, rest points and parking-before-break workflows.</p></article>
+          <article class="capability"><span class="capability-state"><span class="status-dot"></span>Working alpha</span><h3>Road intelligence</h3><p>Traffic, speed cameras, incidents, user reports and selected truck restrictions are combined as map context.</p></article>
+          <article class="capability"><span class="capability-state validation"><span class="status-dot amber"></span>Physical validation</span><h3>Live tachograph decoding</h3><p>BLE connection and packet capture exist. Reliable live SE5000/VDO HOS decoding still requires protocol validation on physical tachograph hardware.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="shell">
+        <div class="section-heading"><div><span class="eyebrow">System architecture</span><h2>Built as an operating product</h2></div><p>TruckExpoAI is not a prompt wrapper. It joins device location, route data, driver-time logic, AI tool calls and a production backend.</p></div>
+        <div class="architecture"><div><strong>React Native</strong><span>Android cab application</span></div><div><strong>Mapbox</strong><span>Map rendering and interaction</span></div><div><strong>TomTom</strong><span>Truck routing and road data</span></div><div><strong>Gemini</strong><span>Multilingual co-driver and actions</span></div><div><strong>Flask + Postgres</strong><span>Railway API, Redis cache and shared data</span></div></div>
+        <p class="legal-note">Technical alpha: route, traffic, AI and restriction data can be incomplete. The driver remains responsible for road signs, legal compliance and safe vehicle operation.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer"><div class="shell page-footer-inner"><span>© 2026 TruckExpoAI</span><nav class="page-footer-links"><a href="about.html">Founder</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></nav></div></footer>
+</body>
+</html>

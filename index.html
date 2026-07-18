@@ -2533,6 +2533,21 @@
     .hub-ripple { display: none; }
     .hub-title-plate::after { display: none; }
   }
+  .founder-section { padding: 104px 0; border-top: 1px solid rgba(255,255,255,.08); background: #090d13; }
+  .founder-public { display: grid; grid-template-columns: .72fr 1.28fr; gap: 72px; align-items: start; }
+  .founder-profile { display: flex; gap: 22px; align-items: center; }
+  .founder-monogram { width: 88px; height: 88px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid rgba(0,212,198,.45); border-radius: 8px; background: #101923; color: #00d4c6; font: 800 28px/1 Inter, sans-serif; }
+  .founder-profile h2 { margin: 0; font-size: clamp(30px,4vw,48px); }
+  .founder-profile p { margin: 8px 0 0; color: #00d4c6; font-weight: 800; }
+  .founder-story { color: #a9bac7; font-size: 18px; }
+  .founder-story h3 { margin: 0 0 18px; color: #f2f8fb; font-size: 28px; }
+  .founder-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 28px; border: 1px solid rgba(255,255,255,.11); }
+  .founder-fact { min-height: 104px; padding: 20px; border-right: 1px solid rgba(255,255,255,.11); }
+  .founder-fact:last-child { border-right: 0; }
+  .founder-fact span { display: block; color: #718696; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+  .founder-fact strong { display: block; margin-top: 8px; color: #edf6fb; font-size: 14px; }
+  .founder-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  @media (max-width: 820px) { .founder-public { grid-template-columns: 1fr; gap: 42px; } .founder-facts { grid-template-columns: 1fr; } .founder-fact { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.11); } .founder-fact:last-child { border-bottom: 0; } }
 </style>
 </head>
 <body>
@@ -2544,9 +2559,9 @@
     <span>TruckExpoAI</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#tech-hub" data-t="nav_product">Product</a></li>
+    <li><a href="product.html" data-t="nav_product">Product</a></li>
     <li><a href="#ai" data-t="nav_ai">AI</a></li>
-    <li><a href="#pricing" data-t="nav_pricing">Pricing</a></li>
+    <li><a href="about.html">Founder</a></li>
     <li><a href="deck.html">Pitch deck</a></li>
     <li>
       <div class="lang-switcher" id="langSwitcher">
@@ -2562,7 +2577,7 @@
         </div>
       </div>
     </li>
-    <li><a href="#download" class="nav-action" data-t="nav_cta">Join beta</a></li>
+    <li><a href="#real-app-footage" class="nav-action" data-t="nav_cta">Watch demos</a></li>
   </ul>
 </nav>
 
@@ -2575,15 +2590,15 @@
         <h1 class="reveal">TruckExpoAI</h1>
         <p class="lead reveal">Truck-safe navigation with AI that understands routes, tachograph limits, parking, fuel, companies, and the real questions drivers ask from the cab.</p>
         <div class="button-row reveal">
-          <a class="btn btn-primary" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Beta%20APK%20Request">
+          <a class="btn btn-primary" href="product.html">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 3v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M5 19h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            Request beta access
+            Explore working product
           </a>
-          <a class="btn btn-secondary" href="#tech-hub">
-            See the product
+          <a class="btn btn-secondary" href="#real-app-footage">
+            Watch real footage
           </a>
         </div>
         <div class="hero-badges reveal">
@@ -3064,27 +3079,42 @@
     </div>
   </section>
 
+  <section class="founder-section" id="founder">
+    <div class="container founder-public">
+      <div class="founder-profile reveal">
+        <div class="founder-monogram" aria-hidden="true">MD</div>
+        <div><span class="eyebrow">Founder & company</span><h2>Miroslav Dimitrov</h2><p>Founder, product lead and long-haul truck driver</p></div>
+      </div>
+      <div class="founder-story reveal">
+        <h3>Built from the cab, not a boardroom.</h3>
+        <p>TruckExpoAI is a founder-led technical alpha shaped by first-hand experience on European roads. Miroslav is building the product around the daily problems of truck-safe routing, legal driving time, parking, traffic and hands-free assistance.</p>
+        <div class="founder-facts"><div class="founder-fact"><span>Product stage</span><strong>Working Android technical alpha</strong></div><div class="founder-fact"><span>Market</span><strong>European drivers and fleets</strong></div><div class="founder-fact"><span>Contact</span><strong>ceo@truckexpoai.com</strong></div></div>
+        <div class="founder-actions"><a class="btn btn-primary" href="about.html">Founder & company</a><a class="btn btn-secondary" href="https://github.com/breika999-gif">GitHub profile</a><a class="btn btn-secondary" href="https://github.com/breika999-gif/truck-control">Public repository</a></div>
+      </div>
+    </div>
+  </section>
+
   <section class="download" id="download">
     <div class="container download-box">
       <div class="download-copy">
-        <span class="eyebrow reveal">Android first</span>
-        <h2 class="reveal">Bring the AI cockpit into the cab.</h2>
-        <p class="reveal">TruckExpoAI is built on React Native, Mapbox, Gemini and a scalable Flask backend, with model-agnostic fallback for route-critical actions. Android builds are available for testing while store distribution is prepared.</p>
+        <span class="eyebrow reveal">Working technical alpha</span>
+        <h2 class="reveal">A real Android product, tested on the road.</h2>
+        <p class="reveal">Explore real recordings, inspect the product architecture and contact the founder directly for a live demonstration or technical partnership.</p>
       </div>
       <div class="store-row reveal">
-        <a class="store-btn" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Android%20APK">
+        <a class="store-btn" href="product.html">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 3v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M5 19h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
           </svg>
-          <span><span class="store-small">Beta request</span><span class="store-name">Android APK</span></span>
+          <span><span class="store-small">Working alpha</span><span class="store-name">Product evidence</span></span>
         </a>
         <a class="store-btn" href="mailto:ceo@truckexpoai.com?subject=TruckExpoAI%20Fleet%20Demo">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 6.5h16v11H4z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
             <path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
           </svg>
-          <span><span class="store-small">For companies</span><span class="store-name">Fleet demo</span></span>
+          <span><span class="store-small">Direct contact</span><span class="store-name">Founder demo</span></span>
         </a>
         <a class="store-btn" href="deck.html">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -3147,9 +3177,12 @@
     <div>&copy; 2026 TruckExpoAI. AI navigation for professional drivers.</div>
     <div class="footer-links">
       <a href="mailto:ceo@truckexpoai.com">ceo@truckexpoai.com</a>
-      <a href="#tech-hub" data-tx="nav_product">Product</a>
-      <a href="#extras" data-tx="footer_extras">Extras</a>
-      <a href="#pricing" data-tx="nav_pricing">Pricing</a>
+      <a href="product.html" data-tx="nav_product">Product</a>
+      <a href="about.html">Founder</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+      <a href="deck.html">Pitch</a>
     </div>
   </div>
 </footer>
@@ -3161,11 +3194,11 @@
       nav_product: 'Product',
       nav_ai: 'AI',
       nav_pricing: 'Pricing',
-      nav_cta: 'Join beta',
+      nav_cta: 'Watch demos',
       hero_eyebrow: 'Built for European trucking',
       hero_lead: 'Truck-safe navigation with AI that understands routes, tachograph limits, parking, fuel, companies, and the real questions drivers ask from the cab.',
-      hero_btn1: 'Request beta access',
-      hero_btn2: 'See the product',
+      hero_btn1: 'Explore working product',
+      hero_btn2: 'Watch real footage',
       chip1: 'Gemini-native co-driver',
       chip2: 'GPT route fallback',
       chip3: 'EU HOS aware',
@@ -3230,20 +3263,20 @@
       free_tag: 'Free', free_h: 'Driver preview', free_p: 'For trying the Android navigation experience.', free_btn: 'Request preview',
       pro_tag: 'Pro', pro_h: 'Working driver', pro_p: 'For drivers who want the AI cockpit every day.', pro_btn: 'Get Pro',
       fleet_tag: 'Coming soon', fleet_h: 'Cars, campervans & EVs', fleet_p: 'Cars, campervans, electric vehicles — launching soon.', fleet_btn: 'Notify me',
-      dl_eyebrow: 'Android first', dl_h: 'Bring the AI cockpit into the cab.',
-      dl_p: 'TruckExpoAI is built on React Native, Mapbox, Gemini and a scalable Flask backend, with model-agnostic fallback for route-critical actions. Android builds are available by request while store distribution is prepared.',
-      dl_btn1: 'Android APK', dl_btn1s: 'Beta request',
-      dl_btn2: 'Fleet demo', dl_btn2s: 'For companies',
+      dl_eyebrow: 'Working technical alpha', dl_h: 'A real Android product, tested on the road.',
+      dl_p: 'Explore real recordings, inspect the product architecture and contact the founder directly for a live demonstration or technical partnership.',
+      dl_btn1: 'Product evidence', dl_btn1s: 'Working alpha',
+      dl_btn2: 'Founder demo', dl_btn2s: 'Direct contact',
     },
     es: {
       nav_product: 'Producto',
       nav_ai: 'IA',
       nav_pricing: 'Precios',
-      nav_cta: 'Unirse beta',
+      nav_cta: 'Ver demos',
       hero_eyebrow: 'Construido para el transporte europeo',
       hero_lead: 'Navegación segura para camiones con IA que entiende rutas, límites del tacógrafo, aparcamiento, combustible, empresas y las preguntas reales que hacen los conductores desde la cabina.',
-      hero_btn1: 'Solicitar acceso beta',
-      hero_btn2: 'Ver el producto',
+      hero_btn1: 'Explorar el producto real',
+      hero_btn2: 'Ver vídeos reales',
       chip1: 'Copiloto nativo de Gemini',
       chip2: 'Respaldo GPT para rutas',
       chip3: 'Compatible con HOS de la UE',
@@ -3308,20 +3341,20 @@
       free_tag: 'Gratis', free_h: 'Vista previa para conductores', free_p: 'Para probar la experiencia de navegación Android.', free_btn: 'Solicitar vista previa',
       pro_tag: 'Pro', pro_h: 'Conductor profesional', pro_p: 'Para conductores que quieren la cabina IA cada día.', pro_btn: 'Obtener Pro',
       fleet_tag: 'Próximamente', fleet_h: 'Coches, autocaravanas y eléctricos', fleet_p: 'Coches, autocaravanas, eléctricos — próximamente.', fleet_btn: 'Avísame',
-      dl_eyebrow: 'Android primero', dl_h: 'Lleva la cabina IA al vehículo.',
-      dl_p: 'TruckExpoAI está construido con React Native, Mapbox, Gemini y un backend Flask escalable, con respaldo independiente del modelo para acciones críticas de ruta. Las builds Android están disponibles bajo solicitud mientras se prepara la distribución en tiendas.',
-      dl_btn1: 'APK Android', dl_btn1s: 'Solicitud beta',
-      dl_btn2: 'Demo de flota', dl_btn2s: 'Para empresas',
+      dl_eyebrow: 'Alpha técnica funcional', dl_h: 'Un producto Android real, probado en carretera.',
+      dl_p: 'Mira grabaciones reales, revisa la arquitectura y contacta directamente con el fundador para una demostración o colaboración técnica.',
+      dl_btn1: 'Evidencia del producto', dl_btn1s: 'Alpha funcional',
+      dl_btn2: 'Demo del fundador', dl_btn2s: 'Contacto directo',
     },
     bg: {
       nav_product: 'Продукт',
       nav_ai: 'ИИ',
       nav_pricing: 'Цени',
-      nav_cta: 'Заяви бета',
+      nav_cta: 'Виж демо клипове',
       hero_eyebrow: 'Създаден за европейския транспорт',
       hero_lead: 'Навигация за камиони с ИИ, който разбира маршрути, ограничения на тахографа, паркиране, гориво, фирми и реалните въпроси, които шофьорите задават от кабината.',
-      hero_btn1: 'Заяви бета достъп',
-      hero_btn2: 'Виж продукта',
+      hero_btn1: 'Разгледай работещия продукт',
+      hero_btn2: 'Виж реални клипове',
       chip1: 'Gemini-native копилот',
       chip2: 'GPT резервен маршрут',
       chip3: 'Съвместим с EU ВРВ',
@@ -3386,10 +3419,10 @@
       free_tag: 'Безплатно', free_h: 'Преглед за шофьори', free_p: 'За изпробване на Android навигационното изживяване.', free_btn: 'Заяви преглед',
       pro_tag: 'Про', pro_h: 'Работещ шофьор', pro_p: 'За шофьори, които искат ИИ кабината всеки ден.', pro_btn: 'Вземи Про',
       fleet_tag: 'Скоро', fleet_h: 'Коли, кемпери, електрически', fleet_p: 'Коли, кемпери, електрически — скоро пускаме.', fleet_btn: 'Уведоми ме',
-      dl_eyebrow: 'Android първо', dl_h: 'Внеси ИИ кабината в камиона.',
-      dl_p: 'TruckExpoAI е изграден на React Native, Mapbox, Gemini и мащабируем Flask backend, с моделно независим резервен слой за критичните route actions. Android билдове са достъпни със заявка докато се подготвя дистрибуцията в магазините.',
-      dl_btn1: 'Android APK', dl_btn1s: 'Бета заявка',
-      dl_btn2: 'Демо за флот', dl_btn2s: 'За компании',
+      dl_eyebrow: 'Работеща техническа алфа', dl_h: 'Реален Android продукт, тестван на пътя.',
+      dl_p: 'Виж реални записи, прегледай архитектурата и се свържи директно с основателя за демонстрация или техническо партньорство.',
+      dl_btn1: 'Продуктови доказателства', dl_btn1s: 'Работеща алфа',
+      dl_btn2: 'Демо с основателя', dl_btn2s: 'Директен контакт',
     }
   };
 
