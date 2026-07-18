@@ -53,4 +53,3 @@
 ## Slide 7: Contact Info
 *   **Email:** `ceo@truckexpoai.com`
 *   **Website:** `https://truckexpoai.com`
-*   **GitHub Project:** `https://github.com/breika999-gif/truck-control`
