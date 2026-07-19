@@ -2246,9 +2246,17 @@
   /* Popup */
   .hub-popup {
     display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.84); place-items: center; backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.94); place-items: center;
   }
   .hub-popup.open { display: grid; }
+  body.video-popup-open .tech-hub .hub-svg-overlay,
+  body.video-popup-open .tech-hub .hub-ripple { visibility: hidden; }
+  body.video-popup-open .tech-hub .hub-logo,
+  body.video-popup-open .tech-hub .tech-node,
+  body.video-popup-open .tech-hub .hub-cable {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
   .hub-popup-inner { position: relative; width: min(340px, 88vw); }
   .hub-popup-close {
     position: absolute; top: -42px; right: 0; background: none; border: none;
@@ -4403,12 +4411,6 @@
     });
   }
 
-  function updateHubVideos() {
-    document.querySelectorAll('.hub-clip video').forEach(video => {
-      video.pause();
-    });
-  }
-
   function initHub() {
     const section = document.getElementById('tech-hub');
     if (!section) return;
@@ -4427,7 +4429,6 @@
       applySelection();
       tabs.forEach((tab, index) => tab.setAttribute('aria-selected', String(index === outputIndex)));
       clips.forEach((clip, index) => clip.classList.toggle('is-mobile-active', index === outputIndex));
-      updateHubVideos();
     }
 
     function clearSelection() {
@@ -4466,7 +4467,6 @@
       hubVisible = entries[0].isIntersecting;
       section.classList.toggle('hub-active', hubVisible);
       applySelection();
-      updateHubVideos();
     }, { threshold: 0.12 });
     observer.observe(section);
 
@@ -4474,7 +4474,7 @@
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => { drawCables(); updateHubVideos(); }, 120);
+      resizeTimer = setTimeout(drawCables, 120);
     });
 
     // Popup logic
@@ -4497,24 +4497,37 @@
       if (src) {
         clip.addEventListener('pointerenter', () => preloadVideo(src), { passive: true });
         clip.addEventListener('focus', () => preloadVideo(src), { passive: true });
+        clip.addEventListener('touchstart', () => preloadVideo(src), { passive: true });
       }
     });
 
     function openPopup(src) {
-      // If already preloaded, just play — no lag
-      if (popupVideo.dataset.preloaded !== src) {
-        popupVideo.preload = 'auto';
-        popupVideo.src = src;
-      }
-      popupVideo.play().catch(() => {});
+      document.body.classList.add('video-popup-open');
       popup.classList.add('open');
       document.body.style.overflow = 'hidden';
+
+      if (popupVideo.dataset.preloaded !== src) {
+        popupVideo.dataset.preloaded = src;
+        popupVideo.preload = 'auto';
+        popupVideo.src = src;
+        popupVideo.load();
+      }
+
+      const playVideo = () => {
+        if (popup.classList.contains('open')) popupVideo.play().catch(() => {});
+      };
+      if (popupVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        playVideo();
+      } else {
+        popupVideo.addEventListener('canplay', playVideo, { once: true });
+      }
     }
 
     function closePopup() {
       popup.classList.remove('open');
       popupVideo.pause();
-      popupVideo.src = '';
+      popupVideo.currentTime = 0;
+      document.body.classList.remove('video-popup-open');
       document.body.style.overflow = '';
     }
 
